@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import UserLoginForm from './UserLoginForm';
+import UserSignUpForm from './UserSignUpForm';
 
 test('renders', () => {
-  render(<UserLoginForm />);
+  render(<UserSignUpForm />);
 });

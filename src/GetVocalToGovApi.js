@@ -23,9 +23,19 @@ class GetVocalToGovApi {
     }
   }
 
-  static async registerUser(userInfo) {
-    const res = await this.request('auth/register', userInfo, 'post');
+  static async registerUser(userData) {
+    const res = await this.request('auth/register', userData, 'post');
     return res;
+  }
+
+  static async loginUser(userCreds) {
+    const res = await this.request('auth/token', userCreds, 'post');
+    return res;
+  }
+
+  static async getUser(username) {
+    const res = await this.request(`users/${username}`);
+    return res
   }
 }
 

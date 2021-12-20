@@ -3,7 +3,7 @@ import { Navbar, Container, Nav } from 'react-bootstrap';
 // eslint-disable-next-line import/no-unresolved
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const NavBar = function () {
+const NavBar = function ({ logout }) {
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" sticky="top">
       <Container>

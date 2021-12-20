@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import {
-  Card, CardBody, CardTitle, Form, FormGroup, Label, Input, Button, Container, Row,
+  Card, Form, Button, Container, Row,
 } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const UserLoginForm = function ({ loginUser }) {
+const UserLoginForm = function ({ login }) {
 //   const { existingUser } = useContext(UserContext);
 //   const INIT_STATE = existingUser || { username: '', password: '' };
   const INIT_STATE = { username: '', password: '' };
@@ -20,7 +20,7 @@ const UserLoginForm = function ({ loginUser }) {
   function handleSubmit(evt) {
     try {
       evt.preventDefault();
-      loginUser(formData);
+      login(formData);
       setFormData(INIT_STATE);
       history.push('/');
     } catch (err) {
@@ -32,37 +32,39 @@ const UserLoginForm = function ({ loginUser }) {
     <Container>
       <Row className="justify-content-lg-center">
         <Card style={{ width: '800px', backgroundColor: '#AED6F1' }}>
-          <CardBody>
-            <CardTitle className="font-weight-bold text-center">
+          <Card.Body>
+            <Card.Title className="font-weight-bold text-center">
               Log In!
-            </CardTitle>
-            <Form onSubmit={() => handleSubmit()}>
-              <FormGroup>
-                <Label htmlFor="username">Username:</Label>
-                <Input
+            </Card.Title>
+            <Form onSubmit={handleSubmit}>
+              <Form.Group>
+                <Form.Label htmlFor="username">Username:</Form.Label>
+                <Form.Control
                   id="username"
                   name="username"
                   placeholder="username"
                   value={formData.username}
-                  onChange={() => handleChange()}
+                  onChange={handleChange}
                   style={{ backgroundColor: '#FDF2E9' }}
                 />
-              </FormGroup>
-              <FormGroup>
-                <Label htmlFor="password">Password:</Label>
-                <Input
+              </Form.Group>
+              <Form.Group>
+                <Form.Label htmlFor="password">Password:</Form.Label>
+                <Form.Control
                   id="password"
                   name="password"
                   placeholder="password"
                   type="password"
                   value={formData.password}
-                  onChange={() => handleChange()}
+                  onChange={handleChange}
                   style={{ backgroundColor: '#FDF2E9' }}
                 />
-              </FormGroup>
-              <Button>Submit</Button>
+              </Form.Group>
+              <Button style={{backgroundColor:'#21618C'}} variant="primary" type="submit">
+                        Login
+              </Button>
             </Form>
-          </CardBody>
+          </Card.Body>
         </Card>
       </Row>
     </Container>
