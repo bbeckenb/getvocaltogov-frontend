@@ -17,9 +17,9 @@ class GetVocalToGovApi {
         url, method, data, params, headers,
       })).data;
     } catch (err) {
-      console.error('API Error:', err.response);
-      const { message } = err.response.data.error;
-      throw Array.isArray(message) ? message : [message];
+      console.error('API Error:', err.response.status);
+      // const { message } = err.response.data.error;
+      // throw Array.isArray(message) ? message : [message];
     }
   }
 

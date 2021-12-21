@@ -1,30 +1,49 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import FlashMessage from 'react-flash-message';
+import Alert from '../Common/Alert';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as Yup from 'yup';
 import {
-  Card, Form, Button, Container, Row,
+  Card, Container, Row,
 } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const UserLoginForm = function ({ login }) {
+  const validationSchema = Yup.object().shape({
+    username: Yup.string()
+      .required('Username is required')
+      .min(6, 'Username must be at least 6 characters')
+      .max(20, 'Username must not exceed 20 characters'),
+    password: Yup.string()
+      .required('Password is required')
+      .min(6, 'Password must be at least 6 characters')
+      .max(40, 'Password must not exceed 40 characters'),
+  });
 //   const { existingUser } = useContext(UserContext);
 //   const INIT_STATE = existingUser || { username: '', password: '' };
-  const INIT_STATE = { username: '', password: '' };
-  const [formData, setFormData] = useState(INIT_STATE);
+  // const INIT_STATE = { username: '', password: '' };
+  const [apiErrors, setApiErrors] = useState(null);
   const history = useHistory();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors }
+  } = useForm({resolver: yupResolver(validationSchema)});
 
-  function handleChange(evt) {
-    const { name, value } = evt.target;
-    setFormData((currFormData) => ({ ...currFormData, [name]: value }));
-  }
+  // function handleChange(evt) {
+  //   const { name, value } = evt.target;
+  //   setFormData((currFormData) => ({ ...currFormData, [name]: value }));
+  // }
 
-  function handleSubmit(evt) {
-    try {
-      evt.preventDefault();
-      login(formData);
-      setFormData(INIT_STATE);
+  const onSubmit = formData => {
+    let res = login(formData);
+    if (res.success) {
       history.push('/');
-    } catch (err) {
-      console.error(err);
+    } else {
+      setApiErrors('Invalid username/ password');
     }
   }
 
@@ -33,37 +52,53 @@ const UserLoginForm = function ({ login }) {
       <Row className="justify-content-lg-center">
         <Card style={{ width: '800px', backgroundColor: '#AED6F1' }}>
           <Card.Body>
-            <Card.Title className="font-weight-bold text-center">
+            <Card.Title className="font-weight-bold text-center" role="heading">
               Log In!
             </Card.Title>
-            <Form onSubmit={handleSubmit}>
-              <Form.Group>
-                <Form.Label htmlFor="username">Username:</Form.Label>
-                <Form.Control
-                  id="username"
-                  name="username"
-                  placeholder="username"
-                  value={formData.username}
-                  onChange={handleChange}
-                  style={{ backgroundColor: '#FDF2E9' }}
-                />
-              </Form.Group>
-              <Form.Group>
-                <Form.Label htmlFor="password">Password:</Form.Label>
-                <Form.Control
-                  id="password"
-                  name="password"
-                  placeholder="password"
-                  type="password"
-                  value={formData.password}
-                  onChange={handleChange}
-                  style={{ backgroundColor: '#FDF2E9' }}
-                />
-              </Form.Group>
-              <Button style={{backgroundColor:'#21618C'}} variant="primary" type="submit">
-                        Login
-              </Button>
-            </Form>
+            <div className="login-form">
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <div className="form-group">
+                  <label>Username</label>
+                  <input
+                    aria-label="username"
+                    name="username"
+                    placeholder="username"
+                    type="text"
+                    {...register('username')}
+                    className={`form-control ${errors.username ? 'is-invalid' : ''}`}
+                  />
+                  <div className="invalid-feedback" role="alert">{errors.username?.message}</div>
+                </div>
+
+                <div className="form-group">
+                  <label>Password</label>
+                  <input
+                    aria-label="password"
+                    name="password"
+                    placeholder="password"
+                    type="password"
+                    {...register('password')}
+                    className={`form-control ${errors.password ? 'is-invalid' : ''}`}
+                  />
+                  <div className="invalid-feedback" role="alert">{errors.password?.message}</div>
+                </div>
+                {apiErrors
+                    ? <FlashMessage duration={5000}><Alert type="danger" message={apiErrors} /></FlashMessage>
+                    : null}
+                <div className="form-group">
+                  <button type="submit" className="btn btn-primary">
+                    Login
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => reset()}
+                    className="btn btn-warning float-right"
+                  >
+                    Reset
+                  </button>
+                </div>
+              </form>
+            </div>
           </Card.Body>
         </Card>
       </Row>

@@ -35,18 +35,24 @@ const App = function () {
       let user = await GetVocalToGovApi.registerUser(userData);
       setToken(user.token);
       GetVocalToGovApi.token = user.token;
-    } catch (err) {
-      console.error('App problem with SignUp:', err);
+      return { success: true };
+    } catch (error) {
+      console.error('App problem with SignUp:', error);
+      return { success: false, error }
     }
   }
 
   async function login(credentials) {
     try {
-      const user = await GetVocalToGovApi.loginUser(credentials);
-      setToken(user.token);
-      GetVocalToGovApi.token = user.token;
-    } catch (err) {
-      console.error('Encountered issue logging user in:', err);
+      let user = await GetVocalToGovApi.loginUser(credentials);
+      if (user) {
+        setToken(user.token);
+        GetVocalToGovApi.token = user.token;
+        return { success: true };
+      }
+    } catch (error) {
+      console.error('Encountered issue logging user in:', error);
+      return { success: false }
     }
   }
 

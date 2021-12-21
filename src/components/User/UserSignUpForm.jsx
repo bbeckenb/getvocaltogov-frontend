@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { useForm } from "react-hook-form";
 import { useHistory } from 'react-router-dom';
 import {Card, Form, Button, Container, Row} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -17,6 +18,7 @@ const UserSignUpForm = function ({ signup }) {
                         email:'', 
                         }
     const [formData, setFormData] = useState(INIT_STATE);
+    const { register, errors, control, handleSubmit } = useForm();
     // const [isChecked, setIsChecked] = useState(false);
     let history = useHistory();
 
@@ -27,12 +29,17 @@ const UserSignUpForm = function ({ signup }) {
         setFormData(currFormData => ({...currFormData, [name]: value}));
     };
 
-    function handleSubmit(evt) {
-        evt.preventDefault();
+    const onSubmit = (formData) => {
         signup(formData);
         setFormData(INIT_STATE);
         history.push('/');
     }
+    // function handleSubmit(evt) {
+    //     evt.preventDefault();
+    //     signup(formData);
+    //     setFormData(INIT_STATE);
+    //     history.push('/');
+    // }
 
     // function handleChangeCheckBox() {
     //     setFormData(currFormData => ({...currFormData, isAdmin: !isChecked}))
@@ -44,13 +51,14 @@ const UserSignUpForm = function ({ signup }) {
         <Row className="justify-content-lg-center">
             <Card style={{ width: '800px', backgroundColor:'#AED6F1'}}>
                 <Card.Body>
-                <Card.Title className="font-weight-bold text-center">
+                <Card.Title className="font-weight-bold text-center" role="heading">
                     Sign Up!
                 </Card.Title>
-                <Form onSubmit={handleSubmit}>
+                <Form onSubmit={handleSubmit(onSubmit)}>
                     <Form.Group>
                         <Form.Label htmlFor="username">Username:</Form.Label>
                         <Form.Control
+                            {...register("username", { required: true, maxLength: 20 })}
                             id="username"
                             name="username"
                             placeholder="username"
@@ -62,6 +70,7 @@ const UserSignUpForm = function ({ signup }) {
                     <Form.Group>
                         <Form.Label htmlFor="password">Password:</Form.Label>
                         <Form.Control
+                            {...register("password", { required: true, maxLength: 20 })}
                             id="password"
                             name="password"
                             placeholder="password"
@@ -74,6 +83,7 @@ const UserSignUpForm = function ({ signup }) {
                     <Form.Group>
                         <Form.Label htmlFor="firstName">First Name:</Form.Label>
                         <Form.Control
+                            {...register("firstName", { required: true, pattern: /^[A-Za-z]+$/i })}
                             id="firstName"
                             name="firstName"
                             placeholder="First Name"
@@ -85,6 +95,7 @@ const UserSignUpForm = function ({ signup }) {
                     <Form.Group>
                         <Form.Label htmlFor="lastName">Last Name:</Form.Label>
                         <Form.Control
+                            {...register("lastName", { required: true, pattern: /^[A-Za-z]+$/i })}
                             id="lastName"
                             name="lastName"
                             placeholder="Last Name"
@@ -96,6 +107,7 @@ const UserSignUpForm = function ({ signup }) {
                     <Form.Group>
                         <Form.Label htmlFor="street">Street: </Form.Label>
                         <Form.Control
+                            {...register("street", { required: true, maxLength: 30 })}
                             id="street"
                             name="street"
                             placeholder="street"
@@ -106,6 +118,7 @@ const UserSignUpForm = function ({ signup }) {
                     <Form.Group>
                         <Form.Label htmlFor="city">City: </Form.Label>
                         <Form.Control
+                            {...register("city", { required: true, maxLength: 30 })}
                             id="city"
                             name="city"
                             placeholder="city"
@@ -116,6 +129,7 @@ const UserSignUpForm = function ({ signup }) {
                     <Form.Group>
                         <Form.Label htmlFor="state">State: </Form.Label>
                         <Form.Control
+                            {...register("state", { required: true, maxLength: 3 })}
                             id="state"
                             name="state"
                             placeholder="state"
@@ -126,6 +140,7 @@ const UserSignUpForm = function ({ signup }) {
                     <Form.Group>
                         <Form.Label htmlFor="zip">Zip: </Form.Label>
                         <Form.Control
+                            {...register("zip", { required: true, maxLength: 5 })}
                             id="zip"
                             name="zip"
                             placeholder="zip"
