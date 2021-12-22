@@ -3,6 +3,7 @@ import AppRoutes from './components/Routes/AppRoutes';
 import useLocalStorage from './customHooks/useLocalStorage';
 import GetVocalToGovApi from './GetVocalToGovApi';
 import UtilClass from './classes/UtilClass';
+import UserContext from './context/UserContext';
 import './App.css';
 
 const App = function () {
@@ -66,7 +67,9 @@ const App = function () {
 
   return (
     <div className="App">
-      <AppRoutes login={login} signup={signup} logout={logout} />
+      <UserContext.Provider value={{currUser}}>
+        <AppRoutes login={login} signup={signup} logout={logout} />
+      </UserContext.Provider>
     </div>
   );
 };
