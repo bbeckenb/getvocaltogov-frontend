@@ -33,11 +33,13 @@ const App = function () {
   async function signup(userData) {
     try {
       let user = await GetVocalToGovApi.registerUser(userData);
-      setToken(user.token);
-      GetVocalToGovApi.token = user.token;
-      return { success: true };
+      if (user) {
+        setToken(user.token);
+        GetVocalToGovApi.token = user.token;
+        return { success: true };
+      }
     } catch (error) {
-      console.error('App problem with SignUp:', error);
+      console.error('Encountered issue registering user:', error);
       return { success: false, error }
     }
   }
@@ -52,13 +54,14 @@ const App = function () {
       }
     } catch (error) {
       console.error('Encountered issue logging user in:', error);
-      return { success: false }
+      return { success: false, error }
     }
   }
 
   function logout() {
     setCurrUser(null);
     setToken(null);
+    console.log(currUser)
   }
 
   return (

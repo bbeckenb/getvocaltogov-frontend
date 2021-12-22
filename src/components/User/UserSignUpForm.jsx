@@ -1,51 +1,36 @@
 import React, {useState} from 'react';
 import { useForm } from "react-hook-form";
 import { useHistory } from 'react-router-dom';
-import {Card, Form, Button, Container, Row} from 'react-bootstrap';
+import FlashMessage from 'react-flash-message';
+import Alert from '../Common/Alert';
+import { yupResolver } from '@hookform/resolvers/yup';
+import registerSchema from '../../validationSchemas/registerSchema';
+import {Card, Container, Row} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const UserSignUpForm = function ({ signup }) {
-    const INIT_STATE = {
-                        username: '', 
-                        password:'', 
-                        firstName:'', 
-                        lastName:'', 
-                        street:'', 
-                        city: '',
-                        state: '',
-                        zip: '',
-                        email:'', 
-                        }
-    const [formData, setFormData] = useState(INIT_STATE);
-    const { register, errors, control, handleSubmit } = useForm();
-    // const [isChecked, setIsChecked] = useState(false);
-    let history = useHistory();
-
+      const [apiErrors, setApiErrors] = useState(null);   
+      const history = useHistory(); 
+      const {
+        register,
+        handleSubmit,
+        reset,
+        formState: { errors }
+      } = useForm({resolver: yupResolver(registerSchema)});
     
-    function handleChange(evt) {
-        const {name, value} = evt.target;
-        console.log(formData)
-        setFormData(currFormData => ({...currFormData, [name]: value}));
-    };
 
-    const onSubmit = (formData) => {
-        signup(formData);
-        setFormData(INIT_STATE);
-        history.push('/');
+    async function sendData(formData) {
+        let res = await signup(formData);
+        let success = await res.success
+        console.log(res)
+        if (success) {
+            history.push('/');
+        } else {
+            setApiErrors(`${res.error}`);
+        }
     }
-    // function handleSubmit(evt) {
-    //     evt.preventDefault();
-    //     signup(formData);
-    //     setFormData(INIT_STATE);
-    //     history.push('/');
-    // }
-
-    // function handleChangeCheckBox() {
-    //     setFormData(currFormData => ({...currFormData, isAdmin: !isChecked}))
-    //     setIsChecked(!isChecked);
-    // }
-
+  
     return (
     <Container>
         <Row className="justify-content-lg-center">
@@ -54,116 +39,141 @@ const UserSignUpForm = function ({ signup }) {
                 <Card.Title className="font-weight-bold text-center" role="heading">
                     Sign Up!
                 </Card.Title>
-                <Form onSubmit={handleSubmit(onSubmit)}>
-                    <Form.Group>
-                        <Form.Label htmlFor="username">Username:</Form.Label>
-                        <Form.Control
-                            {...register("username", { required: true, maxLength: 20 })}
-                            id="username"
-                            name="username"
-                            placeholder="username"
-                            value={formData.username}
-                            onChange={handleChange}
-                            style={{ backgroundColor:'#FDF2E9'}}
-                        />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label htmlFor="password">Password:</Form.Label>
-                        <Form.Control
-                            {...register("password", { required: true, maxLength: 20 })}
-                            id="password"
-                            name="password"
-                            placeholder="password"
-                            type="password"
-                            value={formData.password}
-                            onChange={handleChange}
-                            style={{ backgroundColor:'#FDF2E9'}}
-                        />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label htmlFor="firstName">First Name:</Form.Label>
-                        <Form.Control
-                            {...register("firstName", { required: true, pattern: /^[A-Za-z]+$/i })}
-                            id="firstName"
-                            name="firstName"
-                            placeholder="First Name"
-                            value={formData.firstName}
-                            onChange={handleChange}
-                            style={{ backgroundColor:'#FDF2E9'}}
-                        />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label htmlFor="lastName">Last Name:</Form.Label>
-                        <Form.Control
-                            {...register("lastName", { required: true, pattern: /^[A-Za-z]+$/i })}
-                            id="lastName"
-                            name="lastName"
-                            placeholder="Last Name"
-                            value={formData.lastName}
-                            onChange={handleChange}
-                            style={{ backgroundColor:'#FDF2E9'}}
-                        />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label htmlFor="street">Street: </Form.Label>
-                        <Form.Control
-                            {...register("street", { required: true, maxLength: 30 })}
-                            id="street"
-                            name="street"
-                            placeholder="street"
-                            value={formData.street}
-                            onChange={handleChange}
-                        />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label htmlFor="city">City: </Form.Label>
-                        <Form.Control
-                            {...register("city", { required: true, maxLength: 30 })}
-                            id="city"
-                            name="city"
-                            placeholder="city"
-                            value={formData.city}
-                            onChange={handleChange}
-                        />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label htmlFor="state">State: </Form.Label>
-                        <Form.Control
-                            {...register("state", { required: true, maxLength: 3 })}
-                            id="state"
-                            name="state"
-                            placeholder="state"
-                            value={formData.state}
-                            onChange={handleChange}
-                        />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label htmlFor="zip">Zip: </Form.Label>
-                        <Form.Control
-                            {...register("zip", { required: true, maxLength: 5 })}
-                            id="zip"
-                            name="zip"
-                            placeholder="zip"
-                            value={formData.zip}
-                            onChange={handleChange}
-                        />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label htmlFor="email">Email:</Form.Label>
-                        <Form.Control
-                            id="email"
-                            name="email"
-                            placeholder="email"
-                            type="email"
-                            value={formData.email}
-                            onChange={handleChange}
-                            style={{ backgroundColor:'#FDF2E9'}}
-                        />
-                    </Form.Group>
-                    <Button style={{backgroundColor:'#21618C'}} variant="primary" type="submit">
-                        Submit
-                    </Button>
-                </Form>
+                    <div className="registration-form">
+                        <form onSubmit={handleSubmit(sendData)}>
+                            <div className="form-group">
+                            <label>Username</label>
+                            <input
+                                aria-label="username"
+                                name="username"
+                                placeholder="username"
+                                type="text"
+                                {...register('username')}
+                                className={`form-control ${errors.username ? 'is-invalid' : ''}`}
+                            />
+                            <div className="invalid-feedback" role="alert">{errors.username?.message}</div>
+                            </div>
+
+                            <div className="form-group">
+                            <label>Password</label>
+                            <input
+                                aria-label="password"
+                                name="password"
+                                placeholder="password"
+                                type="password"
+                                {...register('password')}
+                                className={`form-control ${errors.password ? 'is-invalid' : ''}`}
+                            />
+                            <div className="invalid-feedback" role="alert">{errors.password?.message}</div>
+                            </div>
+
+                            <div className="form-group">
+                            <label>First Name</label>
+                            <input
+                                aria-label="firstName"
+                                name="firstName"
+                                placeholder="First Name"
+                                type="text"
+                                {...register('firstName')}
+                                className={`form-control ${errors.firstName ? 'is-invalid' : ''}`}
+                            />
+                            <div className="invalid-feedback" role="alert">{errors.firstName?.message}</div>
+                            </div>
+
+                            <div className="form-group">
+                            <label>Last Name</label>
+                            <input
+                                aria-label="lastName"
+                                name="lastName"
+                                placeholder="Last Name"
+                                type="text"
+                                {...register('lastName')}
+                                className={`form-control ${errors.lastName ? 'is-invalid' : ''}`}
+                            />
+                            <div className="invalid-feedback" role="alert">{errors.lastName?.message}</div>
+                            </div>
+
+                            <div className="form-group">
+                            <label>Street</label>
+                            <input
+                                aria-label="street"
+                                name="street"
+                                placeholder="street"
+                                type="text"
+                                {...register('street')}
+                                className={`form-control ${errors.street ? 'is-invalid' : ''}`}
+                            />
+                            <div className="invalid-feedback" role="alert">{errors.street?.message}</div>
+                            </div>
+
+                            <div className="form-group">
+                            <label>City</label>
+                            <input
+                                aria-label="city"
+                                name="city"
+                                placeholder="city"
+                                type="text"
+                                {...register('city')}
+                                className={`form-control ${errors.city ? 'is-invalid' : ''}`}
+                            />
+                            <div className="invalid-feedback" role="alert">{errors.city?.message}</div>
+                            </div>
+
+                            <div className="form-group">
+                            <label>State</label>
+                            <input
+                                aria-label="state"
+                                name="state"
+                                placeholder="state"
+                                type="text"
+                                {...register('state')}
+                                className={`form-control ${errors.state ? 'is-invalid' : ''}`}
+                            />
+                            <div className="invalid-feedback" role="alert">{errors.state?.message}</div>
+                            </div>
+
+                            <div className="form-group">
+                            <label>Zip</label>
+                            <input
+                                aria-label="zip"
+                                name="zip"
+                                placeholder="zip"
+                                type="text"
+                                {...register('zip')}
+                                className={`form-control ${errors.zip ? 'is-invalid' : ''}`}
+                            />
+                            <div className="invalid-feedback" role="alert">{errors.zip?.message}</div>
+                            </div>
+
+                            <div className="form-group">
+                            <label>Email</label>
+                            <input
+                                aria-label="email"
+                                name="email"
+                                placeholder="email"
+                                type="text"
+                                {...register('email')}
+                                className={`form-control ${errors.email ? 'is-invalid' : ''}`}
+                            />
+                            <div className="invalid-feedback" role="alert">{errors.email?.message}</div>
+                            </div>
+                            {apiErrors
+                                ? <FlashMessage duration={5000}><Alert type="danger" message={apiErrors} /></FlashMessage>
+                                : null}
+                            <div className="form-group">
+                                <button type="submit" className="btn btn-primary">
+                                    Register
+                                </button>
+                                <button
+                                    type="button"
+                                    onClick={() => reset()}
+                                    className="btn btn-warning float-right"
+                                >
+                                    Reset
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </Card.Body>
             </Card>
         </Row>

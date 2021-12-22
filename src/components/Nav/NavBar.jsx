@@ -18,6 +18,7 @@ const NavBar = function ({ logout }) {
             <Nav.Link href="/home">Home</Nav.Link>
             <Nav.Link href="/login">Login</Nav.Link>
             <Nav.Link href="/signup">Sign up</Nav.Link>
+            <Nav.Link onClick={logout} href="/">{`Logout`}</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
