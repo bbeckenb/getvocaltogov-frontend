@@ -10,7 +10,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const UserSignUpForm = function ({ signup }) {
-      const [apiErrors, setApiErrors] = useState(null);   
+      const [formMessage, setFormMessage] = useState({type: 'primary', message: 'welcome!'});   
       const history = useHistory(); 
       const {
         register,
@@ -25,11 +25,17 @@ const UserSignUpForm = function ({ signup }) {
         let success = await res.success
         console.log(res)
         if (success) {
+            setFormMessage({type: 'primary', message: 'success!'});
             history.push('/');
         } else {
-            setApiErrors(`${res.error}`);
+            setFormMessage({type: 'danger', message: `${res.error}`});
         }
     }
+
+    function resetFormAndMsg() {
+        setFormMessage({type: 'primary', message: 'welcome!'});
+        reset()
+      }
   
     return (
     <Container>
@@ -157,16 +163,14 @@ const UserSignUpForm = function ({ signup }) {
                             />
                             <div className="invalid-feedback" role="alert">{errors.email?.message}</div>
                             </div>
-                            {apiErrors
-                                ? <FlashMessage duration={5000}><Alert type="danger" message={apiErrors} /></FlashMessage>
-                                : null}
+                            <Alert type={formMessage.type} message={formMessage.message} />
                             <div className="form-group">
                                 <button type="submit" className="btn btn-primary">
                                     Register
                                 </button>
                                 <button
                                     type="button"
-                                    onClick={() => reset()}
+                                    onClick={() => resetFormAndMsg()}
                                     className="btn btn-warning float-right"
                                 >
                                     Reset

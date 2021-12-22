@@ -12,7 +12,7 @@ import {
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const UserLoginForm = function ({ login }) {
-  const [apiErrors, setApiErrors] = useState(null);
+  const [formMessage, setFormMessage] = useState({type: 'primary', message: 'welcome!'});
   const history = useHistory();
   const {
     register,
@@ -24,11 +24,17 @@ const UserLoginForm = function ({ login }) {
   async function onSubmit(formData) {
     let res = await login(formData);
     if (res.success) {
+      setFormMessage({type: 'primary', message: 'success!'});
       history.push('/');
     } else {
       console.log(res)
-      setApiErrors(`${res.error}`);
+      setFormMessage({type: 'danger', message: `${res.error}`});
     }
+  }
+
+  function resetFormAndMsg() {
+    setFormMessage({type: 'primary', message: 'welcome!'});
+    reset()
   }
 
   return (
@@ -66,16 +72,14 @@ const UserLoginForm = function ({ login }) {
                   />
                   <div className="invalid-feedback" role="alert">{errors.password?.message}</div>
                 </div>
-                {apiErrors
-                    ? <FlashMessage duration={5000}><Alert type="danger" message={apiErrors} /></FlashMessage>
-                    : null}
+                <Alert type={formMessage.type} message={formMessage.message} />
                 <div className="form-group">
                   <button type="submit" className="btn btn-primary">
                     Login
                   </button>
                   <button
                     type="button"
-                    onClick={() => reset()}
+                    onClick={() => resetFormAndMsg()}
                     className="btn btn-warning float-right"
                   >
                     Reset
