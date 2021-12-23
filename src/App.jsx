@@ -17,10 +17,8 @@ const App = function () {
         try {
           // const { username } = jwt.decode(token);
           const { username } = UtilClass.parseJwt(token);
-          console.log(username)
           GetVocalToGovApi.token = token;
           const user = await GetVocalToGovApi.getUser(username);
-          console.log(user);
           setCurrUser(user);
         } catch (err) {
           console.error('Encountered Issue loading user:', err);

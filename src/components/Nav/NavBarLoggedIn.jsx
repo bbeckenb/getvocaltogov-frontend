@@ -6,10 +6,10 @@ function NavBarLoggedIn({ logout, username }) {
         <Nav className="me-auto">
            <Nav.Link href="/posts">Posts</Nav.Link>
            <Nav.Link href="/templates">Templates</Nav.Link>
-       </Nav>
-       <Nav>
-            <Nav.Link href="/profile">Profile</Nav.Link>
+        </Nav>
+        <Nav>
             <Nav.Link href="/home">Home</Nav.Link>
+            <Nav.Link href="/profile">Profile</Nav.Link>
             <Nav.Link onClick={logout} href="/">{`Logout ${username}`}</Nav.Link>
         </Nav>
     </Navbar.Collapse>
