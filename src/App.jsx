@@ -65,7 +65,7 @@ const App = function () {
 
   return (
     <div className="App">
-      <UserContext.Provider value={{currUser}}>
+      <UserContext.Provider value={{ currUser, setCurrUser }}>
         <AppRoutes login={login} signup={signup} logout={logout} />
       </UserContext.Provider>
     </div>
