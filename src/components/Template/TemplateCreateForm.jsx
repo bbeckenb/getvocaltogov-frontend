@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Alert from '../Common/Alert';
-import loginSchema from '../../validationSchemas/loginSchema';
+import templateSchema from '../../validationSchemas/templateSchema';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
@@ -10,7 +10,7 @@ import {
 } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const UserLoginForm = function ({ login }) {
+const TemplateCreateForm = function ({ login }) {
   const [formMessage, setFormMessage] = useState({type: 'primary', message: 'welcome!'});
   const history = useHistory();
   const {
@@ -18,7 +18,7 @@ const UserLoginForm = function ({ login }) {
     handleSubmit,
     reset,
     formState: { errors }
-  } = useForm({resolver: yupResolver(loginSchema)});
+  } = useForm({resolver: yupResolver(templateSchema)});
 
   async function onSubmit(formData) {
     let res = await login(formData);
@@ -93,4 +93,4 @@ const UserLoginForm = function ({ login }) {
   );
 };
 
-export default UserLoginForm;
+export default TemplateCreateForm;

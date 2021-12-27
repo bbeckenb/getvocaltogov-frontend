@@ -1,6 +1,7 @@
 import React from 'react';
 import UserLoginForm from '../User/UserLoginForm';
 import UserSignUpForm from '../User/UserSignUpForm';
+import TemplateList from '../Template/TemplateList';
 import {
   BrowserRouter, Route, Switch, Redirect,
 } from 'react-router-dom';
@@ -12,7 +13,7 @@ const AppRoutes = function ({ signup, login, logout }) {
       <NavBar logout={logout}/>
       <Switch>
         <Route exact path="/"><h1>Home</h1></Route>
-        <Route exact path="/templates"><h1>Templates</h1></Route>
+        <Route exact path="/templates"><TemplateList /></Route>
         <Route exact path="/posts"><h1>Posts</h1></Route>
         <Route exact path="/login"><UserLoginForm login={login} /></Route>
         <Route exact path="/signup"><UserSignUpForm signup={signup} /></Route>

@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import NavBarLoggedOut from './NavBarLoggedOut';
 import NavBarLoggedIn from './NavBarLoggedIn';
-import { Navbar, Container } from 'react-bootstrap';
 import UserContext from '../../context/UserContext';
+import { Navbar, Container } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const NavBar = function ({ logout }) {
