@@ -1,27 +1,28 @@
 import React, { useState } from 'react';
 import Alert from '../Common/Alert';
-import templateCreateSchema from '../../validationSchemas/templateCreateSchema';
+import templateSearchSchema from '../../validationSchemas/templateSearchSchema';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+
 import {
   Card, Container, Row,
 } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const TemplateCreateForm = function ({ addTemplate }) {
+const TemplateSearchForm = function ({ searchTemplates }) {
   const [formMessage, setFormMessage] = useState({type: 'primary', message: 'welcome!'});
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors }
-  } = useForm({resolver: yupResolver(templateCreateSchema)});
+  } = useForm({resolver: yupResolver(templateSearchSchema)});
 
   async function onSubmit(formData) {
-    let res = await addTemplate(formData);
+    let res = await searchTemplates(formData);
     if (res.success) {
         reset()
-        setFormMessage({type: 'success', message: 'success!'});
+        setFormMessage({type: 'success', message: `success! Templates filtered with following criteria: title - '${formData.title}', body - '${formData.body}'`});
     } else {
         console.log(res)
         setFormMessage({type: 'danger', message: `${res.error}`});
@@ -39,7 +40,7 @@ const TemplateCreateForm = function ({ addTemplate }) {
         <Card style={{ width: '800px', backgroundColor: '#AED6F1' }}>
           <Card.Body>
             <Card.Title className="font-weight-bold text-center" role="heading">
-              Create a New Template!
+              Search Templates!
             </Card.Title>
             <div className="template-add-form">
               <form onSubmit={handleSubmit(onSubmit)}>
@@ -71,7 +72,7 @@ const TemplateCreateForm = function ({ addTemplate }) {
                 <Alert type={formMessage.type} message={formMessage.message} />
                 <div className="form-group">
                   <button type="submit" className="btn btn-primary">
-                    Create Template
+                    Search Templates
                   </button>
                   <button
                     type="button"
@@ -90,4 +91,4 @@ const TemplateCreateForm = function ({ addTemplate }) {
   );
 };
 
-export default TemplateCreateForm;
+export default TemplateSearchForm;

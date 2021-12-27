@@ -45,7 +45,12 @@ class GetVocalToGovApi {
 
   static async getTemplates(filters = {}) {
     const res = await this.request('templates', filters);
-    return res;
+    return res.templates;
+  }
+
+  static async createTemplate(templateData) {
+    const res = await this.request('templates', templateData, 'post');
+    return res.template;
   }
 
 }
