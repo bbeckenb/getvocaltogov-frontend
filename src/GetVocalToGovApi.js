@@ -53,6 +53,11 @@ class GetVocalToGovApi {
     return res.template;
   }
 
+  static async deleteTemplate(templateId) {
+    const res = await this.request(`templates/${templateId}`, {}, 'delete');
+    return res.deleted;
+  }
+
 }
 
 export default GetVocalToGovApi;

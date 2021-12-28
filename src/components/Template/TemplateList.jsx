@@ -16,17 +16,10 @@ function TemplateList() {
         searchTemplates();
     }, []);
 
-    // async function retrieveTemplates(filterCriteria = {}) {
-    //     const reqTemplates = await GetVocalToGovApi.getTemplates(filterCriteria);
-    //     console.log(reqTemplates)
-    //     setTemplates(reqTemplates);
-    // }
-
     async function addTemplate(formData) {
         try {
             const template = await GetVocalToGovApi.createTemplate(formData);
             if (template) {
-                console.log('HELLO')
                 setTemplates([template, ...templates]);
                 return { success: true };
             }
@@ -49,6 +42,11 @@ function TemplateList() {
           }
     }
 
+    async function removeTemplate(id) {
+        await GetVocalToGovApi.deleteTemplate(id);
+        setTemplates((currTemplates) => currTemplates.filter(t => t.id !== id));
+    }
+
     if (!templates) return <LoadingSpinner waitingOn={'Templates'} />;
 
     return (
@@ -67,16 +65,19 @@ function TemplateList() {
                     </Accordion.Body>
                 </Accordion.Item>
             </Accordion>
-            {templates !== undefined ? (
+            <h1>Templates</h1>
+            {templates.length !== 0 ? (
                 <Container>
                     <Row className='justify-content-lg-center'>
                         {templates.map((template) => 
                             <TemplateCard 
                                 key={template.id} 
+                                id={template.id}
                                 title={template.title}
                                 body={template.body}
                                 userId={template.userId}
-                                createdAt={template.createdAt} />)}
+                                createdAt={template.createdAt}
+                                handleDelete={removeTemplate} />)}
                     </Row>
                 </Container>
             ) : (
