@@ -28,8 +28,6 @@ const TemplateEditForm = function () {
         setCurrTemplate(template);
     }
     getTemplateValues(templateId);
-    // const {title, body} = currTemplate;
-    // reset({title, body});
   }, []);
 
   useEffect(function loadTemplateDefaults() {
@@ -42,7 +40,6 @@ const TemplateEditForm = function () {
     try {
         const template = await GetVocalToGovApi.updateTemplate(templateId, formData);
         if (template) {
-            // setTemplates([template, ...templates]);
             return { success: true };
         }
       } catch (error) {
