@@ -43,13 +43,23 @@ class GetVocalToGovApi {
   //   return res;
   // }
 
+  static async createTemplate(templateData) {
+    const res = await this.request('templates', templateData, 'post');
+    return res.template;
+  }
+
+  static async getTemplate(templateId) {
+    const res = await this.request(`templates/${templateId}`);
+    return res.template;
+  }
+
   static async getTemplates(filters = {}) {
     const res = await this.request('templates', filters);
     return res.templates;
   }
 
-  static async createTemplate(templateData) {
-    const res = await this.request('templates', templateData, 'post');
+  static async updateTemplate(templateId, templateData) {
+    const res = await this.request(`templates/${templateId}`, templateData, 'patch');
     return res.template;
   }
 

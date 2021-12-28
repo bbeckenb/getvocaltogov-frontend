@@ -1,10 +1,12 @@
 import React, { useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import UserContext from '../../context/UserContext';
 import { Card, ButtonGroup, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function TemplateCard({ id, title, body, userId, createdAt, handleDelete }) {
     const {currUser} = useContext(UserContext);
+    const history = useHistory();
     return (
         <>
             <Card>
@@ -21,6 +23,7 @@ function TemplateCard({ id, title, body, userId, createdAt, handleDelete }) {
                     {currUser !== null && currUser.user.username === userId ? (
                         <ButtonGroup className="mb-2">
                             <Button onClick={() => handleDelete(id)}>Delete</Button>
+                            <Button onClick={() => history.push(`/templates/${id}/edit`)}>Edit</Button>
                         </ButtonGroup>
                     ) : null}
                 </Card.Body>
