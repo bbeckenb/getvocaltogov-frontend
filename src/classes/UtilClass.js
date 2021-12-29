@@ -9,16 +9,22 @@ class UtilClass {
         return JSON.parse(jsonPayload);
     };
 
-    static objKeysValsToString(obj) {
+    static omitEmptyVals(obj) {
         const dirtyKeys = Object.keys(obj);
         console.log('XXXXXXXX', dirtyKeys);
-        let keys = [];
+        let outObj = {};
         for (let key of dirtyKeys) {
             console.log('XXXXXXXX', key);
             if (!['', undefined, null].includes(obj[key])) {
-                keys.push(key);
+                outObj[key] = obj[key];
             }
         }
+        return outObj
+    }
+
+    static objKeysValsToString(obj) {
+        const cleanObj = UtilClass.omitEmptyVals(obj);
+        const keys = Object.keys(cleanObj);
         let outputStr = '';
         for (let key of keys) {
             if (key !== keys[keys.length-1]) {

@@ -16,9 +16,17 @@ describe('objKeysValsToString', () => {
         expect(outputString).toEqual("title - 'test title' | body - 'test body'");
     });
 
-    test('excludes non entered data', () => {
+    test('excludes omitted fields', () => {
         const testObj = {title: 'test title', body: ''};
         const outputString = UtilClass.objKeysValsToString(testObj);
         expect(outputString).toEqual("title - 'test title'");
+    });
+});
+
+describe('omitEmptyVals', () => {
+    test('works', () => {
+        const testObj = {title: 'test title', body: 'test body', omit: ''};
+        const outputObj = UtilClass.omitEmptyVals(testObj);
+        expect(outputObj).toEqual({title: 'test title', body: 'test body'});
     });
 });

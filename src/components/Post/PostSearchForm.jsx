@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import UtilClass from '../../classes/UtilClass';
 import Alert from '../Common/Alert';
-import templateSearchSchema from '../../validationSchemas/templateSearchSchema';
+import postSearchSchema from '../../validationSchemas/postSearchSchema';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
@@ -10,14 +10,14 @@ import {
 } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const TemplateSearchForm = function ({ searchPosts }) {
+const PostSearchForm = function ({ searchPosts }) {
   const [formMessage, setFormMessage] = useState({type: 'primary', message: 'welcome!'});
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors }
-  } = useForm({resolver: yupResolver(templateSearchSchema)});
+  } = useForm({resolver: yupResolver(postSearchSchema)});
 
   async function onSubmit(formData) {
     let res = await searchPosts(formData);
@@ -41,7 +41,7 @@ const TemplateSearchForm = function ({ searchPosts }) {
         <Card style={{ width: '800px', backgroundColor: '#AED6F1' }}>
           <Card.Body>
             <Card.Title className="font-weight-bold text-center" role="heading">
-              Search Templates!
+              Search Posts!
             </Card.Title>
             <div className="post-search-form">
               <form onSubmit={handleSubmit(onSubmit)}>
@@ -119,4 +119,4 @@ const TemplateSearchForm = function ({ searchPosts }) {
   );
 };
 
-export default TemplateSearchForm;
+export default PostSearchForm;

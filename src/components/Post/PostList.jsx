@@ -4,6 +4,7 @@ import LoadingSpinner from '../Common/LoadingSpinner';
 import GetVocalToGovApi from '../../GetVocalToGovApi';
 import { Row, Container, Accordion } from 'react-bootstrap';
 import PostCreateForm from './PostCreateForm';
+import PostSearchForm from './PostSearchForm';
 // import UserContext from '../../context/UserContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -60,7 +61,7 @@ function PostList() {
                 <Accordion.Item eventKey="1">
                     <Accordion.Header>Search for Post</Accordion.Header>
                     <Accordion.Body>
-                    <h1>PostSearchForm</h1>
+                    <PostSearchForm searchPosts={searchPosts} />
                     </Accordion.Body>
                 </Accordion.Item>
             </Accordion>
