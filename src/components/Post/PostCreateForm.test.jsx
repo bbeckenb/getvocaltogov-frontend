@@ -7,7 +7,7 @@ it('renders without crashing', () => {
   render(<PostCreateForm />);
 });
 
-describe("UserSignUpForm", () => {
+describe("PostCreateForm", () => {
   it("should render the basic fields", () => {
     render(<PostCreateForm />);
     expect(

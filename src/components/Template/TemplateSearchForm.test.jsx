@@ -7,7 +7,7 @@ it('renders without crashing', () => {
   render(<TemplateSearchForm />);
 });
 
-describe("UserSignUpForm", () => {
+describe("TemplateSearchForm", () => {
   it("should render the basic fields", () => {
     render(<TemplateSearchForm />);
     expect(

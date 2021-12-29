@@ -7,7 +7,7 @@ it('renders without crashing', () => {
   render(<TemplateCreateForm />);
 });
 
-describe("UserSignUpForm", () => {
+describe("TemplateCreateForm", () => {
   it("should render the basic fields", () => {
     render(<TemplateCreateForm />);
     expect(
@@ -20,7 +20,7 @@ describe("UserSignUpForm", () => {
 
 it("should validate form fields", async () => {
   const mockSave = jest.fn();
-  render(<TemplateCreateForm login={mockSave} />);
+  render(<TemplateCreateForm addTemplate={mockSave} />);
   fireEvent.input(screen.getByRole("textbox", { name: /Title/i }), {
     target: { value: '' }
   });
