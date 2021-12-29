@@ -3,6 +3,7 @@ import PostCard from './PostCard';
 import LoadingSpinner from '../Common/LoadingSpinner';
 import GetVocalToGovApi from '../../GetVocalToGovApi';
 import { Row, Container, Accordion } from 'react-bootstrap';
+import PostCreateForm from './PostCreateForm';
 // import UserContext from '../../context/UserContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -53,7 +54,7 @@ function PostList() {
                 <Accordion.Item eventKey="0">
                     <Accordion.Header>Create New Post</Accordion.Header>
                     <Accordion.Body>
-                    <h1>PostCreateForm</h1>
+                        <PostCreateForm addPost={addPost} />
                     </Accordion.Body>
                 </Accordion.Item>
                 <Accordion.Item eventKey="1">
