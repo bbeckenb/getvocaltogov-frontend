@@ -11,10 +11,8 @@ class UtilClass {
 
     static omitEmptyVals(obj) {
         const dirtyKeys = Object.keys(obj);
-        console.log('XXXXXXXX', dirtyKeys);
         let outObj = {};
         for (let key of dirtyKeys) {
-            console.log('XXXXXXXX', key);
             if (!['', undefined, null].includes(obj[key])) {
                 outObj[key] = obj[key];
             }

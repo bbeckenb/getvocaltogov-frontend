@@ -20,7 +20,8 @@ const TemplateSearchForm = function ({ searchTemplates }) {
   } = useForm({resolver: yupResolver(templateSearchSchema)});
 
   async function onSubmit(formData) {
-    let res = await searchTemplates(formData);
+    let cleanFormData = UtilClass.omitEmptyVals(formData);
+    let res = await searchTemplates(cleanFormData);
     if (res.success) {
         reset()
         setFormMessage({type: 'success', message: `success! Templates filtered with following criteria: ${UtilClass.objKeysValsToString(formData)}`});

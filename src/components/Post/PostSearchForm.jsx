@@ -20,7 +20,8 @@ const PostSearchForm = function ({ searchPosts }) {
   } = useForm({resolver: yupResolver(postSearchSchema)});
 
   async function onSubmit(formData) {
-    let res = await searchPosts(formData);
+    let cleanFormData = UtilClass.omitEmptyVals(formData);
+    let res = await searchPosts(cleanFormData);
     if (res.success) {
         reset()
         setFormMessage({type: 'success', message: `success! Posts filtered with following criteria: ${UtilClass.objKeysValsToString(formData)}`});
