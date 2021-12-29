@@ -25,8 +25,6 @@ function PostCard({ id, title, body, link, userId, tag, createdAt, location, han
                     <ListGroupItem><b>Author: </b>{userId}</ListGroupItem>
                 </ListGroup>
                 <Card.Body>
-                <Card.Link href="#">Card Link</Card.Link>
-                <Card.Link href="#">Another Link</Card.Link>
                 {currUser !== null && currUser.user.username === userId ? (
                         <ButtonGroup className="mb-2">
                             <Button onClick={() => handleDelete(id)}>Delete</Button>

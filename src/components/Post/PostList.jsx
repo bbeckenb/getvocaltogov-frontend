@@ -41,10 +41,10 @@ function PostList() {
           }
     }
 
-    // async function removeTemplate(id) {
-    //     await GetVocalToGovApi.deleteTemplate(id);
-    //     setTemplates((currTemplates) => currTemplates.filter(t => t.id !== id));
-    // }
+    async function removePost(id) {
+        await GetVocalToGovApi.deletePost(id);
+        setPosts((currPosts) => currPosts.filter(p => p.id !== id));
+    }
 
     if (!posts) return <LoadingSpinner waitingOn={'Posts'} />;
 
@@ -75,11 +75,11 @@ function PostList() {
                                 title={post.title}
                                 body={post.body}
                                 link={post.link}
-                                tag={post.link}
+                                tag={post.tag}
                                 location={post.location}
                                 userId={post.userId}
                                 createdAt={post.createdAt}
-                                handleDelete={post} />)}
+                                handleDelete={removePost} />)}
                     </Row>
                 </Container>
             ) : (

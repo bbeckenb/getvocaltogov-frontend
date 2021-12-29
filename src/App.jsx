@@ -47,6 +47,7 @@ const App = function () {
     try {
       let user = await GetVocalToGovApi.loginUser(credentials);
       if (user) {
+        console.log(user.token);
         setToken(user.token);
         GetVocalToGovApi.token = user.token;
         return { success: true };

@@ -10,7 +10,7 @@ import {
 } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const TemplateSearchForm = function ({ searchTemplates }) {
+const TemplateSearchForm = function ({ searchPosts }) {
   const [formMessage, setFormMessage] = useState({type: 'primary', message: 'welcome!'});
   const {
     register,
@@ -20,10 +20,10 @@ const TemplateSearchForm = function ({ searchTemplates }) {
   } = useForm({resolver: yupResolver(templateSearchSchema)});
 
   async function onSubmit(formData) {
-    let res = await searchTemplates(formData);
+    let res = await searchPosts(formData);
     if (res.success) {
         reset()
-        setFormMessage({type: 'success', message: `success! Templates filtered with following criteria: ${UtilClass.objKeysValsToString(formData)}`});
+        setFormMessage({type: 'success', message: `success! Posts filtered with following criteria: ${UtilClass.objKeysValsToString(formData)}`});
     } else {
         console.log(res)
         setFormMessage({type: 'danger', message: `${res.error}`});
@@ -43,7 +43,7 @@ const TemplateSearchForm = function ({ searchTemplates }) {
             <Card.Title className="font-weight-bold text-center" role="heading">
               Search Templates!
             </Card.Title>
-            <div className="template-search-form">
+            <div className="post-search-form">
               <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-group">
                   <label>Title</label>
@@ -64,16 +64,43 @@ const TemplateSearchForm = function ({ searchTemplates }) {
                     aria-label="body"
                     name="body"
                     placeholder="body"
-                    type="body"
+                    type="text"
                     {...register('body')}
                     className={`form-control ${errors.body ? 'is-invalid' : ''}`}
                   />
                   <div className="invalid-feedback" role="alert">{errors.body?.message}</div>
                 </div>
+
+                <div className="form-group">
+                  <label>Location</label>
+                  <input
+                    aria-label="location"
+                    name="location"
+                    placeholder="location"
+                    type="text"
+                    {...register('location')}
+                    className={`form-control ${errors.location ? 'is-invalid' : ''}`}
+                  />
+                  <div className="invalid-feedback" role="alert">{errors.location?.message}</div>
+                </div>
+
+                <div className="form-group">
+                  <label>Tag</label>
+                  <input
+                    aria-label="tag"
+                    name="tag"
+                    placeholder="tag"
+                    type="text"
+                    {...register('tag')}
+                    className={`form-control ${errors.tag ? 'is-invalid' : ''}`}
+                  />
+                  <div className="invalid-feedback" role="alert">{errors.tag?.message}</div>
+                </div>
+
                 <Alert type={formMessage.type} message={formMessage.message} />
                 <div className="form-group">
                   <button type="submit" className="btn btn-primary">
-                    Search Templates
+                    Search Posts
                   </button>
                   <button
                     type="button"

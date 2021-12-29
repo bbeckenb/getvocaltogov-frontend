@@ -8,6 +8,20 @@ class UtilClass {
     
         return JSON.parse(jsonPayload);
     };
+
+    static objKeysValsToString(obj) {
+        let outputStr = '';
+        const keys = Object.keys(obj);
+        for (let key of keys) {
+            if (key !== keys[keys.length-1]) {
+                outputStr += `${key} - '${obj[key]}' | `;
+            } else {
+                outputStr += `${key} - '${obj[key]}'`;
+            }
+            
+        }
+        return outputStr;
+    }
 }
 
 export default UtilClass;
