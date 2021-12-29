@@ -73,7 +73,7 @@ const TemplateEditForm = function () {
             <Card.Title className="font-weight-bold text-center" role="heading">
               Edit Template!
             </Card.Title>
-            <div className="template-add-form">
+            <div className="template-edit-form">
               <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-group">
                   <label>Title</label>
