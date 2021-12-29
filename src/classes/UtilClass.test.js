@@ -15,4 +15,10 @@ describe('objKeysValsToString', () => {
         const outputString = UtilClass.objKeysValsToString(testObj);
         expect(outputString).toEqual("title - 'test title' | body - 'test body'");
     });
+
+    test('excludes non entered data', () => {
+        const testObj = {title: 'test title', body: ''};
+        const outputString = UtilClass.objKeysValsToString(testObj);
+        expect(outputString).toEqual("title - 'test title'");
+    });
 });
