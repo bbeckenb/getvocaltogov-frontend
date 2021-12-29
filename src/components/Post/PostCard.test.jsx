@@ -41,7 +41,7 @@ it('shows user options if owned by the user', () => {
 
   render(
     <UserContext.Provider value={{currUser}}>
-      <TemplateCard userId='test' />
+      <PostCard userId='test' />
     </UserContext.Provider>);
 
   expect(
@@ -69,7 +69,7 @@ it('shows no user options if not owned by the user', () => {
 
   render(
     <UserContext.Provider value={{currUser}}>
-      <TemplateCard userId='stranger' />
+      <PostCard userId='stranger' />
     </UserContext.Provider>);
   const buttonGroup = screen.queryByText('buttonGroup')
   expect(buttonGroup).not.toBeInTheDocument()
