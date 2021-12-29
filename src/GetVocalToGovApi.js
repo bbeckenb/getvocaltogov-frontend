@@ -38,10 +38,30 @@ class GetVocalToGovApi {
     return res;
   }
 
-  // static async getPosts() {
-  //   const res = await this.request(`posts`);
-  //   return res;
-  // }
+  static async createPost(postData) {
+    const res = await this.request('posts', postData, 'post');
+    return res.post;
+  }
+
+  static async getPost(postId) {
+    const res = await this.request(`posts/${postId}`);
+    return res.post;
+  }
+
+  static async getPosts(filters = {}) {
+    const res = await this.request('posts', filters);
+    return res.posts;
+  }
+
+  static async updatePost(postId, postData) {
+    const res = await this.request(`posts/${postId}`, postData, 'patch');
+    return res.post;
+  }
+
+  static async deletePost(postId) {
+    const res = await this.request(`posts/${postId}`, {}, 'delete');
+    return res.deleted;
+  }
 
   static async createTemplate(templateData) {
     const res = await this.request('templates', templateData, 'post');

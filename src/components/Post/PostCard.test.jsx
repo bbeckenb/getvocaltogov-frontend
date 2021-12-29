@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import UserContext from '../../context/UserContext';
-import TemplateCard from './TemplateCard';
+import PostCard from './PostCard';
 
 it('renders without crashing', () => {
   const currUser = { user: {
@@ -20,7 +20,7 @@ it('renders without crashing', () => {
 
   render(
     <UserContext.Provider value={{currUser}}>
-      <TemplateCard />
+      <PostCard />
     </UserContext.Provider>);
 });
 

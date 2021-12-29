@@ -1,6 +1,7 @@
 import React from 'react';
 import UserLoginForm from '../User/UserLoginForm';
 import UserSignUpForm from '../User/UserSignUpForm';
+import PostList from '../Post/PostList';
 import TemplateList from '../Template/TemplateList';
 import TemplateEditForm from '../Template/TemplateEditForm';
 import {
@@ -16,7 +17,7 @@ const AppRoutes = function ({ signup, login, logout }) {
         <Route exact path="/"><h1>Home</h1></Route>
         <Route exact path="/templates"><TemplateList /></Route>
         <Route exact path="/templates/:templateId/edit"><TemplateEditForm /></Route>
-        <Route exact path="/posts"><h1>Posts</h1></Route>
+        <Route exact path="/posts"><PostList /></Route>
         <Route exact path="/login"><UserLoginForm login={login} /></Route>
         <Route exact path="/signup"><UserSignUpForm signup={signup} /></Route>
         <Route exact path="/profile"><h1>profile</h1></Route>
