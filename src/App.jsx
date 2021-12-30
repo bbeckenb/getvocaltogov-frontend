@@ -73,14 +73,22 @@ const App = function () {
     return favoriteIds.has(id);
   }
 
-  function favoriteTemplate(id) {
+  async function addFavorite(id) {
     if (hasFavorited(id)) return;
-    
+    const templateId = await GetVocalToGovApi.favoriteTemplate(currUser.username, id);
+    setFavoriteIds(new Set([...favoriteIds, templateId]))
+  }
+
+  async function removeFavorite(id) {
+    if (!hasFavorited(id)) return;
+    const templateId = await GetVocalToGovApi.unfavoriteTemplate(currUser.username, id);
+    const updatedFavs = favoriteIds.filter((fId) => fId !== templateId);
+    setFavoriteIds(new Set(updatedFavs));
   }
 
   return (
     <div className="App">
-      <UserContext.Provider value={{ currUser, setCurrUser }}>
+      <UserContext.Provider value={{ currUser, setCurrUser, hasFavorited, addFavorite, removeFavorite }}>
         <AppRoutes login={login} signup={signup} logout={logout} />
       </UserContext.Provider>
     </div>
