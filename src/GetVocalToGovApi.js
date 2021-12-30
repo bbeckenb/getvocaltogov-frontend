@@ -35,7 +35,7 @@ class GetVocalToGovApi {
 
   static async getUser(username) {
     const res = await this.request(`users/${username}`);
-    return res;
+    return res.user;
   }
 
   static async createPost(postData) {

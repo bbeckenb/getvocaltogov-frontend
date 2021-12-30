@@ -10,6 +10,9 @@ const App = function () {
   const [token, setToken] = useLocalStorage('stored-token');
   // const [storedUser, setStoredUser] = useLocalStorage('stored-user');
   const [currUser, setCurrUser] = useState(null);
+  const [favoriteIds, setFavoriteIds] = useState(new Set([]));
+  const [bookmarkIds, setBookmarkIds] = useState(new Set([]));
+
 
   useEffect(function getCurrUser() {
     async function getCurrUserAPICall() {
@@ -20,6 +23,8 @@ const App = function () {
           GetVocalToGovApi.token = token;
           const user = await GetVocalToGovApi.getUser(username);
           setCurrUser(user);
+          setFavoriteIds(new Set(user.favorites));
+          setBookmarkIds(new Set(user.bookmarks));
         } catch (err) {
           console.error('Encountered Issue loading user:', err);
           setCurrUser(null);

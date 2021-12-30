@@ -12,7 +12,7 @@ const NavBar = function ({ logout }) {
       <Container>
         <Navbar.Brand href="/">GVTG</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        {currUser ? <NavBarLoggedIn logout={logout} username={currUser.user.username}/> : <NavBarLoggedOut />}
+        {currUser ? <NavBarLoggedIn logout={logout} username={currUser.username}/> : <NavBarLoggedOut />}
       </Container>
     </Navbar>
   );
