@@ -25,7 +25,7 @@ function PostCard({ id, title, body, link, userId, tag, createdAt, location, han
                 </ListGroup>
                 <Card.Body>
                 <ButtonGroup className="mb-2">
-                    {currUser !== null && currUser.user.username === userId ? (
+                    {currUser !== null && currUser.username === userId ? (
                         <>
                             <Button onClick={() => handleDelete(id)}>Delete</Button>
                             <Button onClick={() => history.push(`/posts/${id}/edit`)}>Edit</Button>

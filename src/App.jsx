@@ -82,8 +82,8 @@ const App = function () {
   async function removeFavorite(id) {
     if (!hasFavorited(id)) return;
     const templateId = await GetVocalToGovApi.unfavoriteTemplate(currUser.username, id);
-    const updatedFavs = favoriteIds.filter((fId) => fId !== templateId);
-    setFavoriteIds(new Set(updatedFavs));
+    favoriteIds.delete(templateId);
+    setFavoriteIds(new Set(favoriteIds));
   }
 
   return (
