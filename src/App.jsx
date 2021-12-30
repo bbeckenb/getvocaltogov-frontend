@@ -69,6 +69,15 @@ const App = function () {
     console.log(currUser)
   }
 
+  function hasFavorited(id) {
+    return favoriteIds.has(id);
+  }
+
+  function favoriteTemplate(id) {
+    if (hasFavorited(id)) return;
+    
+  }
+
   return (
     <div className="App">
       <UserContext.Provider value={{ currUser, setCurrUser }}>

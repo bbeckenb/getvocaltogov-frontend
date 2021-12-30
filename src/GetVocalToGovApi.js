@@ -88,6 +88,26 @@ class GetVocalToGovApi {
     return res.deleted;
   }
 
+  static async favoriteTemplate(username, templateId) {
+    const res = await this.request(`users/${username}/templates/${templateId}`, {}, 'post');
+    return res.favorited;
+  }
+
+  static async unfavoriteTemplate(username, templateId) {
+    const res = await this.request(`users/${username}/templates/${templateId}`, {}, 'delete');
+    return res.unfavorited;
+  }
+
+  static async bookmarkPost(username, postId) {
+    const res = await this.request(`users/${username}/posts/${postId}`, {}, 'post');
+    return res.bookmarked;
+  }
+
+  static async unbookmarkPost(username, postId) {
+    const res = await this.request(`users/${username}/posts/${postId}`, {}, 'delete');
+    return res.unbookmarked;
+  }
+
 }
 
 export default GetVocalToGovApi;
