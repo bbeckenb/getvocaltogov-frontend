@@ -100,12 +100,20 @@ const App = function () {
     if (!hasBookmarked(id)) return;
     const postId = await GetVocalToGovApi.unbookmarkPost(currUser.username, id);
     bookmarkIds.delete(postId);
-    setBookmarkIds(new Set(postId));
+    setBookmarkIds(new Set(bookmarkIds));
   }
 
   return (
     <div className="App">
-      <UserContext.Provider value={{ currUser, setCurrUser, hasFavorited, addFavorite, removeFavorite }}>
+      <UserContext.Provider value={{ 
+        currUser, 
+        setCurrUser, 
+        hasFavorited, 
+        addFavorite, 
+        removeFavorite, 
+        hasBookmarked, 
+        addBookmark, 
+        removeBookmark }}>
         <AppRoutes login={login} signup={signup} logout={logout} />
       </UserContext.Provider>
     </div>

@@ -1,12 +1,27 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import UserContext from '../../context/UserContext';
 import { Card, ButtonGroup, Button, ListGroup, ListGroupItem } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function PostCard({ id, title, body, link, userId, tag, createdAt, location, handleDelete }) {
-    const {currUser} = useContext(UserContext);
+    const [bookmark, setBookmarkStatus] = useState();
+    const { currUser, hasBookmarked, addBookmark, removeBookmark } = useContext(UserContext);
     const history = useHistory();
+
+    useEffect(function updateFavoriteStatus() {
+        setBookmarkStatus(hasBookmarked(id));
+    }, [id, hasBookmarked]);
+
+    async function toggleBookmark(id) {
+        if(bookmark) {
+            removeBookmark(id);
+        } else {
+            addBookmark(id) 
+        }
+        setBookmarkStatus(!bookmark);
+    }
+
     return (
         <>
             <Card>
@@ -16,6 +31,9 @@ function PostCard({ id, title, body, link, userId, tag, createdAt, location, han
                         {body}
                     </Card.Text>
                 </Card.Body>
+                <button onClick={() => toggleBookmark(id)}>
+                        {bookmark ? <i className="fas fa-bookmark"></i> : <i className="far fa-bookmark"></i>}
+                    </button>
                 <ListGroup className="list-group-flush">
                     {link ? <ListGroupItem><a href={link}>See Article</a></ListGroupItem> : null}
                     <ListGroupItem><b>Tag: </b>{tag}</ListGroupItem>
