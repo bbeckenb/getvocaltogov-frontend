@@ -86,6 +86,23 @@ const App = function () {
     setFavoriteIds(new Set(favoriteIds));
   }
 
+  function hasBookmarked(id) {
+    return bookmarkIds.has(id);
+  }
+
+  async function addBookmark(id) {
+    if (hasBookmarked(id)) return;
+    const postId = await GetVocalToGovApi.bookmarkPost(currUser.username, id);
+    setBookmarkIds(new Set([...bookmarkIds, postId]))
+  }
+
+  async function removeBookmark(id) {
+    if (!hasBookmarked(id)) return;
+    const postId = await GetVocalToGovApi.unbookmarkPost(currUser.username, id);
+    bookmarkIds.delete(postId);
+    setBookmarkIds(new Set(postId));
+  }
+
   return (
     <div className="App">
       <UserContext.Provider value={{ currUser, setCurrUser, hasFavorited, addFavorite, removeFavorite }}>
