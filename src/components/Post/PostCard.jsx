@@ -10,7 +10,6 @@ function PostCard({ id, title, body, link, userId, tag, createdAt, location, han
     return (
         <>
             <Card>
-                {link ? <Card.Img variant="top" src={link} /> : null}
                 <Card.Body>
                     <Card.Title>{title}</Card.Title>
                     <Card.Text>
@@ -25,12 +24,15 @@ function PostCard({ id, title, body, link, userId, tag, createdAt, location, han
                     <ListGroupItem><b>Author: </b>{userId}</ListGroupItem>
                 </ListGroup>
                 <Card.Body>
-                {currUser !== null && currUser.user.username === userId ? (
-                        <ButtonGroup className="mb-2">
+                <ButtonGroup className="mb-2">
+                    {currUser !== null && currUser.user.username === userId ? (
+                        <>
                             <Button onClick={() => handleDelete(id)}>Delete</Button>
                             <Button onClick={() => history.push(`/posts/${id}/edit`)}>Edit</Button>
-                        </ButtonGroup>
-                    ) : null}
+                        </>) : null}
+                        <Button onClick={() => history.push(`/posts/${id}/details`)}>Details</Button>
+                </ButtonGroup>
+              
                 </Card.Body>
             </Card>
         </>
