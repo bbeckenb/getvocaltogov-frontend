@@ -31,9 +31,10 @@ function PostCard({ id, title, body, link, userId, tag, createdAt, location, han
                         {body}
                     </Card.Text>
                 </Card.Body>
-                <button onClick={() => toggleBookmark(id)}>
+                {currUser !== null ? (
+                    <button onClick={() => toggleBookmark(id)}>
                         {bookmark ? <i className="fas fa-bookmark"></i> : <i className="far fa-bookmark"></i>}
-                    </button>
+                    </button>) : null}
                 <ListGroup className="list-group-flush">
                     {link ? <ListGroupItem><a href={link}>See Article</a></ListGroupItem> : null}
                     <ListGroupItem><b>Tag: </b>{tag}</ListGroupItem>

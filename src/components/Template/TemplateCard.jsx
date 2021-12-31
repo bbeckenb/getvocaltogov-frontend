@@ -28,9 +28,10 @@ function TemplateCard({ id, title, body, userId, createdAt, handleDelete }) {
             <Card>
                 <Card.Header>{title}</Card.Header>
                 <Card.Body>
+                    {currUser !== null ? (
                     <button onClick={() => toggleFavorite(id)}>
                         {favorite ? <i className="fas fa-star"></i> : <i className="far fa-star"></i>}
-                    </button>
+                    </button>) : null}
                     <blockquote className="blockquote mb-0">
                     <p>
                         {body}
