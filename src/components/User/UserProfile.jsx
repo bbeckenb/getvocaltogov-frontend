@@ -1,10 +1,26 @@
 import React, { useState, useContext } from "react";
+import { Tab, Tabs } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function UserProfile() {
     return (
-        <div>
-            <h1>HI</h1>
-        </div>
+        <Tabs defaultActiveKey="userOptions" id="uncontrolled-tab-example" className="mb-3">
+            <Tab eventKey="userOptions" title="User Options">
+                <h1>hi 1</h1>
+            </Tab>
+            <Tab eventKey="templatesCreated" title="Templates Created">
+                <h1>hi 2</h1>
+            </Tab>
+            <Tab eventKey="templatesFavorited" title="Templates Favorited">
+                <h1>hi 3</h1>
+            </Tab>
+            <Tab eventKey="postsCreated" title="Posts Created">
+                <h1>hi 4</h1>
+            </Tab>
+            <Tab eventKey="postsBookmarked" title="Posts Bookmarked">
+                <h1>hi 5</h1>
+            </Tab>
+        </Tabs>
     )
 }
 
