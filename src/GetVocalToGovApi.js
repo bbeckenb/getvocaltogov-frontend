@@ -38,6 +38,11 @@ class GetVocalToGovApi {
     return res.user;
   }
 
+  static async updateUser(username, userData) {
+    const res = await this.request(`users/${username}`, userData, 'patch');
+    return res.user;
+  }
+
   static async createPost(postData) {
     const res = await this.request('posts', postData, 'post');
     return res.post;

@@ -18,7 +18,6 @@ const App = function () {
     async function getCurrUserAPICall() {
       if(token) {
         try {
-          // const { username } = jwt.decode(token);
           const { username } = UtilClass.parseJwt(token);
           GetVocalToGovApi.token = token;
           const user = await GetVocalToGovApi.getUser(username);
@@ -52,7 +51,6 @@ const App = function () {
     try {
       let user = await GetVocalToGovApi.loginUser(credentials);
       if (user) {
-        console.log(user.token);
         setToken(user.token);
         GetVocalToGovApi.token = user.token;
         return { success: true };
@@ -62,6 +60,22 @@ const App = function () {
       return { success: false, error }
     }
   }
+
+  async function editUser(userData) {
+    try {
+        const editedUser = await GetVocalToGovApi.updateUser(currUser.username, userData);
+        if (editedUser) {
+            await login({
+              username: editedUser.username, 
+              password: userData.password
+            });
+            return { success: true };
+        }
+    } catch (error) {
+            console.error('Encountered issue editing User:', error);
+            return { success: false, error }
+    }
+}
 
   function logout() {
     setCurrUser(null);
@@ -108,6 +122,7 @@ const App = function () {
       <UserContext.Provider value={{ 
         currUser, 
         setCurrUser, 
+        editUser,
         hasFavorited, 
         addFavorite, 
         removeFavorite, 

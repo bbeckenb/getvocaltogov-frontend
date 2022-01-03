@@ -1,12 +1,14 @@
 import React, { useState, useContext } from "react";
+import UserEditForm from "./UserEditForm";
 import { Tab, Tabs } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function UserProfile() {
+
     return (
         <Tabs defaultActiveKey="userOptions" id="uncontrolled-tab-example" className="mb-3">
             <Tab eventKey="userOptions" title="User Options">
-                <h1>hi 1</h1>
+                <UserEditForm />
             </Tab>
             <Tab eventKey="templatesCreated" title="Templates Created">
                 <h1>hi 2</h1>
