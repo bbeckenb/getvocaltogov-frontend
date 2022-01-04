@@ -57,3 +57,52 @@ it("should display the proper fields", async () => {
     ).toBeInTheDocument();
 });
 
+it("should submit correct form data", async () => {
+    const editUser = jest.fn();
+    editUser.mockReturnValueOnce({ success: false })
+    render(<UserContext.Provider value={{currUser, editUser}}>
+                <UserEditForm />      
+            </UserContext.Provider>);
+    fireEvent.input(screen.getByRole("textbox", { name: /Username/i }), {
+      target: { value: 'testUser' }
+    });
+    fireEvent.input(screen.getByRole("textbox", { name: /State/i }), {
+      target: { value: 'MI' }
+    });
+    fireEvent.input(screen.getByRole("textbox", { name: /FirstName/i }), {
+      target: { value: 'Fred' }
+    });
+    fireEvent.input(screen.getByRole("textbox", { name: /LastName/i }), {
+      target: { value: 'Flintstone' }
+    });
+    fireEvent.input(screen.getByRole("textbox", { name: /City/i }), {
+      target: { value: 'Flint' }
+    });
+    fireEvent.input(screen.getByRole("textbox", { name: /Zip/i }), {
+      target: { value: '44444' }
+    });
+    fireEvent.input(screen.getByRole("textbox", { name: /Street/i }), {
+      target: { value: 'banana street' }
+    });
+    fireEvent.input(screen.getByRole("textbox", { name: /Email/i }), {
+      target: { value: 'banana@street.com' }
+    });
+    const passwordInput = screen.getByLabelText(/password/i);
+    fireEvent.change(passwordInput, {target: {value:'123456'}});
+  
+    fireEvent.submit(screen.getByRole("button", { name: /Edit User/i }));
+  
+    await waitFor(() =>
+      expect(editUser).toHaveBeenCalledWith({
+        username: 'testUser',
+        password: '123456',
+        street: 'banana street',
+        state: 'MI',
+        city: 'Flint',
+        zip: '44444',
+        email: 'banana@street.com',
+        firstName: 'Fred',
+        lastName: 'Flintstone'
+      })
+    );
+  });
