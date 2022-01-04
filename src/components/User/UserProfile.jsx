@@ -2,6 +2,7 @@ import React from "react";
 import UserEditForm from "./UserEditForm";
 import UserDeletePortal from "./UserDeletePortal";
 import TemplateList from "../Template/TemplateList";
+import PostList from '../Post/PostList';
 import { Tab, Tabs, Accordion } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -33,10 +34,10 @@ function UserProfile() {
                 <TemplateList type='favorited' />
             </Tab>
             <Tab eventKey="postsCreated" title="Posts Created">
-                <h1>hi 4</h1>
+                <PostList type='created' />
             </Tab>
             <Tab eventKey="postsBookmarked" title="Posts Bookmarked">
-                <h1>hi 5</h1>
+                <PostList type='bookmarked' />
             </Tab>
         </Tabs>
     )
