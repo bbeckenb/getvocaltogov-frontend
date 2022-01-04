@@ -75,7 +75,20 @@ const App = function () {
             console.error('Encountered issue editing User:', error);
             return { success: false, error }
     }
-}
+  }
+
+  async function deleteProfile(username) {
+    try {
+      const deletedUser = await GetVocalToGovApi.deleteUser(username);
+      if (deletedUser) {
+          logout();
+          return { success: true };
+      }
+    } catch (error) {
+          console.error('Encountered issue deleting User Profile:', error);
+          return { success: false, error }
+    }
+  }
 
   function logout() {
     setCurrUser(null);
@@ -123,6 +136,7 @@ const App = function () {
         currUser, 
         setCurrUser, 
         editUser,
+        deleteProfile,
         hasFavorited, 
         addFavorite, 
         removeFavorite, 

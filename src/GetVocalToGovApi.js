@@ -43,6 +43,11 @@ class GetVocalToGovApi {
     return res.user;
   }
 
+  static async deleteUser(username) {
+    const res = await this.request(`users/${username}`, {}, 'delete');
+    return res.deleted;
+  }
+
   static async createPost(postData) {
     const res = await this.request('posts', postData, 'post');
     return res.post;

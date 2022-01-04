@@ -16,9 +16,9 @@ function TemplateCard({ id, title, body, userId, createdAt, handleDelete }) {
 
     async function toggleFavorite(id) {
         if(favorite) {
-            removeFavorite(id);
+            await removeFavorite(id);
         } else {
-            addFavorite(id) 
+            await addFavorite(id) 
         }
         setFavoriteStatus(!favorite);
     }

@@ -11,17 +11,24 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const UserEditForm = function () {
     const { editUser, currUser } = useContext(UserContext);
-    // const INIT_STATE = {username: currUser['username'], firstName: currUser['firstName'], email: currUser['email'], street: currUser['street'], city: currUser['city'], state: currUser['state'], zip: currUser['zip'], password: ''};
-   console.log(currUser)
+    console.log(currUser)
     const [formMessage, setFormMessage] = useState({type: 'primary', message: 'welcome!'});
     const [userFormData, setUserFormData] = useState();
 
     useEffect(function loadFormData() {
         if (currUser !== null) {
-        const { username, firstName, lastName, street, city, state, zip, email } = currUser;
-        const INIT_STATE = { username, firstName, lastName, street, city, state, zip, email, password: '' }
-        setUserFormData(INIT_STATE);
-        reset(INIT_STATE);
+            const INIT_STATE = { 
+                username: currUser.username, 
+                firstName: currUser.firstName, 
+                lastName: currUser.lastName, 
+                street: currUser.street, 
+                city: currUser.city, 
+                state: currUser.state, 
+                zip: currUser.zip, 
+                email: currUser.email, 
+                password: '' }
+            setUserFormData(INIT_STATE);
+            reset(INIT_STATE);
         }
     }, [currUser]);
   
