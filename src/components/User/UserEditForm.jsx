@@ -11,7 +11,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const UserEditForm = function () {
     const { editUser, currUser } = useContext(UserContext);
-    console.log(currUser)
     const [formMessage, setFormMessage] = useState({type: 'primary', message: 'welcome!'});
     const [userFormData, setUserFormData] = useState();
 
