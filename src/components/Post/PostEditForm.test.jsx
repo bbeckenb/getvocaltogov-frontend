@@ -40,7 +40,7 @@ it("should request and show the data from the API", async () => {
   expect(spy).toHaveBeenCalledWith("1");
 });
 
-describe("UserSignUpForm", () => {
+describe("PostEditForm", () => {
   it("should render the basic fields", () => {
     jest.spyOn(GetVocalToGovApi, 'getPost', ).mockImplementationOnce(
       () =>

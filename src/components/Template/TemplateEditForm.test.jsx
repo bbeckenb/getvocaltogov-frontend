@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import {jest} from '@jest/globals'
 import { MemoryRouter, Route } from 'react-router-dom';
 import GetVocalToGovApi from '../../GetVocalToGovApi';
@@ -37,7 +37,7 @@ it("should request and show the data from the API", async () => {
   expect(spy).toHaveBeenCalledWith("1");
 });
 
-describe("UserSignUpForm", () => {
+describe("TemplateEditForm", () => {
   it("should render the basic fields", () => {
     jest.spyOn(GetVocalToGovApi, 'getTemplate', ).mockImplementationOnce(
       () =>

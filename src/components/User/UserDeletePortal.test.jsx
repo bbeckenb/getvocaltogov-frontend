@@ -23,7 +23,7 @@ it('renders without crashing', () => {
             <UserDeletePortal />      
         </UserContext.Provider>);
 
-expect(
+  expect(
     screen.getByRole("button", { name: "Delete" })
   ).toBeInTheDocument();
   expect(
