@@ -1,20 +1,46 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import PostCard from './PostCard';
 import LoadingSpinner from '../Common/LoadingSpinner';
 import GetVocalToGovApi from '../../GetVocalToGovApi';
 import { Row, Container, Accordion } from 'react-bootstrap';
 import PostCreateForm from './PostCreateForm';
 import PostSearchForm from './PostSearchForm';
-// import UserContext from '../../context/UserContext';
+import UserContext from '../../context/UserContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function PostList() {
+function PostList({ type = 'full' }) {
+    const { currUser, hasBookmarked } = useContext(UserContext);
     const [posts, setPosts] = useState(null);
 
     useEffect(function getPostsOnMount() {
         console.debug('postList useEffect getPostsOnMount')
-        searchPosts();
-    }, []);
+        if (type === 'full') {
+            searchPosts();
+        } else if (currUser !== null) {
+            searchPosts();
+        }
+    }, [currUser, hasBookmarked]);
+
+    async function searchPosts(formData) {
+        try {
+            const reqPosts = await GetVocalToGovApi.getPosts(formData);
+            if (reqPosts) {
+                if (type === 'full') {
+                    setPosts(reqPosts);
+                } else if (type === 'bookmarked') {
+                    const bmPosts = reqPosts.filter((p) => hasBookmarked(p.id));
+                    setPosts(bmPosts);
+                } else {
+                    const userPosts = reqPosts.filter((p) => p.userId === currUser.username);
+                    setPosts(userPosts); 
+                }
+                return { success: true };
+            }
+          } catch (error) {
+                console.error('Encountered issue searching Posts:', error);
+                return { success: false, error }
+          }
+    }
 
     async function addPost(formData) {
         try {
@@ -25,19 +51,6 @@ function PostList() {
             }
           } catch (error) {
                 console.error('Encountered issue creating new Post:', error);
-                return { success: false, error }
-          }
-    }
-
-    async function searchPosts(formData) {
-        try {
-            const reqPosts = await GetVocalToGovApi.getPosts(formData);
-            if (reqPosts) {
-                setPosts(reqPosts);
-                return { success: true };
-            }
-          } catch (error) {
-                console.error('Encountered issue searching Posts:', error);
                 return { success: false, error }
           }
     }
@@ -53,17 +66,18 @@ function PostList() {
         <>  
             <Accordion>
                 <Accordion.Item eventKey="0">
-                    <Accordion.Header>Create New Post</Accordion.Header>
-                    <Accordion.Body>
-                        <PostCreateForm addPost={addPost} />
-                    </Accordion.Body>
-                </Accordion.Item>
-                <Accordion.Item eventKey="1">
                     <Accordion.Header>Search for Post</Accordion.Header>
                     <Accordion.Body>
-                    <PostSearchForm searchPosts={searchPosts} />
+                        <PostSearchForm searchPosts={searchPosts} />
                     </Accordion.Body>
                 </Accordion.Item>
+                {type === 'bookmarked' ? null : 
+                    <Accordion.Item eventKey="1">
+                        <Accordion.Header>Create New Post</Accordion.Header>
+                        <Accordion.Body>
+                            <PostCreateForm addPost={addPost} />
+                        </Accordion.Body>
+                    </Accordion.Item>}
             </Accordion>
             <h1>Posts</h1>
             {posts.length !== 0 ? (
