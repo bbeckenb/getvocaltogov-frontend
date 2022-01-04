@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function UserDeletePortal() {
     const { currUser, deleteProfile } = useContext(UserContext);
-    const [formMessage, setFormMessage] = useState({type: 'primary', message: ''});
+    const [formMessage, setFormMessage] = useState({type: 'primary', message: 'Please no : ('});
     const [stage, setStage] = useState(0);
     const [username, setUsername] = useState();
     const history = useHistory();
@@ -22,7 +22,7 @@ function UserDeletePortal() {
     useEffect(function handleUserInteraction() {
         async function executeStageActions() {
             if (stage === 0) {
-                setFormMessage({type: 'primary', message: ''});
+                setFormMessage({type: 'primary', message: 'Please no : ('});
             } else if (stage === 1) {
                 setFormMessage({type: 'warning', message: 'This is a permanent action, are you sure?'});
             } else {

@@ -1,7 +1,7 @@
-import React, { useState, useContext } from "react";
+import React from "react";
 import UserEditForm from "./UserEditForm";
 import UserDeletePortal from "./UserDeletePortal";
-import { Tab, Tabs } from 'react-bootstrap';
+import { Tab, Tabs, Accordion } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function UserProfile() {
@@ -9,8 +9,21 @@ function UserProfile() {
     return (
         <Tabs defaultActiveKey="userOptions" id="uncontrolled-tab-example" className="mb-3">
             <Tab eventKey="userOptions" title="User Options">
-                <UserEditForm />
-                <UserDeletePortal />
+                <Accordion>
+                    <Accordion.Item eventKey="0">
+                        <Accordion.Header>Edit Profile</Accordion.Header>
+                        <Accordion.Body>
+                            <UserEditForm />
+                        </Accordion.Body>
+                    </Accordion.Item>
+                    <Accordion.Item eventKey="1">
+                        <Accordion.Header>Delete Profile</Accordion.Header>
+                        <Accordion.Body>
+                            <UserDeletePortal />
+                        </Accordion.Body>
+                    </Accordion.Item>
+                </Accordion>
+                
             </Tab>
             <Tab eventKey="templatesCreated" title="Templates Created">
                 <h1>hi 2</h1>
