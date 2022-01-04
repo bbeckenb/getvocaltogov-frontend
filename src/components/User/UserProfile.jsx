@@ -1,6 +1,7 @@
 import React from "react";
 import UserEditForm from "./UserEditForm";
 import UserDeletePortal from "./UserDeletePortal";
+import TemplateList from "../Template/TemplateList";
 import { Tab, Tabs, Accordion } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -26,10 +27,10 @@ function UserProfile() {
                 
             </Tab>
             <Tab eventKey="templatesCreated" title="Templates Created">
-                <h1>hi 2</h1>
+                <TemplateList type='created' />
             </Tab>
             <Tab eventKey="templatesFavorited" title="Templates Favorited">
-                <h1>hi 3</h1>
+                <TemplateList type='favorited' />
             </Tab>
             <Tab eventKey="postsCreated" title="Posts Created">
                 <h1>hi 4</h1>

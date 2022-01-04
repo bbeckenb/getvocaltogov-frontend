@@ -1,20 +1,48 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import TemplateCard from './TemplateCard';
 import TemplateCreateForm from './TemplateCreateForm';
 import TemplateSearchForm from './TemplateSearchForm';
 import LoadingSpinner from '../Common/LoadingSpinner';
 import GetVocalToGovApi from '../../GetVocalToGovApi';
 import { Row, Container, Accordion } from 'react-bootstrap';
-// import UserContext from '../../context/UserContext';
+import UserContext from '../../context/UserContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function TemplateList() {
+function TemplateList({ type = 'full' }) {
+    const { currUser, hasFavorited } = useContext(UserContext);
     const [templates, setTemplates] = useState(null);
 
     useEffect(function getTemplatesOnMount() {
         console.debug('templateList useEffect getTemplatesOnMount')
-        searchTemplates();
-    }, []);
+        if (type === 'full') {
+            searchTemplates();
+        } else if (currUser !== null) {
+            searchTemplates();
+            console.log('here')
+        }
+    }, [currUser, hasFavorited]);
+
+    async function searchTemplates(formData) {
+        try {
+            const reqTemplates = await GetVocalToGovApi.getTemplates(formData);
+            if (reqTemplates) {
+                console.log(reqTemplates)
+                if (type === 'full') {
+                    setTemplates(reqTemplates); 
+                } else if (type === 'favorited') {
+                    const favTemplates = reqTemplates.filter((t) => hasFavorited(t.id));
+                    setTemplates(favTemplates); 
+                } else {
+                    const userTemplates = reqTemplates.filter((t) => t.userId === currUser.username);
+                    setTemplates(userTemplates); 
+                }
+                return { success: true };
+            }
+          } catch (error) {
+                console.error('Encountered issue searching Templates:', error);
+                return { success: false, error }
+          }
+    }
 
     async function addTemplate(formData) {
         try {
@@ -25,19 +53,6 @@ function TemplateList() {
             }
           } catch (error) {
                 console.error('Encountered issue creating new Template:', error);
-                return { success: false, error }
-          }
-    }
-
-    async function searchTemplates(formData) {
-        try {
-            const reqTemplates = await GetVocalToGovApi.getTemplates(formData);
-            if (reqTemplates) {
-                setTemplates(reqTemplates);
-                return { success: true };
-            }
-          } catch (error) {
-                console.error('Encountered issue searching Templates:', error);
                 return { success: false, error }
           }
     }
@@ -53,17 +68,18 @@ function TemplateList() {
         <>  
             <Accordion>
                 <Accordion.Item eventKey="0">
-                    <Accordion.Header>Create New Template</Accordion.Header>
-                    <Accordion.Body>
-                        <TemplateCreateForm addTemplate={addTemplate}/>
-                    </Accordion.Body>
-                </Accordion.Item>
-                <Accordion.Item eventKey="1">
                     <Accordion.Header>Search for Templates</Accordion.Header>
                     <Accordion.Body>
                         <TemplateSearchForm searchTemplates={searchTemplates} />
                     </Accordion.Body>
                 </Accordion.Item>
+                {type === 'favorited' ? null : 
+                    <Accordion.Item eventKey="1">
+                        <Accordion.Header>Create New Template</Accordion.Header>
+                        <Accordion.Body>
+                            <TemplateCreateForm addTemplate={addTemplate}/>
+                        </Accordion.Body>
+                    </Accordion.Item>}
             </Accordion>
             <h1>Templates</h1>
             {templates.length !== 0 ? (
