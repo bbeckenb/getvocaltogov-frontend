@@ -18,7 +18,6 @@ function TemplateList({ type = 'full' }) {
             searchTemplates();
         } else if (currUser !== null) {
             searchTemplates();
-            console.log('here')
         }
     }, [currUser, hasFavorited]);
 
@@ -26,7 +25,6 @@ function TemplateList({ type = 'full' }) {
         try {
             const reqTemplates = await GetVocalToGovApi.getTemplates(formData);
             if (reqTemplates) {
-                console.log(reqTemplates)
                 if (type === 'full') {
                     setTemplates(reqTemplates); 
                 } else if (type === 'favorited') {
