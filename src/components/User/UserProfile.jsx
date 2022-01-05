@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import UserEditForm from "./UserEditForm";
 import UserDeletePortal from "./UserDeletePortal";
 import TemplateListShared from "../Template/TemplateListShared";
-import PostList from '../Post/PostList';
+import PostListShared from '../Post/PostListShared';
 import { Tab, Tabs, Accordion } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function UserProfile() {
     const [templates, setTemplates] = useState(null);
+    const [posts, setPosts] = useState(null);
 
     return (
         <Tabs defaultActiveKey="userOptions" id="uncontrolled-tab-example" className="mb-3">
@@ -36,10 +37,10 @@ function UserProfile() {
                 <TemplateListShared type='favorited' templates={templates} setTemplates={setTemplates} />
             </Tab>
             <Tab eventKey="postsCreated" title="Posts Created">
-                <PostList type='created' />
+                <PostListShared type='created' posts={posts} setPosts={setPosts} />
             </Tab>
             <Tab eventKey="postsBookmarked" title="Posts Bookmarked">
-                <PostList type='bookmarked' />
+                <PostListShared type='bookmarked' posts={posts} setPosts={setPosts} />
             </Tab>
         </Tabs>
     )

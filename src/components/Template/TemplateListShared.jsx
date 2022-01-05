@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import TemplateCard from './TemplateCard';
 import TemplateCreateForm from './TemplateCreateForm';
 import TemplateSearchForm from './TemplateSearchForm';
@@ -13,9 +13,7 @@ function TemplateListShared({ type = 'full', templates, setTemplates }) {
 
     useEffect(function getTemplatesOnMount() {
         console.debug('templateList useEffect getTemplatesOnMount')
-        if (type === 'full') {
-            searchTemplates();
-        } else if (currUser !== null) {
+        if (currUser !== null) {
             searchTemplates();
         }
     }, [currUser, hasFavorited]);
