@@ -18,7 +18,18 @@ function RepresentativeCard({ name, party, phones, urls, emails, photoUrl }) {
                     <ListGroupItem><b>{party}</b></ListGroupItem>
                     {/* <ListGroupItem><b>Location: </b>{address}</ListGroupItem> */}
                     <ListGroupItem><b>Phone: </b>{phones}</ListGroupItem>
-                    <ListGroupItem><b>urls: </b>{urls}</ListGroupItem>
+                    <ListGroupItem><b>urls: </b>
+                        <ListGroup className="list-group-flush">
+                        {urls.map((u) => <ListGroupItem>
+                            <a 
+                                href={u}
+                                rel="noopener noreferrer"
+                                target="_blank"
+                            >{u}
+                            </a>
+                            </ListGroupItem>)}
+                        </ListGroup>
+                    </ListGroupItem>
                 </ListGroup>
             </Card>
         </>
