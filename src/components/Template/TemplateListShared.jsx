@@ -10,7 +10,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function TemplateListShared({ type = 'full', templates, setTemplates }) {
     const { currUser, hasFavorited } = useContext(UserContext);
-    // const [templates, setTemplates] = useState(null);
 
     useEffect(function getTemplatesOnMount() {
         console.debug('templateList useEffect getTemplatesOnMount')
@@ -26,13 +25,6 @@ function TemplateListShared({ type = 'full', templates, setTemplates }) {
             const reqTemplates = await GetVocalToGovApi.getTemplates(formData);
             if (reqTemplates) {
                 setTemplates(reqTemplates); 
-                // } else if (type === 'favorited') {
-                //     const favTemplates = reqTemplates.filter((t) => hasFavorited(t.id));
-                //     setTemplates(favTemplates); 
-                // } else {
-                //     const userTemplates = reqTemplates.filter((t) => t.userId === currUser.username);
-                //     setTemplates(userTemplates); 
-                // }
                 return { success: true };
             }
           } catch (error) {
