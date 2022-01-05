@@ -1,4 +1,5 @@
 import React from 'react';
+import AuthRoute from './AuthRoute';
 import UserProfile from '../User/UserProfile';
 import UserLoginForm from '../User/UserLoginForm';
 import UserSignUpForm from '../User/UserSignUpForm';
@@ -25,7 +26,7 @@ const AppRoutes = function ({ signup, login, logout }) {
         <Route exact path="/posts/:postId/edit"><PostEditForm /></Route>
         <Route exact path="/login"><UserLoginForm login={login} /></Route>
         <Route exact path="/signup"><UserSignUpForm signup={signup} /></Route>
-        <Route exact path="/profile"><UserProfile /></Route>
+        <AuthRoute exact path="/profile"><UserProfile /></AuthRoute>
         <Redirect to="/" />
       </Switch>
     </BrowserRouter>
