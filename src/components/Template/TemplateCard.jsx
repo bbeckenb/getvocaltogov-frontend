@@ -23,10 +23,22 @@ function TemplateCard({ id, title, body, userId, createdAt, handleDelete }) {
         setFavoriteStatus(!favorite);
     }
 
+    function copyTemplate(templateBody) {
+        let outputString = 'Dear [TITLE] [LAST NAME],\n\n';
+        outputString += `${templateBody}\n\n`;
+        outputString += 'Sincerely,\n\n';
+        outputString += `${currUser.firstName} ${currUser.lastName}`;
+        navigator.clipboard.writeText(outputString);
+    }
+
     return (
         <>
             <Card>
-                <Card.Header>{title}</Card.Header>
+                <Card.Header>{title} 
+                    {currUser !== null ? (
+                        <Button onClick={() => copyTemplate(body)} className="btn btn-secondary"><i className="far fa-copy"></i></Button>)
+                         : null}
+                </Card.Header>
                 <Card.Body>
                     {currUser !== null ? (
                     <button onClick={() => toggleFavorite(id)}>

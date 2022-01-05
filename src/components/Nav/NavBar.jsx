@@ -10,7 +10,7 @@ const NavBar = function ({ logout }) {
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" sticky="top">
       <Container>
-        <Navbar.Brand href="/">GVTG</Navbar.Brand>
+        <Navbar.Brand href="/"><i className="fas fa-bullhorn"> GetVocalToGov</i></Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         {currUser ? <NavBarLoggedIn logout={logout} username={currUser.username}/> : <NavBarLoggedOut />}
       </Container>
