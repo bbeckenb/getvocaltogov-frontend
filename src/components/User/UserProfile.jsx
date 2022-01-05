@@ -3,6 +3,7 @@ import UserEditForm from "./UserEditForm";
 import UserDeletePortal from "./UserDeletePortal";
 import TemplateListShared from "../Template/TemplateListShared";
 import PostListShared from '../Post/PostListShared';
+import RepresentativeList from '../Representatives/RepresentativeList';
 import { Tab, Tabs, Accordion } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -30,17 +31,20 @@ function UserProfile() {
                 </Accordion>
                 
             </Tab>
+            <Tab eventKey="postsCreated" title="Posts Created">
+                <PostListShared type='created' posts={posts} setPosts={setPosts} />
+            </Tab>
+            <Tab eventKey="postsBookmarked" title="Posts Bookmarked">
+                <PostListShared type='bookmarked' posts={posts} setPosts={setPosts} />
+            </Tab>
             <Tab eventKey="templatesCreated" title="Templates Created">
                 <TemplateListShared type='created' templates={templates} setTemplates={setTemplates} />
             </Tab>
             <Tab eventKey="templatesFavorited" title="Templates Favorited">
                 <TemplateListShared type='favorited' templates={templates} setTemplates={setTemplates} />
             </Tab>
-            <Tab eventKey="postsCreated" title="Posts Created">
-                <PostListShared type='created' posts={posts} setPosts={setPosts} />
-            </Tab>
-            <Tab eventKey="postsBookmarked" title="Posts Bookmarked">
-                <PostListShared type='bookmarked' posts={posts} setPosts={setPosts} />
+            <Tab eventKey="representatives" title="Representatives">
+                <RepresentativeList />
             </Tab>
         </Tabs>
     )

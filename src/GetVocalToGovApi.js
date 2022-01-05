@@ -118,6 +118,11 @@ class GetVocalToGovApi {
     return res.unbookmarked;
   }
 
+  static async getRepresentatives(username) {
+    const res = await this.request(`representatives/${username}`);
+    return res.representatives;
+  }
+
 }
 
 export default GetVocalToGovApi;
