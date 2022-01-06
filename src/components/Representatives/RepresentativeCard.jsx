@@ -19,7 +19,7 @@ function RepresentativeCard({ name, party, phones, urls, emails, photoUrl }) {
                     <ListGroupItem><b>Phone: </b>{phones}</ListGroupItem>
                     <ListGroupItem><b>urls: </b>
                         <ListGroup className="list-group-flush">
-                        {urls.map((u) => <ListGroupItem>
+                        {urls.map((u) => <ListGroupItem key={u}>
                             <a 
                                 href={u}
                                 rel="noopener noreferrer"

@@ -1,15 +1,29 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { render, screen } from '@testing-library/react';
+import UserContext from '../../context/UserContext';
 import { MemoryRouter } from "react-router";
-import { UserProvider } from "../testUtils";
 import AuthRoute from "./AuthRoute";
+
+const currUser = { user: {
+    firstName: 'Jimmothy',
+    lastName: 'Deanus',
+    username: 'test',
+    password: '1234',
+    street: '60 Sierra Street',
+    city: 'Calumet City',
+    state: 'IL',
+    zip: '60409',
+    county: 'Cook',
+    email: 'jdean@gmail.com',
+    isAdmin: true,
+  }};
 
 it("renders without crashing", function () {
   render(
       <MemoryRouter>
-        <UserProvider>
+        <UserContext.Provider value={{currUser}}>
           <AuthRoute />
-        </UserProvider>
+        </UserContext.Provider>
       </MemoryRouter>,
   );
 });
@@ -17,9 +31,9 @@ it("renders without crashing", function () {
 it("matches snapshot", function () {
   const { asFragment } = render(
       <MemoryRouter>
-        <UserProvider>
+        <UserContext.Provider value={{currUser}}>
           <AuthRoute />
-        </UserProvider>
+        </UserContext.Provider>
       </MemoryRouter>,
   );
   expect(asFragment()).toMatchSnapshot();
@@ -28,10 +42,11 @@ it("matches snapshot", function () {
 it("matches snapshot when logged out", function () {
   const { asFragment } = render(
       <MemoryRouter>
-        <UserProvider currentUser={null}>
+        <UserContext.Provider value={{currUser: null}}>
           <AuthRoute />
-        </UserProvider>
+        </UserContext.Provider>
       </MemoryRouter>,
   );
+  console.log(asFragment)
   expect(asFragment()).toMatchSnapshot();
 });

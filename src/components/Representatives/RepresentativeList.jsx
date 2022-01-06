@@ -41,7 +41,7 @@ function PostList() {
                                 <Accordion.Header>{office.name}</Accordion.Header>
                                 <Accordion.Body>
                                     {office.officialIndices.map((idx) => <RepresentativeCard 
-                                        key={idx}
+                                        key={`${officials[idx].name}`}
                                         name={officials[idx].name}
                                         // address={officials[idx].address}
                                         party={officials[idx].party}

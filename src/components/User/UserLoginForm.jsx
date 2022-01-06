@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import Alert from '../Common/Alert';
 import loginSchema from '../../validationSchemas/loginSchema';
+import UserContext from '../../context/UserContext';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
@@ -10,7 +11,8 @@ import {
 } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const UserLoginForm = function ({ login }) {
+const UserLoginForm = function () {
+  const { login } = useContext(UserContext);
   const [formMessage, setFormMessage] = useState({type: 'primary', message: 'welcome!'});
   const history = useHistory();
   const {

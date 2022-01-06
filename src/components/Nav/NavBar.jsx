@@ -5,8 +5,8 @@ import UserContext from '../../context/UserContext';
 import { Navbar, Container } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const NavBar = function ({ logout }) {
-  const {currUser} = useContext(UserContext);
+const NavBar = function () {
+  const {currUser, logout} = useContext(UserContext);
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" sticky="top">
       <Container>

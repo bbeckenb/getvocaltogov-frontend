@@ -6,7 +6,7 @@ import { Card, ButtonGroup, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function UserDeletePortal() {
-    const { currUser, deleteProfile } = useContext(UserContext);
+    const { currUser, deleteProfile, logout } = useContext(UserContext);
     const [formMessage, setFormMessage] = useState({type: 'primary', message: 'Please no : ('});
     const [stage, setStage] = useState(0);
     const [username, setUsername] = useState();
@@ -29,6 +29,7 @@ function UserDeletePortal() {
                 const res = await deleteProfile(username);
                 if (res.success) {
                     setFormMessage({type: 'success', message: 'success!'});
+                    logout();
                     history.push('/');
                 } else {
                     console.log(res)

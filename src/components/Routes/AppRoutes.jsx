@@ -1,4 +1,5 @@
 import React from 'react';
+import UserContext from '../../context/UserContext';
 import AuthRoute from './AuthRoute';
 import UserProfile from '../User/UserProfile';
 import UserLoginForm from '../User/UserLoginForm';
@@ -13,10 +14,10 @@ import {
 } from 'react-router-dom';
 import NavBar from '../Nav/NavBar';
 
-const AppRoutes = function ({ signup, login, logout }) {
+const AppRoutes = function () {
   return (
     <BrowserRouter>
-      <NavBar logout={logout}/>
+      <NavBar />
       <Switch>
         <Route exact path="/"><h1>Home</h1></Route>
         <Route exact path="/templates"><TemplateList /></Route>
@@ -24,9 +25,11 @@ const AppRoutes = function ({ signup, login, logout }) {
         <Route exact path="/posts"><PostList /></Route>
         <Route exact path="/posts/:postId/details"><PostDetails /></Route>
         <Route exact path="/posts/:postId/edit"><PostEditForm /></Route>
-        <Route exact path="/login"><UserLoginForm login={login} /></Route>
-        <Route exact path="/signup"><UserSignUpForm signup={signup} /></Route>
-        <AuthRoute exact path="/profile"><UserProfile /></AuthRoute>
+        <Route exact path="/login"><UserLoginForm /></Route>
+        <Route exact path="/signup"><UserSignUpForm /></Route>
+        {/* <AuthRoute exact path="/profile"><UserProfile /></AuthRoute> */}
+        <Route exact path="/profile"><UserProfile /></Route>
+
         <Redirect to="/" />
       </Switch>
     </BrowserRouter>

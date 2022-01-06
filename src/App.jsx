@@ -80,6 +80,7 @@ const App = function () {
   async function deleteProfile(username) {
     try {
       const deletedUser = await GetVocalToGovApi.deleteUser(username);
+      console.log('XXXXXX', deletedUser)
       if (deletedUser) {
           logout();
           return { success: true };
@@ -142,8 +143,11 @@ const App = function () {
         removeFavorite, 
         hasBookmarked, 
         addBookmark, 
-        removeBookmark }}>
-        <AppRoutes login={login} signup={signup} logout={logout} />
+        removeBookmark,
+        login,
+        signup,
+        logout }}>
+        <AppRoutes />
       </UserContext.Provider>
     </div>
   );

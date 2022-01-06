@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
+import React, { useState, useContext } from 'react';
 import { useForm } from "react-hook-form";
 import { useHistory } from 'react-router-dom';
-import FlashMessage from 'react-flash-message';
+import UserContext from '../../context/UserContext';
 import Alert from '../Common/Alert';
 import { yupResolver } from '@hookform/resolvers/yup';
 import registerSchema from '../../validationSchemas/registerSchema';
@@ -9,15 +9,16 @@ import {Card, Container, Row} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-const UserSignUpForm = function ({ signup }) {
-      const [formMessage, setFormMessage] = useState({type: 'primary', message: 'welcome!'});   
-      const history = useHistory(); 
-      const {
-        register,
-        handleSubmit,
-        reset,
-        formState: { errors }
-      } = useForm({resolver: yupResolver(registerSchema)});
+const UserSignUpForm = function () {
+    const { signup } = useContext(UserContext);
+    const [formMessage, setFormMessage] = useState({type: 'primary', message: 'welcome!'});   
+    const history = useHistory(); 
+    const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors }
+    } = useForm({resolver: yupResolver(registerSchema)});
     
 
     async function sendData(formData) {
