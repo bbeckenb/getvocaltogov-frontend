@@ -1,33 +1,20 @@
-import React, { useContext, useEffect, useState } from "react";
-import LoadingSpinner from "../Common/LoadingSpinner";
-import { Route, useHistory, Redirect } from "react-router-dom";
+import React, { useContext } from "react";
+import { Route, Redirect } from "react-router-dom";
 import UserContext from "../../context/UserContext";
 
 function AuthRoute({ exact, path, children }) {
-    const { currUser } = useContext(UserContext);
-    const [loaded, setLoaded] = useState(false);
+    const { token } = useContext(UserContext);    
     
-    useEffect(function loadUser() {
-        console.log('XXXXXX', currUser)
-        if (currUser) {
-            setLoaded(true);
-        } 
-    }, [currUser]);
-    // console.log('XXXXXX', currUser)
     console.debug(
         "PrivateRoute",
         "exact=", exact,
         "path=", path,
-        "currentUser=", currUser,
+        "token=", token,
     );
-  
-    if (!loaded) {
-        return <LoadingSpinner waitingOn={'Profile'} />;
-    }
     
-    if (!currUser) {
+    if (!token) {
         return <Redirect to="/login" />;
-      }
+    }
     
       return (
           <Route exact={exact} path={path}>

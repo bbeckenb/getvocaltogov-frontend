@@ -14,7 +14,7 @@ import {
 } from 'react-router-dom';
 import NavBar from '../Nav/NavBar';
 
-const AppRoutes = function () {
+const AppRoutes = function ({ currUser }) {
   return (
     <BrowserRouter>
       <NavBar />
@@ -27,8 +27,8 @@ const AppRoutes = function () {
         <Route exact path="/posts/:postId/edit"><PostEditForm /></Route>
         <Route exact path="/login"><UserLoginForm /></Route>
         <Route exact path="/signup"><UserSignUpForm /></Route>
-        {/* <AuthRoute exact path="/profile"><UserProfile /></AuthRoute> */}
-        <Route exact path="/profile"><UserProfile /></Route>
+        <AuthRoute exact path="/profile" currUser={currUser}><UserProfile /></AuthRoute>
+        {/* <Route exact path="/profile"><UserProfile /></Route> */}
 
         <Redirect to="/" />
       </Switch>

@@ -8,7 +8,6 @@ import './App.css';
 
 const App = function () {
   const [token, setToken] = useLocalStorage('stored-token');
-  // const [storedUser, setStoredUser] = useLocalStorage('stored-user');
   const [currUser, setCurrUser] = useState(null);
   const [favoriteIds, setFavoriteIds] = useState(new Set([]));
   const [bookmarkIds, setBookmarkIds] = useState(new Set([]));
@@ -132,7 +131,8 @@ const App = function () {
     <div className="App">
       <UserContext.Provider value={{ 
         currUser, 
-        setCurrUser, 
+        setCurrUser,
+        token, 
         editUser,
         deleteProfile,
         hasFavorited, 
@@ -143,7 +143,7 @@ const App = function () {
         removeBookmark,
         login,
         signup,
-        logout }}>
+        logout, }}>
         <AppRoutes />
       </UserContext.Provider>
     </div>
