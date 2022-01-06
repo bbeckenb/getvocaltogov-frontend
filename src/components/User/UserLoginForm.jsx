@@ -33,6 +33,11 @@ const UserLoginForm = function () {
     }
   }
 
+  function loginDemoUser() {
+    const credentials = {username: 'demoUser', password: 'passGood'};
+    onSubmit(credentials);
+  }
+
   function resetFormAndMsg() {
     setFormMessage({type: 'primary', message: 'welcome!'});
     reset()
@@ -77,6 +82,13 @@ const UserLoginForm = function () {
                 <div className="form-group">
                   <button type="submit" className="btn btn-primary">
                     Login
+                  </button>
+                  <button
+                    type="button"
+                    onClick={loginDemoUser}
+                    className="btn btn-success float-right"
+                  >
+                    Demo
                   </button>
                   <button
                     type="button"
