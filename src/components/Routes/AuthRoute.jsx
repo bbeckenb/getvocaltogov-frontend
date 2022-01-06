@@ -6,7 +6,7 @@ function AuthRoute({ exact, path, children }) {
     const { token } = useContext(UserContext);    
     
     console.debug(
-        "PrivateRoute",
+        "AuthRoute",
         "exact=", exact,
         "path=", path,
         "token=", token,
