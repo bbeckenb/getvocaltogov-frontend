@@ -23,7 +23,7 @@ function About() {
         </div>
         <hr className="my-3" />
         <Card.Title style={{'fontSize': '20px'}}><i>How does it work?</i></Card.Title>
-        <Accordion defaultActiveKey="0" flush>
+        <Accordion defaultActiveKey="" flush>
           <Accordion.Item eventKey="0">
             <Accordion.Header><Card.Title style={{'fontSize': '15px'}}><i><b>Retrieving a User's Representitives</b></i></Card.Title></Accordion.Header>
             <Accordion.Body>
@@ -72,6 +72,7 @@ function About() {
           <ListGroup style={{'width': '75%'}}>
             <ListGroupItem variant="primary" style={{'textAlign': 'left'}}><b>Front-end:</b> React, Axios, React-Bootstrap, React Router, React Hook Form, Yup schema validation</ListGroupItem>
             <ListGroupItem variant="primary" style={{'textAlign': 'left'}}><b>Back-end:</b> Node.js, Express, Node-postgres, jsonwebtoken, jsonschema, bcrypt, winston, Axios, dotenv, colors, cors</ListGroupItem>
+            <ListGroupItem variant="primary" style={{'textAlign': 'left'}}><b>Testing:</b> Jest, React-Testing-Library</ListGroupItem>
             <ListGroupItem variant="primary" style={{'textAlign': 'left'}}><b>Database:</b> Postgres</ListGroupItem>
             <ListGroupItem variant="primary" style={{'textAlign': 'left'}}><b>APIs Integrated:</b> <a href="https://developers.google.com/civic-information">Google Civic Information API</a>, <a href="https://www.easypost.com/docs/api">EasyPost API</a></ListGroupItem>
           </ListGroup>
