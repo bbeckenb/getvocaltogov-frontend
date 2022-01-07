@@ -26,8 +26,15 @@ function UserDeletePortal() {
             } else if (stage === 1) {
                 setFormMessage({type: 'warning', message: 'This is a permanent action, are you sure?'});
             } else {
-                history.push('/');
-                await deleteProfile(username);
+                const res = await deleteProfile(username);
+                if (res.success) {
+                    setFormMessage({type: 'success', message: 'success!'});
+                    history.push('/');
+                    logout();   
+                } else {
+                    console.log(res)
+                    setFormMessage({type: 'danger', message: `${res.error}`});
+                } 
             }
         }
         executeStageActions();

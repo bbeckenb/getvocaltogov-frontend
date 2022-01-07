@@ -80,10 +80,11 @@ const App = function () {
     try {
       const deletedUser = await GetVocalToGovApi.deleteUser(username);
       if (deletedUser) {
-          logout();
+          return {success: true};
       }
     } catch (error) {
           console.error('Encountered issue deleting User Profile:', error);
+          return {success: false, error};
     }
   }
 
