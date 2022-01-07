@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import AppRoutes from './components/Routes/AppRoutes';
+import Footer from './components/Footer/Footer';
 import useLocalStorage from './customHooks/useLocalStorage';
 import GetVocalToGovApi from './GetVocalToGovApi';
 import UtilClass from './classes/UtilClass';
@@ -146,6 +147,7 @@ const App = function () {
         signup,
         logout, }}>
         <AppRoutes />
+        <Footer />
       </UserContext.Provider>
     </div>
   );
