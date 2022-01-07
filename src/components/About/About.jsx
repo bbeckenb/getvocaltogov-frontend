@@ -1,6 +1,6 @@
 import React from "react";
 import ProfessionalShot from '../../images/professional_shot.jpeg';
-import { Container, Card, ListGroup, ListGroupItem, Row, Col } from 'react-bootstrap';
+import { Container, Card, Accordion, Row, Col } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 
 function About() {
@@ -23,18 +23,29 @@ function About() {
         </div>
         <hr className="my-3" />
         <Card.Title style={{'fontSize': '20px'}}><i>How does it work?</i></Card.Title>
-        <Card.Title style={{'fontSize': '15px'}}><i><b>Retrieving a User's Representitives</b></i></Card.Title>
+        <Accordion defaultActiveKey="0" flush>
+  <Accordion.Item eventKey="0">
+    <Accordion.Header><Card.Title style={{'fontSize': '15px'}}><i><b>Retrieving a User's Representitives</b></i></Card.Title></Accordion.Header>
+    <Accordion.Body>
         <Card.Text>
           When a User registers, they are required to enter their residential address. This address is verified through an external service before being stored in the database. 
           The address is then used to retrieve the User's Government representatives, from the President of The United States to their local officials. The list of representatives 
           along with their contact information can be found on the User's <Link to={'/profile'}>profile</Link> page under the 'Representatives' tab.
         </Card.Text>
-        <Card.Title style={{'fontSize': '15px'}}><i><b>Posts</b></i></Card.Title>
+    </Accordion.Body>
+  </Accordion.Item>
+  <Accordion.Item eventKey="1">
+    <Accordion.Header><Card.Title style={{'fontSize': '15px'}}><i><b>Posts</b></i></Card.Title></Accordion.Header>
+    <Accordion.Body>
         <Card.Text>
           A Post, in this context, is a User generated record containing information and commentary about a current event. Users can create then edit and/or delete posts they own. Any User
           can read or bookmark/unbookmark a Post from the main <Link to={'/posts'}>Post feed</Link>. Posts are meant to create awareness of current events and to inspire Users to generate Templates to petition their Representatives.
         </Card.Text>
-        <Card.Title style={{'fontSize': '15px'}}><i><b>Templates</b></i></Card.Title>
+    </Accordion.Body>
+  </Accordion.Item>
+  <Accordion.Item eventKey="2">
+    <Accordion.Header><Card.Title style={{'fontSize': '15px'}}><i><b>Templates</b></i></Card.Title></Accordion.Header>
+    <Accordion.Body>
         <Card.Text>
           A Template, in this context, is a User generated title and body of an email one would send to their Representative. Here is a 
           sample <a target="_blank" rel="noopener noreferrer" href="https://www.nlacrc.org/home/showdocument?id=272">reference</a> of how 
@@ -42,12 +53,26 @@ function About() {
           unattached to a Post. They can then update and/or delete Templates they own. All Users can read and favorite/unfavorite Templates from 
           the <Link to={'/templates'}>Template feed</Link>.
         </Card.Text>
-        <Card.Title style={{'fontSize': '15px'}}><i><b>Intended Flow</b></i></Card.Title>
-        <Card.Text>
-          How I envisioned the User experience when building this app was the User looking through and contributing to the Post and Template feeds.
-          As they create and tag (bookmark Posts/ favorite Templates), they can navigate to their <Link to={'/profile'}>profile</Link> page where they
-          can quick copy Templates, find the appropriate Representative's contact information, go to their website, and send the message!
-        </Card.Text>
+    </Accordion.Body>
+  </Accordion.Item>
+  <Accordion.Item eventKey="3">
+    <Accordion.Header><Card.Title style={{'fontSize': '15px'}}><i><b>Intended Flow</b></i></Card.Title></Accordion.Header>
+    <Accordion.Body>
+      <Card.Text>
+        How I envisioned the User experience when building this app was the User looking through and contributing to the Post and Template feeds.
+        As they create and tag (bookmark Posts/ favorite Templates), they can navigate to their <Link to={'/profile'}>profile</Link> page where they
+        can quick copy Templates, find the appropriate Representative's contact information, go to their website, and send the message!
+      </Card.Text>
+    </Accordion.Body>
+  </Accordion.Item>
+</Accordion>
+        
+        
+        
+        
+        
+        
+        
       </Card.Body>
     </Card>
     <Card style={{'marginTop': '20px'}}>
