@@ -1,5 +1,6 @@
 import React from 'react';
 import AuthRoute from './AuthRoute';
+import Home from '../Home/Home';
 import UserProfile from '../User/UserProfile';
 import UserLoginForm from '../User/UserLoginForm';
 import UserSignUpForm from '../User/UserSignUpForm';
@@ -19,7 +20,7 @@ const AppRoutes = function ({ currUser }) {
     <BrowserRouter>
       <NavBar />
       <Switch>
-        <Route exact path="/"><h1>Home</h1></Route>
+        <Route exact path="/"><Home /></Route>
         <Route exact path="/templates"><TemplateList /></Route>
         <Route exact path="/templates/:templateId/edit"><TemplateEditForm /></Route>
         <Route exact path="/posts"><PostList /></Route>

@@ -12,7 +12,7 @@ function About() {
       <Card.Body>
         <Card.Title style={{'fontSize': '20px'}}><i>What is GetVocalToGov?</i></Card.Title>
         <Card.Text>
-          GetVocalToGov is true to its uncreative name in that it is an application meant to help facilitate communication with a User's representatives. 
+          GetVocalToGov is true to its name in that it is an application meant to help facilitate communication with a User's representatives. 
           There were two main goals I wanted this app to accomplish:
         </Card.Text>
         <div>
