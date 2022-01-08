@@ -11,7 +11,7 @@ function NavBarLoggedIn({ logout, username }) {
             <Nav.Link href="/about">About</Nav.Link>
             <Nav.Link href="/home">Home</Nav.Link>
             <Nav.Link href="/profile">Profile</Nav.Link>
-            <Nav.Link onClick={logout} href="/">{`Logout ${username}`}</Nav.Link>
+            <Nav.Link onClick={() => logout()} href="/">{`Logout ${username}`}</Nav.Link>
         </Nav>
     </Navbar.Collapse>
    ) 
