@@ -176,6 +176,13 @@ const UserSignUpForm = function () {
                                 >
                                     Reset
                                 </button>
+                                <button
+                                    type="button"
+                                    onClick={() => history.push('/')}
+                                    className="btn btn-danger float-right"
+                                >
+                                    Go Home
+                                </button>
                             </div>
                         </form>
                     </div>

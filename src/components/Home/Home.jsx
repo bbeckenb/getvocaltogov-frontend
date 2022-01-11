@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import UserLoginForm from "../User/UserLoginForm";
 import UserContext from '../../context/UserContext'
 import { Container, ButtonGroup, Button, DropdownButton, Dropdown } from 'react-bootstrap';
 import { useHistory, Link } from 'react-router-dom';
@@ -23,14 +24,12 @@ function Home() {
                     </DropdownButton>
                 </ButtonGroup> 
             </> : <>
+            <h4 style={{'marginTop': '50px','fontSize': '20px'}}>Returning user or want to <b>demo</b>?</h4>
+            <UserLoginForm />
             <h4 style={{'marginTop': '50px', 'fontSize': '20px'}}>New here? <Link to='/about'>Learn more</Link> about 
             the app or sign up below!</h4>
-            <ButtonGroup style={{'marginTop': '5px', 'fontSize': '20px'}}>
-                <Button onClick={() => history.push('/signup')}>Sign up</Button>
-            </ButtonGroup>
-            <h4 style={{'marginTop': '50px','fontSize': '20px'}}>Returning user or want to <b>demo</b>?</h4>
             <ButtonGroup style={{'marginTop': '5px', 'marginBottom': '50px', 'fontSize': '20px'}}>
-                <Button onClick={() => history.push('/login')}>Login</Button>
+                <Button onClick={() => history.push('/signup')}>Sign up</Button>
             </ButtonGroup>
             </>}
         </Container>

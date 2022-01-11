@@ -59,7 +59,7 @@ const UserEditForm = function () {
             <Card style={{ width: '800px', backgroundColor: '#AED6F1' }}>
             <Card.Body>
                 <Card.Title className="font-weight-bold text-center" role="heading">
-                Edit Template!
+                Edit Profile!
                 </Card.Title>
                 <div className="edit-profile-form">
                     <form onSubmit={handleSubmit(onSubmit)}>

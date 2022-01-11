@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import {jest} from '@jest/globals'
 import { MemoryRouter, Route } from 'react-router-dom';
 import UserContext from '../../context/UserContext';
