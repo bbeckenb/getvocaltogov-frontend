@@ -47,7 +47,7 @@ const TemplateSearchForm = function ({ searchTemplates }) {
             <div className="template-search-form">
               <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-group">
-                  <label>Title</label>
+                  <label>Title Search Term</label>
                   <input
                     aria-label="title"
                     name="title"
@@ -60,12 +60,12 @@ const TemplateSearchForm = function ({ searchTemplates }) {
                 </div>
 
                 <div className="form-group">
-                  <label>Body</label>
+                  <label>Body Search Term</label>
                   <input
                     aria-label="body"
                     name="body"
                     placeholder="body"
-                    type="body"
+                    type="text"
                     {...register('body')}
                     className={`form-control ${errors.body ? 'is-invalid' : ''}`}
                   />

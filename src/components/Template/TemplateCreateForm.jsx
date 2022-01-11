@@ -58,11 +58,11 @@ const TemplateCreateForm = function ({ addTemplate }) {
 
                 <div className="form-group">
                   <label>Body</label>
-                  <input
+                  <textarea
                     aria-label="body"
                     name="body"
                     placeholder="body"
-                    type="body"
+                    type="textarea"
                     {...register('body')}
                     className={`form-control ${errors.body ? 'is-invalid' : ''}`}
                   />
