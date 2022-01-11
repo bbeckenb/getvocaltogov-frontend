@@ -5,7 +5,7 @@ import { Container, ButtonGroup, Button, DropdownButton, Dropdown } from 'react-
 import { useHistory, Link } from 'react-router-dom';
 
 function Home() {
-    const { token } = useContext(UserContext);
+    const { token, logout } = useContext(UserContext);
     const history = useHistory();
 
     return (
@@ -21,6 +21,7 @@ function Home() {
                         <Dropdown.Item eventKey="2" onClick={() => history.push('/about')}>About</Dropdown.Item>
                         <Dropdown.Item eventKey="3" onClick={() => history.push('/posts')}>Posts</Dropdown.Item>
                         <Dropdown.Item eventKey="4" onClick={() => history.push('/templates')}>Templates</Dropdown.Item>
+                        <Dropdown.Item eventKey="5" onClick={() => logout()}>Log out</Dropdown.Item>
                     </DropdownButton>
                 </ButtonGroup> 
             </> : <>
