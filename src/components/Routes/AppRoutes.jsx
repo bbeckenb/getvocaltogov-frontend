@@ -2,7 +2,6 @@ import React from 'react';
 import AuthRoute from './AuthRoute';
 import Home from '../Home/Home';
 import UserProfile from '../User/UserProfile';
-import UserLoginForm from '../User/UserLoginForm';
 import UserSignUpForm from '../User/UserSignUpForm';
 import About from '../About/About';
 import PostList from '../Post/PostList';
@@ -26,7 +25,6 @@ const AppRoutes = function ({ currUser }) {
         <Route exact path="/posts"><PostList /></Route>
         <Route exact path="/posts/:postId/details"><PostDetails /></Route>
         <Route exact path="/posts/:postId/edit"><PostEditForm /></Route>
-        <Route exact path="/login"><UserLoginForm /></Route>
         <Route exact path="/signup"><UserSignUpForm /></Route>
         <Route exact path="/about"><About /></Route>
         <AuthRoute exact path="/profile" currUser={currUser}><UserProfile /></AuthRoute>
