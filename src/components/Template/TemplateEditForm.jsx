@@ -90,11 +90,12 @@ const TemplateEditForm = function () {
 
                 <div className="form-group">
                   <label>Body</label>
-                  <input
+                  <textarea
                     aria-label="body"
+                    rows="5"
                     name="body"
                     placeholder="body"
-                    type="body"
+                    type="textarea"
                     {...register('body')}
                     className={`form-control ${errors.body ? 'is-invalid' : ''}`}
                   />

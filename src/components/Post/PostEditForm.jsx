@@ -90,8 +90,9 @@ const PostEditForm = function () {
 
                 <div className="form-group">
                   <label>Body</label>
-                  <input
+                  <textarea
                     aria-label="body"
+                    rows="5"
                     name="body"
                     placeholder="body"
                     type="text"

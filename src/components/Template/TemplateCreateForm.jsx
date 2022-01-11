@@ -60,6 +60,7 @@ const TemplateCreateForm = function ({ addTemplate }) {
                   <label>Body</label>
                   <textarea
                     aria-label="body"
+                    rows="5"
                     name="body"
                     placeholder="body"
                     type="textarea"
