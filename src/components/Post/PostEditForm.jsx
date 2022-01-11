@@ -165,7 +165,7 @@ const PostEditForm = function () {
                       <option value="WY">Wyoming</option>
                     </select>
                   
-                  <div className="invalid-feedback" role="alert">{errors.state?.message}</div>
+                  <div className="invalid-feedback" role="alert">{errors.location?.message}</div>
                 </div>
 
 
@@ -175,7 +175,7 @@ const PostEditForm = function () {
                     aria-label="tag"
                     name="tag"
                     placeholder="tag"
-                    type="text"
+                    type="select"
                     {...register('tag')}
                     className={`form-control ${errors.tag ? 'is-invalid' : ''}`}
                   />
