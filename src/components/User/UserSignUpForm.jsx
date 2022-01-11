@@ -219,6 +219,13 @@ const UserSignUpForm = function () {
                             </div>
                             <Alert type={formMessage.type} message={formMessage.message} />
                             <div className="form-group">
+                            <button
+                                    type="button"
+                                    onClick={() => history.push('/')}
+                                    className="btn btn-info float-left"
+                                >
+                                    Go Home
+                                </button>
                                 <button type="submit" className="btn btn-primary">
                                     Register
                                 </button>
@@ -229,13 +236,7 @@ const UserSignUpForm = function () {
                                 >
                                     Reset
                                 </button>
-                                <button
-                                    type="button"
-                                    onClick={() => history.push('/')}
-                                    className="btn btn-danger float-right"
-                                >
-                                    Go Home
-                                </button>
+                               
                             </div>
                         </form>
                     </div>

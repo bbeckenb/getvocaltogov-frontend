@@ -6,7 +6,7 @@ const usaStates = ["AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DC",
 "MA", "MD", "ME", "MI", "MN", "MO", "MS", "MT", "NC", "ND", "NE",  
 "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "RI", "SC",  
 "SD", "TN", "TX", "UT", "VA", "VT", "WA", "WI", "WV", "WY"];
-const category = ["environment", "health care", "defense"];
+const category = ["Agriculture", "Arts and Humanities", "Banking", "Budget", "Criminal Justice", "Defense", "Economy", "Education", "Election Reform", "Energy", "Environment", "FEMA", "Finance", "Fire Arms", "Foreign Affairs", "Health Care", "Housing", "Immigration", "Interior", "Judiciary", "Labor", "Law Enforcement", "Medicare", "Presidential Personnel", "Religion", "Service Academies", "Small Business", "Social Security", "Taxes", "Telecommunications", "Trade", "Transportation", "Veterans", "Welfare"];
 
 const postCreateSchema = Yup.object().shape({
     title: Yup.string()
