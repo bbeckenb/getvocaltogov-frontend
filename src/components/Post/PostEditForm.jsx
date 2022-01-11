@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import GetVocalToGovApi from '../../GetVocalToGovApi';
 import Alert from '../Common/Alert';
 import postCreateSchema from '../../validationSchemas/postCreateSchema';
+import { category } from '../../validationSchemas/longVars';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import {
@@ -171,14 +172,17 @@ const PostEditForm = function () {
 
                 <div className="form-group">
                   <label>Tag</label>
-                  <input
+                  <select
                     aria-label="tag"
                     name="tag"
                     placeholder="tag"
                     type="select"
                     {...register('tag')}
-                    className={`form-control ${errors.tag ? 'is-invalid' : ''}`}
-                  />
+                    className={`form-control ${errors.tag ? 'is-invalid' : ''}`}>
+                      <option value={null}>None</option>
+                      {category.map((cat) => <option value={cat}>{cat}</option>)}
+                  </select>
+                  
                   <div className="invalid-feedback" role="alert">{errors.tag?.message}</div>
                 </div>
 
