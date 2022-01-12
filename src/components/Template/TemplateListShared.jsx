@@ -56,19 +56,20 @@ function TemplateListShared({ type = 'full', templates, setTemplates }) {
             <Accordion>
                 <Accordion.Item eventKey="0">
                     <Accordion.Header>Search for Templates</Accordion.Header>
-                    <Accordion.Body>
+                    <Accordion.Body style={{"backgroundColor": "#F4F6F6"}}>
                         <TemplateSearchForm searchTemplates={searchTemplates} />
                     </Accordion.Body>
                 </Accordion.Item>
                 {type === 'favorited' ? null : 
                     <Accordion.Item eventKey="1">
                         <Accordion.Header>Create New Template</Accordion.Header>
-                        <Accordion.Body>
+                        <Accordion.Body style={{"backgroundColor": "#F4F6F6"}}>
                             <TemplateCreateForm addTemplate={addTemplate}/>
                         </Accordion.Body>
                     </Accordion.Item>}
             </Accordion>
-            <h1>Templates</h1>
+            <h1 style={{"marginTop": "20px", "marginBottom": "20px"}}>Templates</h1>
+            <hr className="my-3" />
             {templates.filter((t) => type === 'favorited' ? hasFavorited(t.id) : t.userId === currUser.username).length > 0 ? (
                 <Container>
                     <Row className='justify-content-lg-center'>

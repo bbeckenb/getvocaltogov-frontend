@@ -18,18 +18,17 @@ function UserProfile() {
                 <Accordion>
                     <Accordion.Item eventKey="0">
                         <Accordion.Header>Edit Profile</Accordion.Header>
-                        <Accordion.Body>
+                        <Accordion.Body style={{"backgroundColor": "#F4F6F6"}}>
                             <UserEditForm />
                         </Accordion.Body>
                     </Accordion.Item>
                     <Accordion.Item eventKey="1">
                         <Accordion.Header>Delete Profile</Accordion.Header>
-                        <Accordion.Body>
+                        <Accordion.Body style={{"backgroundColor": "#F4F6F6"}}>
                             <UserDeletePortal />
                         </Accordion.Body>
                     </Accordion.Item>
-                </Accordion>
-                
+                </Accordion>   
             </Tab>
             <Tab eventKey="postsCreated" title="Posts Created">
                 <PostListShared type='created' posts={posts} setPosts={setPosts} />
