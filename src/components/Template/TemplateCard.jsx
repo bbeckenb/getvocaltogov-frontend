@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import UserContext from '../../context/UserContext';
 import { Card, ButtonGroup, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-// <i class="fal fa-copy"></i> for quick copy
+
 
 function TemplateCard({ id, title, body, userId, createdAt, handleDelete }) {
     const [favorite, setFavoriteStatus] = useState()
@@ -32,35 +32,35 @@ function TemplateCard({ id, title, body, userId, createdAt, handleDelete }) {
     }
 
     return (
-        <>
-            <Card>
-                <Card.Header>{title} 
-                    {currUser !== null ? (
-                        <Button onClick={() => copyTemplate(body)} className="btn btn-secondary"><i className="far fa-copy"></i></Button>)
-                         : null}
+            <Card style={{"padding": "0px", "marginTop": "5px", "marginBottom": "5px"}}>
+                <Card.Header as="h3" style={{"backgroundColor": "#F1948A"}}><b>{title}</b>
                 </Card.Header>
-                <Card.Body>
-                    {currUser !== null ? (
-                    <button onClick={() => toggleFavorite(id)}>
-                        {favorite ? <i className="fas fa-star"></i> : <i className="far fa-star"></i>}
-                    </button>) : null}
+                <Card.Header style={{"backgroundColor": "#F2D7D5"}}>
+                {currUser !== null ? (
+                        <ButtonGroup >
+                            <Button onClick={() => toggleFavorite(id)} className="btn btn-warning">{favorite ? <i className="fas fa-star"></i> : <i className="far fa-star"></i>}</Button>
+                            <Button onClick={() => copyTemplate(body)} className="btn btn-info"><i className="far fa-copy"></i></Button>
+                        </ButtonGroup>
+                        ) : null}
+                </Card.Header>
+                <Card.Body style={{"backgroundColor": "#FFFFF6"}}>
                     <blockquote className="blockquote mb-0">
                     <p>
                         {body}
                     </p>
-                    <footer className="blockquote-footer">
+                    <footer className="blockquote-footer" style={{"marginTop": "5px", "marginBottom": "20px"}}>
                         Created By {userId} at {createdAt}
                     </footer>
                     </blockquote>
                     {currUser !== null && currUser.username === userId ? (
                         <ButtonGroup className="mb-2">
-                            <Button onClick={() => handleDelete(id)}>Delete</Button>
+                            <Button onClick={() => handleDelete(id)} className="btn btn-danger">Delete</Button>
                             <Button onClick={() => history.push(`/templates/${id}/edit`)}>Edit</Button>
                         </ButtonGroup>
                     ) : null}
                 </Card.Body>
             </Card>
-        </>
+          
     )
 }
 
