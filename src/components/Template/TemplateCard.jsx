@@ -43,15 +43,13 @@ function TemplateCard({ id, title, body, userId, createdAt, handleDelete }) {
                         </ButtonGroup>
                         ) : null}
                 </Card.Header>
-                <Card.Body style={{"backgroundColor": "#FFFFF6"}}>
-                    <blockquote className="blockquote mb-0">
-                    <p>
-                        {body}
+                <Card.Body style={{"backgroundColor": "#FAFAFA"}}>
+                    <p style={{"marginBottom": "15px", "fontSize": "14px", "color": "gray"}}>
+                        <i>Created by {userId} at {createdAt}</i>
                     </p>
-                    <footer className="blockquote-footer" style={{"marginTop": "5px", "marginBottom": "20px"}}>
-                        Created By {userId} at {createdAt}
-                    </footer>
-                    </blockquote>
+                    <Card.Text style={{"marginBottom": "20px"}}>
+                        {body}
+                    </Card.Text>
                     {currUser !== null && currUser.username === userId ? (
                         <ButtonGroup className="mb-2">
                             <Button onClick={() => handleDelete(id)} className="btn btn-danger">Delete</Button>
