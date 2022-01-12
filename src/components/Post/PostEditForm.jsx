@@ -67,7 +67,7 @@ const PostEditForm = function () {
   }
 
   return (
-    <Container>
+    <Container style={{"marginTop": "50px", "marginBottom": "30px"}}>
       <Row className="justify-content-lg-center">
         <Card style={{ width: '800px', backgroundColor: '#AED6F1' }}>
           <Card.Body>
