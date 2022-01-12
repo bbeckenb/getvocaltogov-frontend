@@ -8,7 +8,7 @@ function About() {
   <Container>
     <h1 style={{'marginTop': '40px'}}>About GetVocalToGov</h1>
     <Card>
-      <Card.Header style={{'fontSize': '30px'}}>About the App</Card.Header>
+      <Card.Header style={{'fontSize': '30px', "backgroundColor": "#73C6B6"}}>About the App</Card.Header>
       <Card.Body>
         <Card.Title style={{'fontSize': '20px'}}><i>What is GetVocalToGov?</i></Card.Title>
         <Card.Text>
@@ -80,7 +80,7 @@ function About() {
       </Card.Body>
     </Card>
     <Card style={{'marginTop': '20px'}}>
-      <Card.Header style={{'fontSize': '30px'}}>About the Developer</Card.Header>
+      <Card.Header style={{'fontSize': '30px', "backgroundColor": "#73C6B6"}}>About the Developer</Card.Header>
       <Card.Body>
         <Row>
           <Col sm={12} md={6}>
