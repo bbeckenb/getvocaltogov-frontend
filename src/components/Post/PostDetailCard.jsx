@@ -24,7 +24,7 @@ function PostCard({ id, title, body, link, userId, tag, createdAt, location, han
 
     return (
         <>
-            <Card style={{"padding": "0px", "marginTop": "5px", "marginBottom": "5px", "backgroundColor": "#E3F2FD"}}>
+            <Card style={{"padding": "0px", "backgroundColor": "#E3F2FD"}}>
                 <Card.Header as="h3" style={{"backgroundColor": "#42A5F5"}}><b>{title}</b>
                 </Card.Header>
                 <Card.Header style={{"backgroundColor": "#E3F2FD"}}>
@@ -50,12 +50,12 @@ function PostCard({ id, title, body, link, userId, tag, createdAt, location, han
                 </Card.Body>
                 <Card.Body>
                 <ButtonGroup className="mb-2">
+                    <Button onClick={() => history.goBack()} className="btn btn-info">Go Back</Button>
                     {currUser !== null && currUser.username === userId ? (
                         <>
                             <Button onClick={() => handleDelete(id)} className="btn btn-danger">Delete</Button>
                             <Button onClick={() => history.push(`/posts/${id}/edit`)}>Edit</Button>
-                        </>) : null}
-                        <Button onClick={() => history.push(`/posts/${id}/details`)} className="btn btn-success">Details</Button>
+                        </>) : null}    
                 </ButtonGroup>
                 </Card.Body>
             </Card>
