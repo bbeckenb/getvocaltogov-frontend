@@ -30,7 +30,7 @@ it('renders without crashing', () => {
 it('shows user options if owned by the user', () => {
   render(
     <UserContext.Provider value={{currUser, hasBookmarked}}>
-      <PostCard userId={currUser.username} />
+      <PostCard userId='test' />
     </UserContext.Provider>);
 
   expect(
@@ -46,8 +46,7 @@ it('shows no user options if not owned by the user', () => {
     <UserContext.Provider value={{currUser, hasBookmarked}}>
       <PostCard userId='stranger' />
     </UserContext.Provider>);
-   expect(
-    screen.getByRole("button", { name: "Details" })
-  ).toBeInTheDocument();
+  const buttonGroup = screen.queryByText('buttonGroup')
+  expect(buttonGroup).not.toBeInTheDocument()
   
 });

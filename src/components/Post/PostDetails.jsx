@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import GetVocalToGovApi from '../../GetVocalToGovApi';
 import LoadingSpinner from '../Common/LoadingSpinner';
-import PostCard from './PostCard';
+import PostDetailCard from './PostDetailCard';
 import TemplateCard from '../Template/TemplateCard';
 import TemplateCreateForm from '../Template/TemplateCreateForm';
 import { useHistory, useParams } from 'react-router-dom';
-import UserContext from '../../context/UserContext';
 import { Row, Container, Accordion } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -52,7 +51,7 @@ function PostDetails() {
 
     return (
         <>
-            <PostCard 
+            <PostDetailCard 
                     key={currPost.id} 
                     id={currPost.id}
                     title={currPost.title}
