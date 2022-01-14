@@ -38,7 +38,7 @@ function About() {
             <Accordion.Header><Card.Title style={{'fontSize': '15px'}}><i><b>Posts</b></i></Card.Title></Accordion.Header>
             <Accordion.Body>
                 <Card.Text>
-                  A Post, in this context, is a User generated record containing information and commentary about a current event. Users can create then edit and/or delete posts they own. Any User
+                  A Post, in this context, is a User generated record containing information and commentary about a current event. Users can create then edit and/or delete Posts they own. Any User
                   can read or bookmark/unbookmark a Post from the main <Link to={'/posts'}>Post feed</Link>. Posts are meant to create awareness of current events and to inspire Users to generate Templates to petition their Representatives.
                 </Card.Text>
             </Accordion.Body>

@@ -16,13 +16,13 @@ function UserProfile() {
         <Tabs defaultActiveKey="userOptions" id="uncontrolled-tab-example" className="mb-3">
             <Tab eventKey="userOptions" title="User Options">
                 <Accordion>
-                    <Accordion.Item eventKey="0">
+                    <Accordion.Item eventKey="0" style={{"backgroundColor": "#EBDEF0"}}>
                         <Accordion.Header>Edit Profile</Accordion.Header>
                         <Accordion.Body style={{"backgroundColor": "#F4F6F6"}}>
                             <UserEditForm />
                         </Accordion.Body>
                     </Accordion.Item>
-                    <Accordion.Item eventKey="1">
+                    <Accordion.Item eventKey="1" style={{"backgroundColor": "#EBDEF0"}}>
                         <Accordion.Header>Delete Profile</Accordion.Header>
                         <Accordion.Body style={{"backgroundColor": "#F4F6F6"}}>
                             <UserDeletePortal />
