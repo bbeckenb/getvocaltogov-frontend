@@ -39,7 +39,7 @@ function PostCard({ id, title, body, link, userId, tag, createdAt, location, han
                     </p>
                 <hr className="my-2" />                 
                 <ListGroup className="list-group-flush">
-                    {link ? <ListGroupItem style={{"backgroundColor": "#FAFAFA"}}><a href={link}>See Article</a></ListGroupItem> : null}
+                    {link ? <ListGroupItem style={{"backgroundColor": "#FAFAFA"}}><a target="_blank" rel="noopener noreferrer" href={link}>See Article</a></ListGroupItem> : null}
                     <ListGroupItem style={{"backgroundColor": "#FAFAFA"}}><b>Tag: </b><Badge pill bg="info">{tag}</Badge></ListGroupItem>
                     <ListGroupItem style={{"backgroundColor": "#FAFAFA"}}><b>Location: </b><Badge pill bg="info">{location}</Badge></ListGroupItem>
                 </ListGroup>
