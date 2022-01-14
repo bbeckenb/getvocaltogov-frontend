@@ -54,14 +54,14 @@ function TemplateListShared({ type = 'full', templates, setTemplates }) {
     return (
         <>  
             <Accordion>
-                <Accordion.Item eventKey="0">
+                <Accordion.Item eventKey="0" style={{"backgroundColor": "#F1948A"}}>
                     <Accordion.Header>Search for Templates</Accordion.Header>
                     <Accordion.Body style={{"backgroundColor": "#F4F6F6"}}>
                         <TemplateSearchForm searchTemplates={searchTemplates} />
                     </Accordion.Body>
                 </Accordion.Item>
                 {type === 'favorited' ? null : 
-                    <Accordion.Item eventKey="1">
+                    <Accordion.Item eventKey="1" style={{"backgroundColor": "#F1948A"}}>
                         <Accordion.Header>Create New Template</Accordion.Header>
                         <Accordion.Body style={{"backgroundColor": "#F4F6F6"}}>
                             <TemplateCreateForm addTemplate={addTemplate}/>

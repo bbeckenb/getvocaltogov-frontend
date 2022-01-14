@@ -54,14 +54,14 @@ function PostList({ type = 'full', posts, setPosts }) {
     return (
         <>  
             <Accordion>
-                <Accordion.Item eventKey="0">
+                <Accordion.Item eventKey="0" style={{"backgroundColor": "#42A5F5"}}>
                     <Accordion.Header>Search for Post</Accordion.Header>
                     <Accordion.Body style={{"backgroundColor": "#F4F6F6"}}>
                         <PostSearchForm searchPosts={searchPosts} />
                     </Accordion.Body>
                 </Accordion.Item>
                 {type === 'bookmarked' ? null : 
-                    <Accordion.Item eventKey="1">
+                    <Accordion.Item eventKey="1" style={{"backgroundColor": "#42A5F5"}}>
                         <Accordion.Header>Create New Post</Accordion.Header>
                         <Accordion.Body style={{"backgroundColor": "#F4F6F6"}}>
                             <PostCreateForm addPost={addPost} />
