@@ -14,7 +14,7 @@ const postSearchSchema = Yup.object().shape({
         .notRequired()
         .when('body', {
             is: (value) => value?.length,
-            then: (rule) => rule.max(700, 'Body must not exceed 60 characters'),
+            then: (rule) => rule.max(700, 'Body query must not exceed 700 characters'),
     }),  
     location: Yup.string()
         .nullable()
