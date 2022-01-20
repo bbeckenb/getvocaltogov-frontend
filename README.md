@@ -144,7 +144,11 @@ To reduce barrier of entry of someone trying to experience the App, I integrated
 Once a user is logged in, they can navigate to 'Profile' either through the navbar or from the homepage when they click on the 'Options' button.
 
 **Home Options**
-![login](src/images/homeOptions.png)
+![Home Options](src/images/homeOptions.png)
+
+Once on their Profile page, they will see drop-down options to 'Edit Profile' as 'User Options' is default on the 'Profile' page. When they expand it, they will see an 'Edit Profile' form auto-populated with their current User information. To edit their information, they simply need to change the information stored in the current fields, enter the correct password to confirm their changes, and click 'Edit User' at the bottom of the form. 
+
+![Edit Profile](src/images/editProfileForm.png)
 
 they will see 'Update Profile' as an option on their navbar and under 'User Options' on the dashboard, there is an 'Update Profile' button a user can click which will lead them to a portal to edit their profile. All of their current information is populated into the input fields of the form. Once they have updated their information to the desired values and enter their password at the bottom to confirm the changes, they can click 'Update' to have their changes made in the database.
 
