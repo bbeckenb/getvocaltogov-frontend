@@ -53,12 +53,13 @@ This website acts as a vehicle lower barrier for citizens to petition their repr
 <a name="Front-end"></a>
 
 ### Front-end
-JavaScript, Axios, HTML5, CSS, Bootstrap, jQuery, GoogleChart.js
+React, Axios, React-Bootstrap, React Router, React Hook Form, Yup schema validation
 
 <a name="Back-end"></a>
 
 ### Back-end
-Python, Flask, ORM: SQLAlchemy, Jinja2, WTForms, Bcrypt, Cron
+[ Link to Node.js Express backend API ](https://github.com/bbeckenb/GetVocalToGov)
+Node.js, Express, Node-postgres, jsonwebtoken, jsonschema, bcrypt, winston, Axios, dotenv, colors, cors
 
 <a name="Database"></a>
 
@@ -68,8 +69,8 @@ Postgres
 <a name="APIs"></a>
 
 ### APIs integrated
-- [ Plaid ](https://plaid.com/docs/api)
-- [ Twilio ](https://www.twilio.com/docs)
+- [ Google Civic Information API ](https://developers.google.com/civic-information/docs/v2)
+- [ EasyPost ](https://www.easypost.com/docs/api)
 
 <a name="Schema"></a>
 
