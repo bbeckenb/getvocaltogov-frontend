@@ -75,7 +75,7 @@ Postgres
 <a name="Schema"></a>
 
 ## Schema
-![Schema](static/images/readme/Schema.png)
+![Schema](src/images/schema.png)
 
 <a name="Deployment"></a>
 
