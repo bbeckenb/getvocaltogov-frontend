@@ -122,6 +122,9 @@ To give the User messages from the API in response to their inputs, each form ha
 'bad address'
 ![duplicate username](src/images/badAddressFormAlert.png)
 
+'success' (from Template Creation
+![success](src/images/successFormAlert.png)
+
 <a name="LoginAndDemo"></a>
 
 #### Login and Demo User
