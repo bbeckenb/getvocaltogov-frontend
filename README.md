@@ -80,7 +80,7 @@ Postgres
 <a name="Deployment"></a>
 
 ## Deployment
-CashView is deployed on heroku at [https://wealth-and-budget.herokuapp.com/](https://wealth-and-budget.herokuapp.com/)
+The Front-End React App is deployed on surge at [https://getvocaltogov.surge.sh/](https://getvocaltogov.surge.sh/)
 
 <a name="Developer"></a>
 
