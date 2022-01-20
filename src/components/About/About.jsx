@@ -85,7 +85,7 @@ function About() {
         <Row>
           <Col sm={12} md={6}>
             <Card.Title style={{'marginTop': '30px'}}>Let's Connect!</Card.Title>
-            <Card.Text>Hello! Thank you very much for taking the time to check out CashView! I am a Software Engineer in the Jacksonville, Florida area, 
+            <Card.Text>Hello! Thank you very much for taking the time to check out GetVocalToGov! I am a Software Engineer in the Jacksonville, Florida area, 
               passionate about building tools to help people! If you are looking for a motivated Engineer, please feel free 
               to <a href="mailto:brycebeckenbach@gmail.com">reach out</a> to see how I can help your organization!</Card.Text>
               <div className="social-links-container">

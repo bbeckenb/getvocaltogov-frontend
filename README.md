@@ -58,7 +58,7 @@ React, Axios, React-Bootstrap, React Router, React Hook Form, Yup schema validat
 <a name="Back-end"></a>
 
 ### Back-end
-[ Separate Repo ](https://github.com/bbeckenb/GetVocalToGov) - 
+[ API Repo ](https://github.com/bbeckenb/GetVocalToGov) - 
 Node.js, Express, Node-postgres, jsonwebtoken, jsonschema, bcrypt, winston, Axios, dotenv, colors, cors
 
 <a name="Database"></a>
