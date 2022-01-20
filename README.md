@@ -111,6 +111,17 @@ Yup is used on the React Hook Form for schema validation to ensure the API is re
 
 ![Form Validation](src/images/RegistrationFormValidation.png)
 
+To give the User messages from the API in response to their inputs, each form has a built in alert box that displays text and color indicitive of the situation. It starts as a blue 'welcome' message, but will display red if there is an error from the [ GetVocalToGov API ](https://github.com/bbeckenb/GetVocalToGov). Then will display a green 'success' message or re-route to the appropriate place depending on the form and situation. For registration, it re-routes home.
+
+'welcome'
+![welcome](src/images/welcomeFormAlert.png)
+
+'duplicate username'
+![duplicate username](src/images/duplicateUsernameFormAlert.png)
+
+'bad address'
+![duplicate username](src/images/badAddressFormAlert.png)
+
 <a name="LoginAndDemo"></a>
 
 #### Login and Demo User
