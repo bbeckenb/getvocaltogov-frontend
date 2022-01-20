@@ -7,13 +7,14 @@
 ## Description:
 This website acts as a vehicle lower barrier for citizens to petition their representatives and exchange ideas on current events. 
 - It allows users to make a profile or utilize a demo account to experience core features. 
-- Users input their address (or can use the demo account address) to pull the representatives supporting that region, from the President of The United States to local government officials
-- Users can create Posts about current events
-- Users can 'bookmark' other User Posts to view later
-- Users can create Templates of a message they would send to their representative
-- Users can 'favorite' other User Templates for quick access
-- Users can 'quick copy' Templates 
-- Users can access their Representatives for the validated address they gave with a Template copied to their clipboard and quickly pass their message using one of the methods of contacting their Representative on the Representative's card
+- Users input their address (or can use the demo account address) to pull the representatives supporting that region, from the President of The United States to local government 
+- Users can:
+    - create Posts about current events
+    - 'bookmark' other User Posts to view later
+    - create Templates of a message they would send to their representative
+    - 'favorite' other User Templates for quick access
+    - 'quick copy' Templates 
+    - access their Representatives for the validated address they gave with a Template copied to their clipboard and quickly pass their message using one of the methods of contacting their Representative on the Representative's card
 - This was completed in approximately 60 hours as part of Springboard Software Engineering Program.
 
 ## Table of Contents
