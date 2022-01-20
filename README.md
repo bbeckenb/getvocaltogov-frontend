@@ -122,13 +122,15 @@ To give the User messages from the API in response to their inputs, each form ha
 'bad address'
 ![duplicate username](src/images/badAddressFormAlert.png)
 
-'success' (from Template Creation
+'success' (from Template Creation)
 ![success](src/images/successFormAlert.png)
 
 <a name="LoginAndDemo"></a>
 
 #### Login and Demo User
-Login authentication occurs on the User model as well. If a User logs in with correct username/password pair, User authenticate method returns the User instance, if not it returns False.
+User Login operates very similarly to Registration. It uses a form to gather the username and password credentials to pass to the [ API ](https://github.com/bbeckenb/GetVocalToGov). The API runs the inputted password through a bcrypt compare function with the hash output stored in the database. If the compare returns bool True, the API returns a signed JSON Web Token (JWT). The JWT is stored in a piece of state (token using setToken) and on the GetVocalToGovApi class for further calls that require User authorization. A second call is then made to the [ GetVocalToGov API ](https://github.com/bbeckenb/GetVocalToGov) to get the User details which are stored in a piece of state (currUser using setCurrUser). 
+
+![login](src/images/login.png)
 
 To reduce barrier of entry of someone trying to experience the App, I integrated a 'Demo User' button on the Login page. This uses JavaScript and jQuery behind the scenes to enter credentials:
 - Username: Test_User
