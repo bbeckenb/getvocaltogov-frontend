@@ -1,15 +1,19 @@
 # GetVocalToGov
 ## Exchange your ideas on current events and let your thoughts be heard!
 
-[![CashView App](static/images/readme/DisplayView.png)](https://wealth-and-budget.herokuapp.com/)
+[![GetVocalToGov App](src/images/getVocalToGovDisplayView.png)](https://getvocaltogov.surge.sh/)
 
 
 ## Description:
-This website acts as a personal finance dashboard. 
-- It allows users to make a profile and pull financial data from all of their Financial Institutions into one place. 
-- The app itself aggregates balances from all of the user's Accounts, displaying their overall worth (with and without loans). 
-- It uses graphics to illustrate the breakdown of the user's Financial Institutions and what percentage of their overall wealth is in each. 
-- Below the dashboard there is an Account-level breakdown of each Financial Institution listed that displays the individual balances based on Account type. 
+This website acts as a vehicle lower barrier for citizens to petition their representatives and exchange ideas on current events. 
+- It allows users to make a profile or utilize a demo account to experience core features. 
+- Users input their address (or can use the demo account address) to pull the representatives supporting that region, from the President of The United States to local government officials
+- Users can create Posts about current events
+- Users can 'bookmark' other User Posts to view later
+- Users can create Templates of a message they would send to their representative
+- Users can 'favorite' other User Templates for quick access
+- Users can 'quick copy' Templates 
+- Users can access their Representatives for the validated address they gave with a Template copied to their clipboard and quickly pass their message using one of the methods of contacting their Representative on the Representative's card
 - This was completed in approximately 60 hours as part of Springboard Software Engineering Program.
 
 ## Table of Contents
