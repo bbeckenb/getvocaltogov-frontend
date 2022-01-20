@@ -146,13 +146,10 @@ Once a user is logged in, they can navigate to 'Profile' either through the navb
 **Home Options**
 ![Home Options](src/images/homeOptions.png)
 
-Once on their Profile page, they will see drop-down options to 'Edit Profile' as 'User Options' is default on the 'Profile' page. When they expand it, they will see an 'Edit Profile' form auto-populated with their current User information. To edit their information, they simply need to change the information stored in the current fields, enter the correct password to confirm their changes, and click 'Edit User' at the bottom of the form. 
+Once on their Profile page, they will see drop-down options to 'Edit Profile' as 'User Options' is default on the 'Profile' page. When they expand it, they will see an 'Edit Profile' form auto-populated with their current User information. To edit their information, they simply need to change the information stored in the current fields, enter the correct password to confirm their changes, and click 'Edit User' at the bottom of the form. The form validation will operate the same as [ Registration ](#Registration). If the data is accepted, the [ API ](https://github.com/bbeckenb/GetVocalToGov) will authenticate the password provided with the original username, the address will be verified, and if all that passes, the database will be updated and an updated JWT will be provided. The JWT is stored in a piece of state (token using setToken) and on the GetVocalToGovApi class for further calls that require User authorization. A second call is then made to the [ GetVocalToGov API ](https://github.com/bbeckenb/GetVocalToGov) to get the User details which are stored in a piece of state (currUser using setCurrUser). 
 
 ![Edit Profile](src/images/editProfileForm.png)
 
-they will see 'Update Profile' as an option on their navbar and under 'User Options' on the dashboard, there is an 'Update Profile' button a user can click which will lead them to a portal to edit their profile. All of their current information is populated into the input fields of the form. Once they have updated their information to the desired values and enter their password at the bottom to confirm the changes, they can click 'Update' to have their changes made in the database.
-
-![UpdateProfile](static/images/readme/UpdateProfile.png)
 
 <a name="DeleteUser"></a>
 
