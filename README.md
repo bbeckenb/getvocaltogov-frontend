@@ -103,9 +103,13 @@ Please feel free to reach out!
 <a name="Registration"></a>
 
 #### Registration
-User Registration goes through the User model on the backend, user enters desired username, password, phone number, first name, last name, and desired Account type (sandbox or development (more on that later)). All information is required and username must be unique for the model to generate a User instance. Password is run through Bcrypt hashing function where the output is stored in the database.
+User Registration uses a form to gather the information and pass it through the [ API ](https://github.com/bbeckenb/GetVocalToGov), to create the User or report back what is wrong with the inputted data. User enters desired username, password, first name, last name, street, city, state, zip, and email. All information is required, username (as the primary key for the users table) must be unique for the model to generate a User instance. Password is run through Bcrypt hashing function where the output is stored in the database. The address information (street, city, state, and zip) are verified through the EasyPost API. If the address passes verification, the User instance is stored in the database and a JSON Web Token is sent back to the front-end to be stored in a piece of state (token using setToken) and on the GetVocalToGovApi class for further calls that require User authorization. A second call is then made to the [ GetVocalToGov API ](https://github.com/bbeckenb/GetVocalToGov) to get the User details which are stored in a piece of state (currUser using setCurrUser). 
 
-![Signup](static/images/readme/signup.png)
+![Signup](src/images/signup.png)
+
+Yup is used on the React Hook Form for schema validation to ensure the API is receiving the best data it can enforce. If the data falls out of specified parameters, the form halts submission and a specific message populates for the field in question.  
+
+![Form Validation](src/images/RegistrationFormValidation.png)
 
 <a name="LoginAndDemo"></a>
 
