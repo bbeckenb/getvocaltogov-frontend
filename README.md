@@ -291,6 +291,28 @@ A Template, in this context, is a User generated title and body of an email one 
 <a name="AddTemplate"></a>
 
 #### Adding a Template
+There are three locations that allow a User to create a new Template. The first is by navigating to the Templates feed by clicking 'Templates' on the navbar or under the 'Options' drop-down on the home page. The second is by navigating to the 'Profile' page and selecting the 'Templates Created' tab on the secondary navbar. The third is on a [Post's details page](#PostDetails).
+
+**Navigating to Templates Feed**
+![Home Options](src/images/homeOptions.png)
+
+**Templates Feed**
+Templates Feed displays all Templates from all Users and can be filtered (more on that later)
+![Templates Feed](src/images/templatesFeed.png)
+
+**Templates Created**
+![Templates Created](src/images/TemplatesCreated.png)
+
+**Post Details Create Related Template**
+![Posts Details](src/images/postDetailsCreateTemplate.png)
+
+The behavior is the same in all three locations, but to explain the process we will go through the 'Templates Feed'. Once on the Templates Feed (accessible to Users and non-Users, however the capability to create a Template is only available to logged in Users), the User will see the drop-down option to 'Create New Template'.
+
+**Create New Template**
+![Create Template](src/images/createTemplate.png)
+
+The User fills in the fields ('Location' and 'Tag' are drop-down select fields, Link is nullable), then clicks 'Create Template' at the bottom of the field. Form validation of the front-end will ensure all fields are within tolerance. The form data will then be sent to the [ GetVocalToGov API ](https://github.com/bbeckenb/GetVocalToGov) which will perform its own schema validation, then if all data is within tolerance, store the record in the database and pass back additional information (created_at). This instance will immediately be able for viewing on the 'Templates Feed' or 'Templates Created' list. 
+
 If an Account is elegible (is of type 'credit' or sub-type 'checking'), it will have a 'Create BudgetTracker' button displayed at the bottom. Clicking this will bring the user to a BudgetTracker creation form for that particular Account where they can enter their desired 'Monthly Budget Threshold' amount (must be greater than $0) and their desired Notification Frequency that they would like to receive text notifications at (must be between 1 and 15 days). These texts updates will occur at frequency multiples of the day frequency they enter (e.g. if they enter 2, they would receive a text notification every other day). This is enabled by a script that runs once each day to:
 - Update the most recent 'amount_spent' on BudgetTrackers (and all Accounts in the system)
 - See if the 'next_notification_date' on the BudgetTracker is equal to the current date
