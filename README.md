@@ -43,6 +43,8 @@ This website acts as a vehicle lower barrier for citizens to petition their repr
         - [ Adding a Template ](#AddTemplate)
         - [ Editing a Template ](#EditTemplate)
         - [ Deleting a Template ](#DeleteTemplate)
+        - [ Filtering Templates ](#FilterTemplates)
+        - [ Favorite Template ](#FavoriteTemplate)
     - [ Dashboard Features ](#DashboardFeatures)
 6. [ Running App Locally ](#RunningLocally)
     - [ Requirements ](#Requirements)
@@ -339,6 +341,49 @@ To delete a Template, the User has to have ownership (they must have created the
 ![Owned Template](src/images/templateOwned.png)
 
 If they click this 'Delete' button, the Template id along with the user token (to check for ownership) will be sent to [ GetVocalToGov API ](https://github.com/bbeckenb/GetVocalToGov). If they have ownership and the record exists, it will be deleted from the database, the front-end will be informed and updated by removing the Template in question.
+
+<a name="FilterTemplates"></a>
+
+#### Filtering Templates
+There are three Template Lists on the app that allow a User to filter the Templates. The first is by navigating to the Templates feed by clicking 'Templates' on the navbar or under the 'Options' drop-down on the home page. The second is by navigating to the 'Profile' page and selecting the 'Templates Created' tab on the secondary navbar. The third is by navigating to the 'Profile' page and selecting the 'Templates Favorited' tab on the secondary navbar. For the second two, you need to be logged in.
+
+**Navigating to Templates Feed**
+![Home Options](src/images/homeOptions.png)
+
+**Templates Feed**: Templates Feed displays all Templates from all Users
+![Templates Feed](src/images/TemplatesFeed.png)
+
+**Templates Created**: Templates Created shows a logged in User all of the Templates they have personally created
+![Templates Created](src/images/TemplatesCreated.png)
+
+**Templates Favorited**: Templates Favorited shows a logged in User all of the Templates they have Favorited (more on that later)
+![Templates Favorited](src/images/TemplatesFavorited.png)
+
+The behavior is the same in all locations, but to explain the process we will go through the 'Templates Feed'. Once on the Templates Feed (accessible to Users and non-Users, as is the 'Search for Template' functionality), the User will see the drop-down option to 'Search for Template'. Once clicked, this will present a 'Search Templates' form where the User can select any and all of search criteria 'title' (matching phrase), 'body' (matching phrase), 'location' (select field), and 'tag' (select field).
+
+**Search Templates**
+![Search Templates](src/images/searchTemplates.png)
+
+Once the User enters their search criteria and selects 'Search Templates' at the bottom of the form, the request will be sent to the [ GetVocalToGov API ](https://github.com/bbeckenb/GetVocalToGov). The database will be queried for records that match all filters. The resulting list will be sent and displayed on the front-end along with the search criteria in the form's alert message box.
+
+**Search Templates Success**
+![Search Templates Success](src/images/searchTemplatesSuccess.png)
+
+<a name="FavoritTemplate"></a>
+
+#### Favoriting a Templates
+Favoriting, in this context, is a feature meant to allow a User to tag a Template of interest to be more easily accessed when they want to find it again at a later time. This is a feature only accessible to a logged-in User. When logged-in viewing Templates, the User will see a yellow Favorite icon on all Templates. If it is outlined, the Template has not been tagged, if it is filled in, the Template has been tagged. The user can toggle Favorited status by clicking on the icon button.
+
+**Template unFavorited**
+![Template unFavorited](src/images/unFavorited.png)
+
+**Template Favorited**
+![Template Favorited](src/images/Favorited.png)
+
+For ease of finding a User's Favorited Templates, the User simply has to navigate to their 'Profile' page and select 'Templates Favorited' on the secondary navbar. This will show the User a list of their Favorited Templates from most recently created to least recently created.
+
+**Templates Favorited List**
+![Templates Favorited](src/images/TemplatesFavorited.png)
 
 <a name="DashboardFeatures"></a>
 
