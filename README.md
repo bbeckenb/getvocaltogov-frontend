@@ -241,7 +241,7 @@ Posts Created shows a logged in User all of the Posts they have personally creat
 
 **Posts Bookmarked**
 Posts Bookmarked shows a logged in User all of the Posts they have bookmarked (more on that later)
-![Posts Created](src/images/postsBookmarked.png)
+![Posts Bookmarked](src/images/postsBookmarked.png)
 
 The behavior is the same in all locations, but to explain the process we will go through the 'Posts Feed'. Once on the Posts Feed (accessible to Users and non-Users, as is the 'Search for Post' functionality), the User will see the drop-down option to 'Search for Post'. Once clicked, this will present a 'Search Posts' form where the User can select any and all of search criteria 'title' (matching phrase), 'body' (matching phrase), 'location' (select field), and 'tag' (select field).
 
@@ -256,13 +256,19 @@ Once the User enters their search criteria and selects 'Search Posts' at the bot
 <a name="BookmarkPost"></a>
 
 #### Bookmarking a Posts
-Bookmarking, in this context, is a feature meant to allow a User to tag a Post of interest to be more easily accessed when they want to find it again at a later time. This is a feature only accessible to a logged-in User. When logged-in viewing Posts, the User will see a yellow bookmark icon on all Posts. If it is outlined, the Post has not been tagged, if it is filled in, the Post has been tagged.
+Bookmarking, in this context, is a feature meant to allow a User to tag a Post of interest to be more easily accessed when they want to find it again at a later time. This is a feature only accessible to a logged-in User. When logged-in viewing Posts, the User will see a yellow bookmark icon on all Posts. If it is outlined, the Post has not been tagged, if it is filled in, the Post has been tagged. The user can toggle bookmarked status by clicking on the icon button.
 
 **Post unbookmarked**
 ![Post unbookmarked](src/images/unBookmarked.png)
 
 **Post bookmarked**
 ![Post bookmarked](src/images/bookmarked.png)
+
+For ease of finding a User's bookmarked Posts, the User simply has to navigate to their 'Profile' page and select 'Posts Bookmarked' on the secondary navbar. This will show the User a list of their Bookmarked posts from most recently created to least recently created.
+
+**Posts Bookmarked**
+Posts Bookmarked shows a logged in User all of the Posts they have bookmarked (more on that later)
+![Posts Bookmarked](src/images/postsBookmarked.png)
 
 <a name="BTFeatures"></a>
 
