@@ -208,6 +208,9 @@ If they do not, they will only see an option to view 'Details'.
 
 If they click on 'Edit' on a Post they own, the User will be redirected to an Edit Post Portal for that particular Post. The form will be auto-populated with the current data of the Post in question. The User simply changes whichever fields they want to alter and clicks 'Edit Post' at the bottom of the form. Form validation of the front-end will ensure all fields are within tolerance. The form data will then be sent to the [ GetVocalToGov API ](https://github.com/bbeckenb/GetVocalToGov) which will perform its own schema validation, then if all data is within tolerance, store the record updates in the database. The updated instance will immediately be able for viewing on the 'Posts Feed' or 'Posts Created' list. 
 
+**Edit Post Portal**
+![Edit Post](src/images/editPost.png)
+
 For each Financial Institution on the dashboard, there is an 'Update' icon. This is for manual refreshing of Account balances. This will make a call to the back-end to grab all the Plaid Account IDs associated with that Financial Institution in the CashView database and get the most up-to-date balance information for these Accounts from Plaid. This data will be sent back to the front-end and the HTML will be updated to reflect the most recent balances.
 
 *(Top right blue refresh icon)*
