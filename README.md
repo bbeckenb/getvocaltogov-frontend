@@ -315,15 +315,15 @@ The User fills in the fields, then clicks 'Create Template' at the bottom of the
 <a name="EditTemplate"></a>
 
 #### Editing a Template
-To update a Post, the User has to have ownership (they must have created the Post to have ownership) of the Post in question. If they do, they will see an option to 'Edit' at the bottom of the Post:
+To update a Template, the User has to have ownership (they must have created the Template to have ownership) of the Template in question. If they do, they will see an option to 'Edit' at the bottom of the Template:
 
-**Owned Post Example**
-![Owned Post](src/images/postOwned.png)
+**Owned Template Example**
+![Owned Template](src/images/templateOwned.png)
 
-If they do not, they will only see an option to view 'Details'.
+If they do not, there will be no options.
 
 **unOwned Post Example**
-![Post](src/images/Post.png)
+![Post](src/images/unownedTemplate.png)
 
 If they click on 'Edit' on a Post they own, the User will be redirected to an Edit Post Portal for that particular Post. The form will be auto-populated with the current data of the Post in question. The User simply changes whichever fields they want to alter and clicks 'Edit Post' at the bottom of the form. Form validation of the front-end will ensure all fields are within tolerance. The form data will then be sent to the [ GetVocalToGov API ](https://github.com/bbeckenb/GetVocalToGov) which will perform its own schema validation, then if all data is within tolerance, store the record updates in the database. The updated instance will immediately be able for viewing on the 'Posts Feed' or 'Posts Created' list. 
 
