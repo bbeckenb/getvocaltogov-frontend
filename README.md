@@ -258,7 +258,11 @@ Once the User enters their search criteria and selects 'Search Posts' at the bot
 #### Bookmarking a Posts
 Bookmarking, in this context, is a feature meant to allow a User to tag a Post of interest to be more easily accessed when they want to find it again at a later time. This is a feature only accessible to a logged-in User. When logged-in viewing Posts, the User will see a yellow bookmark icon on all Posts. If it is outlined, the Post has not been tagged, if it is filled in, the Post has been tagged.
 
+**Post unbookmarked**
+![Post unbookmarked](src/images/unBookmarked.png)
 
+**Post bookmarked**
+![Post bookmarked](src/images/bookmarked.png)
 
 <a name="BTFeatures"></a>
 
