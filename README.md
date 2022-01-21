@@ -168,7 +168,10 @@ If they click 'Cancel', the prompt will revert back to the original intro messag
 <a name="PostFeatures"></a>
 
 ### Post Features
-A Post, in this context, is a User generated record containing information and commentary about a current event. Users can create then edit and/or delete Posts they own. Any User can read or bookmark/unbookmark a Post from the main Post feed. Posts are meant to create awareness of current events and to inspire Users to generate Templates to petition their Representatives.
+A Post, in this context, is a User generated record containing information and commentary about a current event. Users can create then edit and/or delete Posts they own. Any User can read or bookmark/unbookmark a Post from the main Post feed. Posts are meant to create awareness of current events and to inspire Users to generate Templates to petition their Representatives. They consist of a title, body (to assert whatever the Post is about), link to article/reference (nullable), tag (to mark category), created_at (timestamp), and location (what state the post is referencing or if it is a federal issue, use District of Columbia). 
+
+**Post Example**
+![Post](src/images/Post.png)
 
 <a name="AddPost"></a>
 
@@ -181,7 +184,7 @@ There are two locations that allow a User to create a new Post. The first is by 
 **Posts Feed**
 ![Posts Feed](src/images/postsFeed.png)
 
-Once on the Posts Feed
+Once on the Posts Feed (accessible to Users and non-Users), the User will see the drop-down option to 'Create New Post'
 
 Using the Plaid API, a user can securely add their credentials to Plaid's Link interface that is embedded in the dashboard. **These credentials are not stored in the any area of CashView at any point**. To avoid this being an issue, I made sure users that sign up have the option of having a **development** Account, which deals with real bank data, or a **sandbox** Account, which deals with dummy bank Accounts from Plaid. The Demo user experience is a **sandbox** Account as well. 
 
