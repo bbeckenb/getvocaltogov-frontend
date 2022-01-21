@@ -187,41 +187,12 @@ There are two locations that allow a User to create a new Post. The first is by 
 **Posts Created**
 ![Posts Created](src/images/postsCreated.png)
 
-The behavior is the same in both locations, but to explain the process we will go through the 'Posts Feed'. Once on the Posts Feed (accessible to Users and non-Users), the User will see the drop-down option to 'Create New Post'.
+The behavior is the same in both locations, but to explain the process we will go through the 'Posts Feed'. Once on the Posts Feed (accessible to Users and non-Users, however the capability to create a post is only available to logged in Users), the User will see the drop-down option to 'Create New Post'.
 
 **Create New Post**
 ![Posts Feed](src/images/createPost.png)
 
-Using the Plaid API, a user can securely add their credentials to Plaid's Link interface that is embedded in the dashboard. **These credentials are not stored in the any area of CashView at any point**. To avoid this being an issue, I made sure users that sign up have the option of having a **development** Account, which deals with real bank data, or a **sandbox** Account, which deals with dummy bank Accounts from Plaid. The Demo user experience is a **sandbox** Account as well. 
-
-Once on the dashboard page, a user clicks on 'Link Institution' under 'User Options'.
-
-![Link Institution](static/images/readme/LinkInstitution.png)
-
-After the user does this, Plaid's Link interface experience will appear. You will be able to choose your Financial Institution of choice from a list, then enter the required credentials to pull the data into CashView. If you have a **development** Account, you enter your real credentials, if you have a **sandbox** Account you enter the information under 'User Options' in the image above (can also be seen at the footer of the Link portal):
-- Username: user_good 
-- Password: pass_good
-
-![Link Portal](static/images/readme/PlaidLinkPortal.png)
-
-If the correct information is entered, CashView will go through the [ Plaid Token exchange process ](https://plaid.com/docs/link/) and receive an **access_token** associated with the specified Financial Institution. Using this access_token, the app makes two further API calls to Plaid:
-1. To retrieve data on the Financial Institution (called an 'item' in Plaid's vernacular) [see Response Fields](https://plaid.com/docs/api/institutions/#institutionsget_by_id)
-2. To retrieve data on Accounts held by that Financial Institution [see Response Fields](https://plaid.com/docs/api/products/#Accountsbalanceget)
-
-Financial Institution and Account/s instances are created in the CashView database then json data is sent to the dashboard to create the required HTML to represent the instances. If a user already has Financial Institutions and Accounts associated with their User instance, Jinja2 templates create the required HTML upon page load.
-
-*(Financial Institution in CashView Dashboard)*
-![New Post](static/images/readme/newPost.png)
-
-*(Same Financial Institution in CashView Dashboard with some Accounts deleted and view uncollapsed)*
-![New Accounts](static/images/readme/newAccounts.png)
-
-**NOTE:** Due to the fact I am using the free tier of Plaid's API, API calls for Account retrieval take upwards of 30 seconds. Because this is deployed on Heroku and their dynos timeout after a 30 second wait **the developer User Account type will not allow you to connect your actual Accounts on the heroku deployment of CashView**. However, it does work on local deployment, even though you have to wait ~40 seconds (what I benchmarked). I checked with Plaid's support team and they confirmed that the free tier of their API service would likely have longer wait times while the premium tier would see 2-3 second waits.
-
-*(Confirmation of long API wait times for free tier of service)*
-![New Accounts](static/images/readme/PlaidSupportEmail.png)
-
-<a name="UpdatePost"></a>
+The User fills in the fields ('Location' and 'Tag' are drop-down select fields), then clicks 'Create Post' at the bottom of the field. Form validation of the front-end will ensure all fields are within tolerance. The form data will then be sent to the [ GetVocalToGov API ](https://github.com/bbeckenb/GetVocalToGov) which will perform its own schema validation, then if all data is within tolerance, store the record in the database and pass back additional information (created_at).  
 
 #### Updating Post
 For each Financial Institution on the dashboard, there is an 'Update' icon. This is for manual refreshing of Account balances. This will make a call to the back-end to grab all the Plaid Account IDs associated with that Financial Institution in the CashView database and get the most up-to-date balance information for these Accounts from Plaid. This data will be sent back to the front-end and the HTML will be updated to reflect the most recent balances.
