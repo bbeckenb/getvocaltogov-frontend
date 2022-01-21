@@ -267,7 +267,6 @@ Bookmarking, in this context, is a feature meant to allow a User to tag a Post o
 For ease of finding a User's bookmarked Posts, the User simply has to navigate to their 'Profile' page and select 'Posts Bookmarked' on the secondary navbar. This will show the User a list of their Bookmarked posts from most recently created to least recently created.
 
 **Posts Bookmarked**
-Posts Bookmarked shows a logged in User all of the Posts they have bookmarked (more on that later)
 ![Posts Bookmarked](src/images/postsBookmarked.png)
 
 <a name="BTFeatures"></a>
