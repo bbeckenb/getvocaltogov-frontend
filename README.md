@@ -165,13 +165,14 @@ When they click 'Delete' once, they will see the warning text asking them to con
 
 If they click 'Cancel', the prompt will revert back to the original intro message. If they click 'Delete' again, the front-end will send a command to the [ GetVocalToGov API ](https://github.com/bbeckenb/GetVocalToGov) to delete that User instance. If it is the demoUser, the API will send a message to the front-end that the demoUser profile 'cannot be deleted or modified'. If it is not the demoUser, that User instance will be removed from the database and the front-end will clear the token and currUser pieces of state, then redirect to the no-user version of the home page.
 
-<a name="FandAFeatures"></a>
+<a name="PostFeatures"></a>
 
-### Financial Institution and Account Features
+### Post Features
+A Post, in this context, is a User generated record containing information and commentary about a current event. Users can create then edit and/or delete Posts they own. Any User can read or bookmark/unbookmark a Post from the main Post feed. Posts are meant to create awareness of current events and to inspire Users to generate Templates to petition their Representatives.
 
-<a name="AddUFI"></a>
+<a name="AddPost"></a>
 
-#### Adding a Financial Institution and Accounts
+#### Adding a Post
 Using the Plaid API, a user can securely add their credentials to Plaid's Link interface that is embedded in the dashboard. **These credentials are not stored in the any area of CashView at any point**. To avoid this being an issue, I made sure users that sign up have the option of having a **development** Account, which deals with real bank data, or a **sandbox** Account, which deals with dummy bank Accounts from Plaid. The Demo user experience is a **sandbox** Account as well. 
 
 Once on the dashboard page, a user clicks on 'Link Institution' under 'User Options'.
@@ -191,7 +192,7 @@ If the correct information is entered, CashView will go through the [ Plaid Toke
 Financial Institution and Account/s instances are created in the CashView database then json data is sent to the dashboard to create the required HTML to represent the instances. If a user already has Financial Institutions and Accounts associated with their User instance, Jinja2 templates create the required HTML upon page load.
 
 *(Financial Institution in CashView Dashboard)*
-![New UFI](static/images/readme/newUFI.png)
+![New Post](static/images/readme/newPost.png)
 
 *(Same Financial Institution in CashView Dashboard with some Accounts deleted and view uncollapsed)*
 ![New Accounts](static/images/readme/newAccounts.png)
@@ -201,21 +202,21 @@ Financial Institution and Account/s instances are created in the CashView databa
 *(Confirmation of long API wait times for free tier of service)*
 ![New Accounts](static/images/readme/PlaidSupportEmail.png)
 
-<a name="UpdateUFI"></a>
+<a name="UpdatePost"></a>
 
-#### Updating Financial Institution and Accounts
+#### Updating Post
 For each Financial Institution on the dashboard, there is an 'Update' icon. This is for manual refreshing of Account balances. This will make a call to the back-end to grab all the Plaid Account IDs associated with that Financial Institution in the CashView database and get the most up-to-date balance information for these Accounts from Plaid. This data will be sent back to the front-end and the HTML will be updated to reflect the most recent balances.
 
 *(Top right blue refresh icon)*
-![Update UFI](static/images/readme/UpdateUFI.png)
+![Update Post](static/images/readme/UpdatePost.png)
 
-<a name="DeleteUFI"></a>
+<a name="DeletePost"></a>
 
 #### Deleting Financial Institution and Accounts
 For each Financial Institution and Account (uncollapsed) on the dashboard, there is a 'Delete' icon. This is for deletion of desired Accounts you do not want to track and Financial Institutions, respectively. This will make a call to the back-end to delete the desired Account or Financial Institution in the CashView database. Upon deletion, your overall wealth and balance information at the Financial Institution level will change (if you delete Accounts from a Financial Institution). Updated roll-up balance data will be sent back to the front-end and the HTML will be updated to reflect the most recent balances.
 
 *(Financial Institution deletion: Top right of 'Chase', red deletion button icon)*
-![Delete UFI](static/images/readme/UpdateUFI.png)
+![Delete Post](static/images/readme/UpdatePost.png)
 
 *(Account deletion: Top right of 'Plaid Checking' red deletion button icon)*
 ![Delete Account](static/images/readme/DeleteAccount.png)
