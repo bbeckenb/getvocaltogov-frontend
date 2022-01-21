@@ -155,7 +155,12 @@ Once on their Profile page, they will see drop-down options to 'Edit Profile' as
 <a name="DeleteUser"></a>
 
 #### User Deletion
-Once a user is logged in, they will see an option to 'Delete Profile' under 'User Options'. Once they click this, their User instance will be removed from the database on the back-end and they will be redirected to the welcome page of CashView on the frontend. There is a cascading deletion set up in the database schema so all Financial Institutions, Accounts, and BudgetTrackers will be deleted as well.
+Once a User is logged in, they can navigate to 'Profile' either through the navbar or from the homepage when they click on the 'Options' button, same as navigating to [ User Editing ](#EditUser) above. They will see an option to 'Delete Profile' under 'User Options'. When they expand this drop-down, they will see the Delete User Portal.
+
+Delete User Portal
+![Delete User Portal](src/images/deleteUserPortal.png)
+
+Once they click this, their User instance will be removed from the database on the back-end and they will be redirected to the welcome page of CashView on the frontend. There is a cascading deletion set up in the database schema so all Financial Institutions, Accounts, and BudgetTrackers will be deleted as well.
 
 <a name="FandAFeatures"></a>
 
