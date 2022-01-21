@@ -36,6 +36,7 @@ This website acts as a vehicle lower barrier for citizens to petition their repr
         - [ Adding a Post ](#AddPost)
         - [ Updating a Post ](#UpdatePost)
         - [ Deleting Post](#DeletePost)
+        - [ Filtering Posts ](#FilterPosts)
     - [ Template Features ](#TemplateFeatures)
         - [ Adding a Template ](#AddTemplate)
         - [ Editing a Template ](#EditTemplate)
@@ -211,21 +212,33 @@ If they click on 'Edit' on a Post they own, the User will be redirected to an Ed
 **Edit Post Portal**
 ![Edit Post](src/images/editPost.png)
 
-For each Financial Institution on the dashboard, there is an 'Update' icon. This is for manual refreshing of Account balances. This will make a call to the back-end to grab all the Plaid Account IDs associated with that Financial Institution in the CashView database and get the most up-to-date balance information for these Accounts from Plaid. This data will be sent back to the front-end and the HTML will be updated to reflect the most recent balances.
-
-*(Top right blue refresh icon)*
-![Update Post](static/images/readme/UpdatePost.png)
-
 <a name="DeletePost"></a>
 
-#### Deleting Financial Institution and Accounts
-For each Financial Institution and Account (uncollapsed) on the dashboard, there is a 'Delete' icon. This is for deletion of desired Accounts you do not want to track and Financial Institutions, respectively. This will make a call to the back-end to delete the desired Account or Financial Institution in the CashView database. Upon deletion, your overall wealth and balance information at the Financial Institution level will change (if you delete Accounts from a Financial Institution). Updated roll-up balance data will be sent back to the front-end and the HTML will be updated to reflect the most recent balances.
+#### Deleting Post
+To delete a Post, the User has to have ownership (they must have created the Post to have ownership) of the Post in question. If they do, they will see an option to 'Delete' at the bottom of the Post:
 
-*(Financial Institution deletion: Top right of 'Chase', red deletion button icon)*
-![Delete Post](static/images/readme/UpdatePost.png)
+**Owned Post Example**
+![Owned Post](src/images/postOwned.png)
 
-*(Account deletion: Top right of 'Plaid Checking' red deletion button icon)*
-![Delete Account](static/images/readme/DeleteAccount.png)
+If they click this 'Delete' button, the Post id along with the user token (to check for ownership) will be sent to [ GetVocalToGov API ](https://github.com/bbeckenb/GetVocalToGov). If they have ownership and the record exists, it will be deleted from the database, the front-end will be informed and updated by removing the Post in question.
+
+<a name="FilterPosts"></a>
+
+#### Filtering Posts
+There are three Post Lists on the app that allow a User to filter the Posts. The first is by navigating to the Posts feed by clicking 'Posts' on the navbar or under the 'Options' drop-down on the home page. The second is by navigating to the 'Profile' page and selecting the 'Posts Created' tab on the secondary navbar. The third is by navigating to the 'Profile' page and selecting the 'Posts Bookmarked' tab on the secondary navbar. For the second two, you need to be logged in.
+
+**Navigating to Posts Feed**
+![Home Options](src/images/homeOptions.png)
+
+**Posts Feed**
+Posts Feed displays all Posts from all Users and can be filtered (more on that later)
+![Posts Feed](src/images/postsFeed.png)
+
+**Posts Created**
+![Posts Created](src/images/postsCreated.png)
+
+**Posts Bookmarked**
+![Posts Created](src/images/postsBookmarked.png)
 
 <a name="BTFeatures"></a>
 
