@@ -351,13 +351,13 @@ There are three Template Lists on the app that allow a User to filter the Templa
 ![Home Options](src/images/homeOptions.png)
 
 **Templates Feed**: Templates Feed displays all Templates from all Users
-![Templates Feed](src/images/TemplatesFeed.png)
+![Templates Feed](src/images/templatesFeed.png)
 
 **Templates Created**: Templates Created shows a logged in User all of the Templates they have personally created
-![Templates Created](src/images/TemplatesCreated.png)
+![Templates Created](src/images/templatesCreated.png)
 
 **Templates Favorited**: Templates Favorited shows a logged in User all of the Templates they have Favorited (more on that later)
-![Templates Favorited](src/images/TemplatesFavorited.png)
+![Templates Favorited](src/images/templatesFavorited.png)
 
 The behavior is the same in all locations, but to explain the process we will go through the 'Templates Feed'. Once on the Templates Feed (accessible to Users and non-Users, as is the 'Search for Template' functionality), the User will see the drop-down option to 'Search for Template'. Once clicked, this will present a 'Search Templates' form where the User can select any and all of search criteria 'title' (matching phrase), 'body' (matching phrase), 'location' (select field), and 'tag' (select field).
 
