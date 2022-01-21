@@ -163,7 +163,7 @@ Delete User Portal
 When they click 'Delete' once, they will see the warning text asking them to confirm they want to delete their profile:
 ![Delete User Portal Warning](src/images/deleteUserPortalWarning.png)
 
-Once they click this, their User instance will be removed from the database on the back-end and they will be redirected to the welcome page of CashView on the frontend. There is a cascading deletion set up in the database schema so all Financial Institutions, Accounts, and BudgetTrackers will be deleted as well.
+If they click 'Cancel', the prompt will revert back to the original intro message. If they click 'Delete' again, the front-end will send a command to the [ GetVocalToGov API ](https://github.com/bbeckenb/GetVocalToGov) to delete that User instance. If it is the demoUser, the API will send a message to the front-end that the demoUser profile 'cannot be deleted or modified'. If it is not the demoUser, that User instance will be removed from the database and the front-end will clear the token and currUser pieces of state, then redirect to the no-user version of the home page.
 
 <a name="FandAFeatures"></a>
 
