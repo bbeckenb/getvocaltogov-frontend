@@ -330,16 +330,15 @@ If they click on 'Edit' on a Template they own, the User will be redirected to a
 **Edit Template Portal**
 ![Edit Template](src/images/editTemplate.png)
 
-<a name="DeleteBT"></a>
+<a name="DeleteTemplate"></a>
 
-#### Deleting a BudgetTracker
-To delete a BudgetTracker, navigate to the associated Account on the Dashboard where it lives. At the bottom of the BudgetTracker Card, click on the 'delete' icon. The BudgetTracker will be removed from the database and the HTML will return the 'Create BudgetTracker' button under the Account.
+#### Deleting a Template
+To delete a Template, the User has to have ownership (they must have created the Template to have ownership) of the Template in question. If they do, they will see an option to 'Delete' at the bottom of the Template:
 
-*(BudgetTracker Delete: Bottom of BudgetTracker red 'delete' icon)*
-![BT Delete](static/images/readme/BTEditorDelete.png)
+**Owned Template Example**
+![Owned Template](src/images/templateOwned.png)
 
-*(BudgetTracker Create Button returned)*
-![BT Create Button returned](static/images/readme/CreateBTButton.png)
+If they click this 'Delete' button, the Template id along with the user token (to check for ownership) will be sent to [ GetVocalToGov API ](https://github.com/bbeckenb/GetVocalToGov). If they have ownership and the record exists, it will be deleted from the database, the front-end will be informed and updated by removing the Template in question.
 
 <a name="DashboardFeatures"></a>
 
