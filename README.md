@@ -37,6 +37,7 @@ This website acts as a vehicle lower barrier for citizens to petition their repr
         - [ Updating a Post ](#UpdatePost)
         - [ Deleting Post](#DeletePost)
         - [ Filtering Posts ](#FilterPosts)
+        - [ Bookmark Post ](#BookmarkPost)
     - [ Template Features ](#TemplateFeatures)
         - [ Adding a Template ](#AddTemplate)
         - [ Editing a Template ](#EditTemplate)
@@ -251,6 +252,13 @@ Once the User enters their search criteria and selects 'Search Posts' at the bot
 
 **Search Posts Success**
 ![Search Posts Success](src/images/searchPostsSuccess.png)
+
+<a name="BookmarkPost"></a>
+
+#### Bookmarking a Posts
+Bookmarking, in this context, is a feature meant to allow a User to tag a Post of interest to be more easily accessed when they want to find it again at a later time. This is a feature only accessible to a logged-in User. When logged-in viewing Posts, the User will see a yellow bookmark icon on all Posts. If it is outlined, the Post has not been tagged, if it is filled in, the Post has been tagged.
+
+
 
 <a name="BTFeatures"></a>
 
