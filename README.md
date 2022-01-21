@@ -278,17 +278,19 @@ Post Details are available to logged-in Users and non logged-in visitors. When v
 **Post Details**
 ![Posts Details](src/images/postDetails.png)
 
-You can create a new Template you want associated to the Post you are viewing the details of by expanding the 'Create New Template For This Post' drop-down, filling out and submitting the form!
+You can create a new Template you want associated to the Post you are viewing the details of by expanding the 'Create New Template For This Post' drop-down, filling out and submitting the form! Probably a helpful time to explain what a Template is, Template Features section is right below this.
 
 **Post Details Create Related Template**
 ![Posts Details](src/images/postDetailsCreateTemplate.png)
 
-<a name="BTFeatures"></a>
+<a name="TemplateFeatures"></a>
 
-### BudgetTracker Features
-<a name="AddBT"></a>
+### Template Features
+A Template, in this context, is a User generated title and body of an email one would send to their Representative. Here is a sample [reference](https://www.nlacrc.org/home/showdocument?id=272) of how one could structure Template content. Users can create Templates on a [Post's details page](#PostDetails) in relation to that Post or independently unattached to a Post. They can then update and/or delete Templates they own. All Users can read and favorite/unfavorite Templates from the Template feed. They consist of a title, body (to assert whatever the Post is about), and created_at (timestamp). 
 
-#### Adding a BudgetTracker
+<a name="AddTemplate"></a>
+
+#### Adding a Template
 If an Account is elegible (is of type 'credit' or sub-type 'checking'), it will have a 'Create BudgetTracker' button displayed at the bottom. Clicking this will bring the user to a BudgetTracker creation form for that particular Account where they can enter their desired 'Monthly Budget Threshold' amount (must be greater than $0) and their desired Notification Frequency that they would like to receive text notifications at (must be between 1 and 15 days). These texts updates will occur at frequency multiples of the day frequency they enter (e.g. if they enter 2, they would receive a text notification every other day). This is enabled by a script that runs once each day to:
 - Update the most recent 'amount_spent' on BudgetTrackers (and all Accounts in the system)
 - See if the 'next_notification_date' on the BudgetTracker is equal to the current date
