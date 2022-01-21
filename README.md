@@ -285,6 +285,9 @@ You can create a new Template you want associated to the Post you are viewing th
 ### Template Features
 A Template, in this context, is a User generated title and body of an email one would send to their Representative. Here is a sample [reference](https://www.nlacrc.org/home/showdocument?id=272) of how one could structure Template content. Users can create Templates on a [Post's details page](#PostDetails) in relation to that Post or independently unattached to a Post. They can then update and/or delete Templates they own. All Users can read and favorite/unfavorite Templates from the Template feed. They consist of a title, body (to assert whatever the Post is about), and created_at (timestamp). 
 
+**Template Example**
+![Template](src/images/Template.png)
+
 <a name="AddTemplate"></a>
 
 #### Adding a Template
@@ -307,34 +310,25 @@ The behavior is the same in all three locations, but to explain the process we w
 **Create New Template**
 ![Create Template](src/images/createTemplate.png)
 
-The User fills in the fields ('Location' and 'Tag' are drop-down select fields, Link is nullable), then clicks 'Create Template' at the bottom of the field. Form validation of the front-end will ensure all fields are within tolerance. The form data will then be sent to the [ GetVocalToGov API ](https://github.com/bbeckenb/GetVocalToGov) which will perform its own schema validation, then if all data is within tolerance, store the record in the database and pass back additional information (created_at). This instance will immediately be able for viewing on the 'Templates Feed' or 'Templates Created' list. 
+The User fills in the fields, then clicks 'Create Template' at the bottom of the field. Form validation of the front-end will ensure all fields are within tolerance. The form data will then be sent to the [ GetVocalToGov API ](https://github.com/bbeckenb/GetVocalToGov) which will perform its own schema validation, then if all data is within tolerance, store the record in the database and pass back additional information (created_at). This instance will immediately be able for viewing on the 'Templates Feed', 'Templates Created', or The Post's Details page. 
 
-If an Account is elegible (is of type 'credit' or sub-type 'checking'), it will have a 'Create BudgetTracker' button displayed at the bottom. Clicking this will bring the user to a BudgetTracker creation form for that particular Account where they can enter their desired 'Monthly Budget Threshold' amount (must be greater than $0) and their desired Notification Frequency that they would like to receive text notifications at (must be between 1 and 15 days). These texts updates will occur at frequency multiples of the day frequency they enter (e.g. if they enter 2, they would receive a text notification every other day). This is enabled by a script that runs once each day to:
-- Update the most recent 'amount_spent' on BudgetTrackers (and all Accounts in the system)
-- See if the 'next_notification_date' on the BudgetTracker is equal to the current date
-    - If it is not, it does nothing
-    - If it **is**, it:
-        - fires off a text notification with the 'amount_spent' compared to the budget threshold 
-        - updates the 'next_notification_date' using the 'notification_frequency' the user set to add the number of days to the Datetime Object in the database for next notification
+<a name="EditTemplate"></a>
 
-![Add BT](static/images/readme/AddBT.png)
+#### Editing a Template
+To update a Post, the User has to have ownership (they must have created the Post to have ownership) of the Post in question. If they do, they will see an option to 'Edit' at the bottom of the Post:
 
-The BudgetTracker will then appear on the Dashboard under the associated Account displaying all information ('budget_threshold', 'amount_spent', 'notification_frequency', 'next_notification_date') which is updated by the script that runs daily.
+**Owned Post Example**
+![Owned Post](src/images/postOwned.png)
 
-**NOTE:** If the User's 'account_type' is 'sandbox', they are ineligible for text notifications. I am also running the freemium of Twilio, so for the 'development' User 'account_type', unless your cellphone number is verified under my Twilio Account for the web app, you would not receive a text message. If you would like to use the text notification feature, you would need to get your own API keys for Plaid and Twilio and run this app locally.
+If they do not, they will only see an option to view 'Details'.
 
-![BT On Dashboard](static/images/readme/BTonDashboard.png)
+**unOwned Post Example**
+![Post](src/images/Post.png)
 
-<a name="EditBT"></a>
+If they click on 'Edit' on a Post they own, the User will be redirected to an Edit Post Portal for that particular Post. The form will be auto-populated with the current data of the Post in question. The User simply changes whichever fields they want to alter and clicks 'Edit Post' at the bottom of the form. Form validation of the front-end will ensure all fields are within tolerance. The form data will then be sent to the [ GetVocalToGov API ](https://github.com/bbeckenb/GetVocalToGov) which will perform its own schema validation, then if all data is within tolerance, store the record updates in the database. The updated instance will immediately be able for viewing on the 'Posts Feed' or 'Posts Created' list. 
 
-#### Editing a BudgetTracker
-Once a BudgetTracker is created, it will appear on the Dashboard where it can be edited or deleted. To edit, click the 'edit' icon at the bottom of the BudgetTracker. This will direct the User to the Update BudgetTracker form where the user can modify the BudgetTracker's 'budget_threshold' and/or the 'notification_frequency'. These values will be updated in the database and the new values will be reflected on the Dashboard.
-
-*(BudgetTracker Update: Bottom of BudgetTracker blue 'edit' icon)*
-![BT Edit](static/images/readme/BTEditorDelete.png)
-
-*(BudgetTracker Update Form)*
-![BT Edit Page](static/images/readme/BTUpdatePage.png)
+**Edit Post Portal**
+![Edit Post](src/images/editPost.png)
 
 <a name="DeleteBT"></a>
 
