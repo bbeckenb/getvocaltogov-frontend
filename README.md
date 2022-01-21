@@ -414,14 +414,6 @@ When a User registers, they are required to enter their residential address. Thi
 
 The representative's party affiliation informs the color of their title banner. (Democratic Party=blue, Republican Party=Red, Unknown=Purple). Simply QuickCopy the Template you want, navigate to the Representative you deem most appropriate for the situation and let your voice be heard!
 
-![Dashboard Dollar View](static/images/readme/DashboardDollarView.png)
-
-To the right of the dollar view in the dashboard is a pie chart that shows a percentage breakdown of how Financial Institution sums (without loans) represent a User's total wealth. This utilizes Google Charts.
-
-![Pie Chart](static/images/readme/PieChart.png)
-
-As a User deletes Financial Institutions and/or Accounts to track, the Dashboard will update on the static page to reflect the changes.
-
 <a name="RunningLocally"></a>
 
 ### Running App Locally
@@ -429,77 +421,47 @@ As a User deletes Financial Institutions and/or Accounts to track, the Dashboard
 <a name="Requirements"></a>
 
 #### Requirements
-- Python
+- Node.js, React
 - PostgresSQL
-- pip 
+- npm 
 
 <a name="APIKeys"></a>
 
 #### API Keys
 Retrieve free API keys from:
-- [ Plaid ](https://plaid.com/docs/api)
-- [ Twilio ](https://www.twilio.com/docs)
+- [ Google Civic Information API ](https://developers.google.com/civic-information)
+- [ EasyPost ](https://www.easypost.com/?utm_source=google-brand2022&gclid=CjwKCAiA0KmPBhBqEiwAJqKK4330X7PmNnxWL5GROFLDAj5phtSVsAgmYcEpWrfyzaxktyG6iyDdFxoC4OMQAvD_BwE)
 
 <a name="ImportProj"></a>
 
 #### Import Project to your Local Machine
-1. Clone the repository:
-    - `git clone https://github.com/bbeckenb/Wealth_and_Budget_App.git`
+1. Clone the repositories:
+    - `git clone https://github.com/bbeckenb/getvocaltogov-frontend.git`
+        - this is the front-end server
+    - `git clone https://github.com/bbeckenb/GetVocalToGov.git`
+        -this is the backend API
 
-2. Change Directory to the project:
-    - `cd Wealth_and_Budget_App`
+2. Open two separate terminal windows, navigate to the two projects individually:
+    - `cd getvocaltogov-frontend`
+    - `cd GetVocalToGov`
 
-3. Create and Activate Python Virtual Environment:
-    - `python3 -m venv venv`
-    - `source venv/bin/activate`
-
-4. Install requirements:
-    - `pip install -r requirements.txt`
+4. Install requirements in each project directory:
+    - `npm install`
 
 5. Set up local database:
-    - `createdb wealth_and_budget_db`
+    - `createdb get_vocal_to_gov_db`
 
-6. Set up .env file:
+6. Set up .env file in GetVocalToGov:
     - `touch .env`
 
-7. Add the following fields and enter your information (Requires API key retrieval step) where it says **YOUR_INFO** 
+7. Add the following fields and enter your information (Requires API key retrieval step) where it says **YourInfo** 
     ```
-    PLAID_CLIENT_ID=YOUR_INFO
-    PLAID_SECRET=YOUR_INFO
-    PLAID_PRODUCTS=auth,transactions
-    PLAID_COUNTRY_CODES=US,CA
-    TWILIO_Account_SID=YOUR_INFO
-    TWILIO_AUTH_TOKEN=YOUR_INFO
-    TWILIO_NUM=YOUR_INFO
-    SECRET_KEY=YOUR_INFO
+    GOOGLE_API_KEY=YourInfo
+    EASY_POST_API_KEY=YourInfo
+    EASY_POST_API_TEST_KEY=YourInfo
+    SECRET_KEY=YourInfo
     ```
     **NOTE:** `SECRET_KEY` can be whatever you want it to be, you can generate 16 random bytes of hex digits using `hexdump -n 16 -e '4/4 "%08X" 1 "\n"' /dev/urandom` in the command line.
-
-8. Job Scheduling:
-    - Script `scheduled_jobs.py` is scheduled to run on Heroku
-    - If you choose to run this locally, include following code in main `app.py` and follow directions below:
-        - **Dependencies to import:**
-            ```
-            from flask_crontab import Crontab
-            from CronJobs.UFI_jobs import scheduled_daily_refresh_all_Accounts
-            from CronJobs.BudgetTracker_jobs import scheduled_budget_tracker_jobs
-            ```
-        - **Initializations:**
-            `crontab = Crontab(app)`
-        - **CRON schedule function definition:**
-            ```
-            @crontab.job(minute=0, hour=12)
-                def scheduled_jobs():
-                    scheduled_daily_refresh_all_Accounts(plaid_inst)
-                    scheduled_budget_tracker_jobs(plaid_inst, twilio_inst)
-            ```
-        - **Command Line directions:**
-            - CRON Scheduled Jobs For local server
-            - **This will run a job everyday at 12pm UTC:** run `flask crontab add` in command line to initialize 
-            - **This will delete the CRON job:** run `flask crontab remove` in command line to remove
-            - **These are additional command line commands to navigate jobs**
-                - `crontab -l` to see list of jobs
-                - `crontab -e` to manually edit list of jobs, 'esc' :wq 'enter' to leave list
 
 9. Run Flask Application
 - `export FLASK_ENV=production`
