@@ -278,6 +278,11 @@ Post Details are available to logged-in Users and non logged-in visitors. When v
 **Post Details**
 ![Posts Details](src/images/postDetails.png)
 
+You can create a new Template you want associated to the Post you are viewing the details of by expanding the 'Create New Template For This Post' drop-down, filling out and submitting the form!
+
+**Post Details Create Related Template**
+![Posts Details](src/images/postDetailsCreateTemplate.png)
+
 <a name="BTFeatures"></a>
 
 ### BudgetTracker Features
