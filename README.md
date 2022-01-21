@@ -199,7 +199,7 @@ The User fills in the fields ('Location' and 'Tag' are drop-down select fields, 
 To update a Post, the User has to have ownership (they must have created the Post to have ownership) of the Post in question. If they do, they will see an option to 'Edit' at the bottom of the Post:
 
 **Owned Post Example**
-![Owned Post](src/images/ownedPost.png)
+![Owned Post](src/images/postOwned.png)
 
 If they do not, they will only see an option to view 'Details'.
 
