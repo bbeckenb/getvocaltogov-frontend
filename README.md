@@ -160,6 +160,9 @@ Once a User is logged in, they can navigate to 'Profile' either through the navb
 Delete User Portal
 ![Delete User Portal](src/images/deleteUserPortal.png)
 
+When they click 'Delete' once, they will see the warning text asking them to confirm they want to delete their profile:
+![Delete User Portal Warning](src/images/deleteUserPortalWarning.png)
+
 Once they click this, their User instance will be removed from the database on the back-end and they will be redirected to the welcome page of CashView on the frontend. There is a cascading deletion set up in the database schema so all Financial Institutions, Accounts, and BudgetTrackers will be deleted as well.
 
 <a name="FandAFeatures"></a>
