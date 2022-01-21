@@ -38,6 +38,7 @@ This website acts as a vehicle lower barrier for citizens to petition their repr
         - [ Deleting Post](#DeletePost)
         - [ Filtering Posts ](#FilterPosts)
         - [ Bookmark Post ](#BookmarkPost)
+        - [ Post Details ](#PostDetails)
     - [ Template Features ](#TemplateFeatures)
         - [ Adding a Template ](#AddTemplate)
         - [ Editing a Template ](#EditTemplate)
@@ -266,8 +267,16 @@ Bookmarking, in this context, is a feature meant to allow a User to tag a Post o
 
 For ease of finding a User's bookmarked Posts, the User simply has to navigate to their 'Profile' page and select 'Posts Bookmarked' on the secondary navbar. This will show the User a list of their Bookmarked posts from most recently created to least recently created.
 
-**Posts Bookmarked**
+**Posts Bookmarked List**
 ![Posts Bookmarked](src/images/postsBookmarked.png)
+
+<a name="PostDetails"></a>
+
+#### Post Details
+Post Details are available to logged-in Users and non logged-in visitors. When viewing a Post, there will always be a 'Details' button available at the bottom. Clicking upon this will bring the User to a Post Details page for that particular Post. This will show the Post in question, a Template Creation Portal for that particular Post, and a list of all Templates (more on these shortly) currently associated with that Post. 
+
+**Post Details**
+![Posts Details](src/images/postDetails.png)
 
 <a name="BTFeatures"></a>
 
