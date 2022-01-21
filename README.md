@@ -231,14 +231,22 @@ There are three Post Lists on the app that allow a User to filter the Posts. The
 ![Home Options](src/images/homeOptions.png)
 
 **Posts Feed**
-Posts Feed displays all Posts from all Users and can be filtered (more on that later)
+Posts Feed displays all Posts from all Users
 ![Posts Feed](src/images/postsFeed.png)
 
 **Posts Created**
+Posts Created shows a logged in User all of the Posts they have personally created
 ![Posts Created](src/images/postsCreated.png)
 
 **Posts Bookmarked**
+Posts Bookmarked shows a logged in User all of the Posts they have bookmarked (more on that later)
 ![Posts Created](src/images/postsBookmarked.png)
+
+The behavior is the same in all locations, but to explain the process we will go through the 'Posts Feed'. Once on the Posts Feed (accessible to Users and non-Users, as is the 'Search for Post' functionality), the User will see the drop-down option to 'Search for Post'. Once clicked, this will present a 'Search Posts' form where the User can select any and all of search criteria 'title' (matching phrase), 'body' (matching phrase), 'location' (select field), and 'tag' (select field).
+
+**Search Posts**
+Posts Feed displays all Posts from all Users
+![Search Posts](src/images/searchPosts.png)
 
 <a name="BTFeatures"></a>
 
