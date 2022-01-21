@@ -407,7 +407,10 @@ The idea behind this is that Users can find Templates they like, copy the messag
 <a name="RepresentativeFeatures"></a>
 
 ### Representative Features
-When a User registers, they are required to enter their residential address. This address is verified through an external service before being stored in the database. The address is then used to retrieve the User's Government representatives, from the President of The United States to their local officials. The list of representatives along with their contact information can be found on the User's 'Profile' page under the 'Representatives' tab.
+When a User registers, they are required to enter their residential address. This address is verified through an external service before being stored in the database. The address is then used to retrieve the User's Government representatives, from the President of The United States to their local officials. The list of representatives along with their contact information can be found on the User's 'Profile' page under the 'Representatives' tab. There is variance in what contact information (address, phone #, email, web page) is available, but the maximum amount of contact information is displayed for each Representative.
+
+**Representative**
+![Representative](src/images/representative.png)
 
 ![Dashboard Dollar View](static/images/readme/DashboardDollarView.png)
 
