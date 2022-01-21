@@ -359,12 +359,12 @@ There are three Template Lists on the app that allow a User to filter the Templa
 **Templates Favorited**: Templates Favorited shows a logged in User all of the Templates they have Favorited (more on that later)
 ![Templates Favorited](src/images/templatesFavorited.png)
 
-The behavior is the same in all locations, but to explain the process we will go through the 'Templates Feed'. Once on the Templates Feed (accessible to Users and non-Users, as is the 'Search for Template' functionality), the User will see the drop-down option to 'Search for Template'. Once clicked, this will present a 'Search Templates' form where the User can select any and all of search criteria 'title' (matching phrase), 'body' (matching phrase), 'location' (select field), and 'tag' (select field).
+The behavior is the same in all locations, but to explain the process we will go through the 'Templates Feed'. Once on the Templates Feed (accessible to Users and non-Users, as is the 'Search for Template' functionality), the User will see the drop-down option to 'Search for Template'. Once clicked, this will present a 'Search Templates' form where the User can select any and all of search criteria 'title' (matching phrase) and 'body' (matching phrase).
 
 **Search Templates**
 ![Search Templates](src/images/searchTemplates.png)
 
-Once the User enters their search criteria and selects 'Search Templates' at the bottom of the form, the request will be sent to the [ GetVocalToGov API ](https://github.com/bbeckenb/GetVocalToGov). The database will be queried for records that match all filters. The resulting list will be sent and displayed on the front-end along with the search criteria in the form's alert message box.
+Once the User enters their search criteria and selects 'Search for Templates' at the bottom of the form, the request will be sent to the [ GetVocalToGov API ](https://github.com/bbeckenb/GetVocalToGov). The database will be queried for records that match all filters. The resulting list will be sent and displayed on the front-end along with the search criteria in the form's alert message box.
 
 **Search Templates Success**
 ![Search Templates Success](src/images/searchTemplatesSuccess.png)
