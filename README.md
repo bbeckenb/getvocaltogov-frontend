@@ -198,7 +198,13 @@ The User fills in the fields ('Location' and 'Tag' are drop-down select fields, 
 #### Updating Post
 To update a Post, the User has to have ownership (they must have created the Post to have ownership) of the Post in question. If they do, they will see an option to 'Edit' at the bottom of the Post:
 
+**Owned Post Example**
 ![Owned Post](src/images/ownedPost.png)
+
+If they do not, they will only see an option to view 'Details'.
+
+**unOwned Post Example**
+![Post](src/images/Post.png)
 
 For each Financial Institution on the dashboard, there is an 'Update' icon. This is for manual refreshing of Account balances. This will make a call to the back-end to grab all the Plaid Account IDs associated with that Financial Institution in the CashView database and get the most up-to-date balance information for these Accounts from Plaid. This data will be sent back to the front-end and the HTML will be updated to reflect the most recent balances.
 
