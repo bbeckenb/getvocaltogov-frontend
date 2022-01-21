@@ -297,7 +297,7 @@ There are three locations that allow a User to create a new Template. The first 
 ![Templates Feed](src/images/templatesFeed.png)
 
 **Templates Created**
-![Templates Created](src/images/TemplatesCreated.png)
+![Templates Created](src/images/templatesCreated.png)
 
 **Post Details Create Related Template**
 ![Posts Details](src/images/postDetailsCreateTemplate.png)
