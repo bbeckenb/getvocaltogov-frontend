@@ -45,7 +45,8 @@ This website acts as a vehicle lower barrier for citizens to petition their repr
         - [ Deleting a Template ](#DeleteTemplate)
         - [ Filtering Templates ](#FilterTemplates)
         - [ Favorite Template ](#FavoriteTemplate)
-    - [ Dashboard Features ](#DashboardFeatures)
+        - [ Quick Copy ](#QuickCopy)
+    - [ Representatives ](#RepresentativeFeatures)
 6. [ Running App Locally ](#RunningLocally)
     - [ Requirements ](#Requirements)
     - [ API Keys ](#APIKeys)
@@ -385,10 +386,28 @@ For ease of finding a User's Favorited Templates, the User simply has to navigat
 **Templates Favorited List**
 ![Templates Favorited](src/images/templatesFavorited.png)
 
-<a name="DashboardFeatures"></a>
+<a name="QuickCopy"></a>
 
-### Dashboard Features
-The dashboard is designed to be a quick view of the aggregate of all of a User's Financial Institutions. The total holdings, both with and without loans are displayed in the top left of the dashboard. The User Model has a method that runs through all of the User instance's Financial Institutions, summing their dollar totals, with a boolean input to signify whether or not to return the sum with loans included (loans are subtracted from the total as they are a dollar amount owed). Financial Institutions have a similar method that allows them to run through all of their Accounts and provide a dollar sum with or without loans. Both of these values are displayed and color coded (green signifies a positive balance, grey means a $0 balance, red is a negative balance).
+#### QuickCopy Template Body
+Logged in Users can also QuickCopy the Body of a Template. They click the Copy icon on the Template of interest, this will copy the body of that specific Template to their computer's clipboard along with an introductory part of the message and a sign-off containing theUser's first and last name on file.
+
+**Template QuickCopy**
+![Template QuickCopy](src/images/unFavorited.png)
+
+Once the User has the message on their clipboard, they can paste it wherever they choose! 
+
+**Templates QuickCopy Demo**
+![Templates QuickCopy Demo](src/images/quickCopy.png)
+
+**Templates QuickCopy Demo Continued**
+![Templates QuickCopy Demo Continued](src/images/quickPaste.png)
+
+The idea behind this is that Users can find Templates they like, copy the message, bring it to their Representative's Contact page, and deliver it very quickly.
+
+<a name="RepresentativeFeatures"></a>
+
+### Representative Features
+When a User registers, they are required to enter their residential address. This address is verified through an external service before being stored in the database. The address is then used to retrieve the User's Government representatives, from the President of The United States to their local officials. The list of representatives along with their contact information can be found on the User's 'Profile' page under the 'Representatives' tab.
 
 ![Dashboard Dollar View](static/images/readme/DashboardDollarView.png)
 
