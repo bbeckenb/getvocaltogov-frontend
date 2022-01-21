@@ -412,6 +412,8 @@ When a User registers, they are required to enter their residential address. Thi
 **Representative**
 ![Representative](src/images/representative.png)
 
+The representative's party affiliation informs the color of their title banner. (Democratic Party=blue, Republican Party=Red, Unknown=Purple). Simply QuickCopy the Template you want, navigate to the Representative you deem most appropriate for the situation and let your voice be heard!
+
 ![Dashboard Dollar View](static/images/readme/DashboardDollarView.png)
 
 To the right of the dollar view in the dashboard is a pie chart that shows a percentage breakdown of how Financial Institution sums (without loans) represent a User's total wealth. This utilizes Google Charts.
