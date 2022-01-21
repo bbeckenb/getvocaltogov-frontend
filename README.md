@@ -245,8 +245,12 @@ Posts Bookmarked shows a logged in User all of the Posts they have bookmarked (m
 The behavior is the same in all locations, but to explain the process we will go through the 'Posts Feed'. Once on the Posts Feed (accessible to Users and non-Users, as is the 'Search for Post' functionality), the User will see the drop-down option to 'Search for Post'. Once clicked, this will present a 'Search Posts' form where the User can select any and all of search criteria 'title' (matching phrase), 'body' (matching phrase), 'location' (select field), and 'tag' (select field).
 
 **Search Posts**
-Posts Feed displays all Posts from all Users
 ![Search Posts](src/images/searchPosts.png)
+
+Once the User enters their search criteria and selects 'Search Posts' at the bottom of the form, the request will be sent to the [ GetVocalToGov API ](https://github.com/bbeckenb/GetVocalToGov). The database will be queried for records that match all filters. The resulting list will be sent and displayed on the front-end along with the search criteria in the form's alert message box.
+
+**Search Posts Success**
+![Search Posts Success](src/images/searchPostsSuccess.png)
 
 <a name="BTFeatures"></a>
 
