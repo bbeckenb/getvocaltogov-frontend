@@ -182,6 +182,7 @@ There are two locations that allow a User to create a new Post. The first is by 
 ![Home Options](src/images/homeOptions.png)
 
 **Posts Feed**
+Posts Feed displays all Posts from all Users and can be filtered (more on that later)
 ![Posts Feed](src/images/postsFeed.png)
 
 **Posts Created**
@@ -190,11 +191,15 @@ There are two locations that allow a User to create a new Post. The first is by 
 The behavior is the same in both locations, but to explain the process we will go through the 'Posts Feed'. Once on the Posts Feed (accessible to Users and non-Users, however the capability to create a post is only available to logged in Users), the User will see the drop-down option to 'Create New Post'.
 
 **Create New Post**
-![Posts Feed](src/images/createPost.png)
+![Create Post](src/images/createPost.png)
 
-The User fills in the fields ('Location' and 'Tag' are drop-down select fields), then clicks 'Create Post' at the bottom of the field. Form validation of the front-end will ensure all fields are within tolerance. The form data will then be sent to the [ GetVocalToGov API ](https://github.com/bbeckenb/GetVocalToGov) which will perform its own schema validation, then if all data is within tolerance, store the record in the database and pass back additional information (created_at).  
+The User fills in the fields ('Location' and 'Tag' are drop-down select fields, Link is nullable), then clicks 'Create Post' at the bottom of the field. Form validation of the front-end will ensure all fields are within tolerance. The form data will then be sent to the [ GetVocalToGov API ](https://github.com/bbeckenb/GetVocalToGov) which will perform its own schema validation, then if all data is within tolerance, store the record in the database and pass back additional information (created_at). This instance will immediately be able for viewing on the 'Posts Feed' or 'Posts Created' list. 
 
 #### Updating Post
+To update a Post, the User has to have ownership (they must have created the Post to have ownership) of the Post in question. If they do, they will see an option to 'Edit' at the bottom of the Post:
+
+![Owned Post](src/images/ownedPost.png)
+
 For each Financial Institution on the dashboard, there is an 'Update' icon. This is for manual refreshing of Account balances. This will make a call to the back-end to grab all the Plaid Account IDs associated with that Financial Institution in the CashView database and get the most up-to-date balance information for these Accounts from Plaid. This data will be sent back to the front-end and the HTML will be updated to reflect the most recent balances.
 
 *(Top right blue refresh icon)*
