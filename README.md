@@ -364,7 +364,7 @@ The behavior is the same in all locations, but to explain the process we will go
 **Search Templates**
 ![Search Templates](src/images/searchTemplates.png)
 
-Once the User enters their search criteria and selects 'Search for Templates' at the bottom of the form, the request will be sent to the [ GetVocalToGov API ](https://github.com/bbeckenb/GetVocalToGov). The database will be queried for records that match all filters. The resulting list will be sent and displayed on the front-end along with the search criteria in the form's alert message box.
+Once the User enters their search criteria and selects 'Search Templates' at the bottom of the form, the request will be sent to the [ GetVocalToGov API ](https://github.com/bbeckenb/GetVocalToGov). The database will be queried for records that match all filters. The resulting list will be sent and displayed on the front-end along with the search criteria in the form's alert message box.
 
 **Search Templates Success**
 ![Search Templates Success](src/images/searchTemplatesSuccess.png)
