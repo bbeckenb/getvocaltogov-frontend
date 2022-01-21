@@ -173,6 +173,11 @@ A Post, in this context, is a User generated record containing information and c
 <a name="AddPost"></a>
 
 #### Adding a Post
+There are two locations that allow a User to create a new Post. The first is by navigating to the Posts feed by clicking 'Posts' on the navbar or under the 'Options' drop-down on the home page.
+
+**Home Options**
+![Home Options](src/images/homeOptions.png)
+
 Using the Plaid API, a user can securely add their credentials to Plaid's Link interface that is embedded in the dashboard. **These credentials are not stored in the any area of CashView at any point**. To avoid this being an issue, I made sure users that sign up have the option of having a **development** Account, which deals with real bank data, or a **sandbox** Account, which deals with dummy bank Accounts from Plaid. The Demo user experience is a **sandbox** Account as well. 
 
 Once on the dashboard page, a user clicks on 'Link Institution' under 'User Options'.
