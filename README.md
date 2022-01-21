@@ -378,7 +378,7 @@ Favoriting, in this context, is a feature meant to allow a User to tag a Templat
 ![Template unFavorited](src/images/unFavorited.png)
 
 **Template Favorited**
-![Template Favorited](src/images/Favorited.png)
+![Template Favorited](src/images/favorited.png)
 
 For ease of finding a User's Favorited Templates, the User simply has to navigate to their 'Profile' page and select 'Templates Favorited' on the secondary navbar. This will show the User a list of their Favorited Templates from most recently created to least recently created.
 
