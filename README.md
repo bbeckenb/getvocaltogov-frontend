@@ -322,13 +322,13 @@ To update a Template, the User has to have ownership (they must have created the
 
 If they do not, there will be no options.
 
-**unOwned Post Example**
-![Post](src/images/unownedTemplate.png)
+**unOwned Template Example**
+![Template](src/images/unownedTemplate.png)
 
-If they click on 'Edit' on a Post they own, the User will be redirected to an Edit Post Portal for that particular Post. The form will be auto-populated with the current data of the Post in question. The User simply changes whichever fields they want to alter and clicks 'Edit Post' at the bottom of the form. Form validation of the front-end will ensure all fields are within tolerance. The form data will then be sent to the [ GetVocalToGov API ](https://github.com/bbeckenb/GetVocalToGov) which will perform its own schema validation, then if all data is within tolerance, store the record updates in the database. The updated instance will immediately be able for viewing on the 'Posts Feed' or 'Posts Created' list. 
+If they click on 'Edit' on a Template they own, the User will be redirected to an Edit Template Portal for that particular Template. The form will be auto-populated with the current data of the Template in question. The User simply changes whichever fields they want to alter and clicks 'Edit Template' at the bottom of the form. Form validation of the front-end will ensure all fields are within tolerance. The form data will then be sent to the [ GetVocalToGov API ](https://github.com/bbeckenb/GetVocalToGov) which will perform its own schema validation, then if all data is within tolerance, store the record updates in the database. The updated instance will immediately be able for viewing on the 'Templates Feed', 'Templates Created', or The Post's Details page. 
 
-**Edit Post Portal**
-![Edit Post](src/images/editPost.png)
+**Edit Template Portal**
+![Edit Template](src/images/editTemplate.png)
 
 <a name="DeleteBT"></a>
 
