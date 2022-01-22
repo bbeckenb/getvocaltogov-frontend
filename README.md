@@ -477,6 +477,9 @@ Retrieve free API keys from:
 ### Testing
 - Testing for the Express API has pretty robust coverage, it uses [Jest Testing Library](https://jestjs.io/).
     - Inside of the GetVocalToGov directory, type ```jest -i``` to run through the test suites.
+- Testing for the front-end React App utilizes the [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) and [Jest Testing Library](https://jestjs.io/).
+    - Each component has its own test file to ensure it renders and performs the intended core functionality.
+    - To look at the test results of any individual component, inside of the getvocaltogov-frontend directory, type ```npm test NameOfComponent.test.jsx```
 
 <a name="AdditionalSteps"></a>
 
