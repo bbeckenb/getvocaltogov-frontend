@@ -445,16 +445,16 @@ Retrieve free API keys from:
     - `cd getvocaltogov-frontend`
     - `cd GetVocalToGov`
 
-4. Install requirements in each project directory:
+3. Install requirements in each project directory:
     - `npm install`
 
-5. Set up local database:
+4. Set up local database:
     - `createdb get_vocal_to_gov_db`
 
-6. Set up .env file in GetVocalToGov:
+5. Set up .env file in GetVocalToGov:
     - `touch .env`
 
-7. Add the following fields and enter your information (Requires API key retrieval step) where it says **YourInfo** 
+6. Add the following fields and enter your information (Requires API key retrieval step) where it says **YourInfo** 
     ```
     GOOGLE_API_KEY=YourInfo
     EASY_POST_API_KEY=YourInfo
@@ -463,11 +463,11 @@ Retrieve free API keys from:
     ```
     **NOTE:** `SECRET_KEY` can be whatever you want it to be, you can generate 16 random bytes of hex digits using `hexdump -n 16 -e '4/4 "%08X" 1 "\n"' /dev/urandom` in the command line.
 
-9. Run Express API Application
+7. Run Express API Application
 - In terminal where you are in the 'GetVocalToGov' directory, type `npm start`
 - This will be on port 3001
 
-10. Run React front-end server
+8. Run React front-end server
 - In terminal where you are in the 'getvocaltogov-frontend' directory, type `npm start`
 - This will be on port 3000
 
