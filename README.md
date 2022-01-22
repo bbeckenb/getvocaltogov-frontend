@@ -416,7 +416,7 @@ The representative's party affiliation informs the color of their title banner. 
 
 <a name="RunningLocally"></a>
 
-### Running App Locally
+### Running Apps (frontend and [backend](https://github.com/bbeckenb/GetVocalToGov)) Locally
 
 <a name="Requirements"></a>
 
