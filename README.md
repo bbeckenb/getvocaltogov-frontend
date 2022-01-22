@@ -65,7 +65,7 @@ React, Axios, React-Bootstrap, React Router, React Hook Form, Yup schema validat
 <a name="Back-end"></a>
 
 ### Back-end
-[ API Repo ](https://github.com/bbeckenb/GetVocalToGov) - 
+[ GetVocalToGov API Repo ](https://github.com/bbeckenb/GetVocalToGov) - 
 Node.js, Express, Node-postgres, jsonwebtoken, jsonschema, bcrypt, winston, Axios, dotenv, colors, cors
 
 <a name="Database"></a>
@@ -463,26 +463,27 @@ Retrieve free API keys from:
     ```
     **NOTE:** `SECRET_KEY` can be whatever you want it to be, you can generate 16 random bytes of hex digits using `hexdump -n 16 -e '4/4 "%08X" 1 "\n"' /dev/urandom` in the command line.
 
-9. Run Flask Application
-- `export FLASK_ENV=production`
-- `export FLASK_RUN_PORT=5000`
-- `flask run`
+9. Run Express API Application
+- In terminal where you are in the 'GetVocalToGov' directory, type `npm start`
+- This will be on port 3001
+
+10. Run React front-end server
+- In terminal where you are in the 'getvocaltogov-frontend' directory, type `npm start`
+- This will be on port 3000
+
 
 <a name="Testing"></a>
 
 ### Testing
-Testing for Models and Views was written using Python's [ Unittest Framework ](https://docs.python.org/3/library/unittest.html). Tests can be seen in test folder.    
+- Testing for the Express API has pretty robust coverage, it uses [Jest Testing Library](https://jestjs.io/).
 
 <a name="AdditionalSteps"></a>
 
 ### Additional Steps
 I built this application as part of SpringBoard's Software Engineering curriculum and put in ~60 hours. If I were to continue developing it, there would be several steps I would take.
 
-#### Pull in Additional Data
-I originally planned on having this app be a one-stop-shop to see all of your bank data, house, 401k, Roth IRA, etc., I think this would lead to a more useful application. I would likely go back to Plaid to pull in investment account data (can't without the paid service), and to Zillow for house value, putting bank, house, and investment portfolio on different tabs on the Dashboard. I will come back to this in the future.
-
-#### Error handling and Logging
-I would build out logging functionality to store request/response and errors (separately) that occur in a central location. That way I could see if there are issues that I need to adjust for. I would build out my error handling according to this. I would also Account for when the APIs integrated go down.
+#### Add a news feed
+I think it would be a much more well rounded app and more of a one-stop-shop if there was a news feed page that provided stories aligned with the categories you would create Posts for.
 
 #### Administrative User functionality
-I would add an is_admin boolean to the User model and add an Admin portal on the web app itself. It would be much easier to manage data on the app, both test and real. 
+I added an is_admin boolean to the User model, but have not gotten around to adding an Admin portal on the web app itself. It would be much easier to manage data on the app, both test and real. 
