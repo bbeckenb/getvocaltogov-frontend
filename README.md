@@ -50,7 +50,7 @@ This website acts as a vehicle lower barrier for citizens to petition their repr
 6. [ Running App Locally ](#RunningLocally)
     - [ Requirements ](#Requirements)
     - [ API Keys ](#APIKeys)
-    - [ Import Project to your Local Machine ](#ImportProj)
+    - [ Import Projects to your Local Machine ](#ImportProj)
 7. [ Testing ](#Testing) 
 8. [ Additional Steps ](#AdditionalSteps)
 
