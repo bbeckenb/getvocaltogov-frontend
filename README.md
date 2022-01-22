@@ -476,6 +476,7 @@ Retrieve free API keys from:
 
 ### Testing
 - Testing for the Express API has pretty robust coverage, it uses [Jest Testing Library](https://jestjs.io/).
+    - Inside of the GetVocalToGov directory, type ```jest -i``` to run through the test suites.
 
 <a name="AdditionalSteps"></a>
 
