@@ -5,7 +5,7 @@
 
 
 ## Description:
-This website acts as a vehicle lower barrier for citizens to petition their representatives and exchange ideas on current events. 
+This website acts as a vehicle lower barrier for citizens to petition their representatives and exchange ideas on current events. This readme provides information on the frontend React App portion of the service with some context of how the [GetVocalToGov API](https://github.com/bbeckenb/GetVocalToGov) is integrated.
 - It allows users to make a profile or utilize a demo account to experience core features. 
 - Users input their address (or can use the demo account address) to pull the representatives supporting that region, from the President of The United States to local government 
 - Users can:
