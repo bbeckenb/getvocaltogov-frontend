@@ -372,7 +372,7 @@ Once the User enters their search criteria and selects 'Search Templates' at the
 **Search Templates Success**
 ![Search Templates Success](src/images/searchTemplatesSuccess.png)
 
-<a name="FavoritTemplate"></a>
+<a name="FavoriteTemplate"></a>
 
 #### Favoriting a Templates
 Favoriting, in this context, is a feature meant to allow a User to tag a Template of interest to be more easily accessed when they want to find it again at a later time. This is a feature only accessible to a logged-in User. When logged-in viewing Templates, the User will see a yellow Favorite icon on all Templates. If it is outlined, the Template has not been tagged, if it is filled in, the Template has been tagged. The user can toggle Favorited status by clicking on the icon button.
