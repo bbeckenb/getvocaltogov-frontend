@@ -12,7 +12,7 @@ import {
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const UserLoginForm = function () {
-  const { login } = useContext(UserContext);
+  const { login, setLoadingUser } = useContext(UserContext);
   const [formMessage, setFormMessage] = useState({type: 'primary', message: 'welcome!'});
   const history = useHistory();
   const {
@@ -31,6 +31,7 @@ const UserLoginForm = function () {
       console.log(res)
       setFormMessage({type: 'danger', message: `${res.error}`});
     }
+    setLoadingUser(false);
   }
 
   function loginDemoUser() {

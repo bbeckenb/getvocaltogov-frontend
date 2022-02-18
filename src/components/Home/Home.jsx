@@ -3,10 +3,13 @@ import UserLoginForm from "../User/UserLoginForm";
 import UserContext from '../../context/UserContext'
 import { Container, ButtonGroup, Button, DropdownButton, Dropdown } from 'react-bootstrap';
 import { useHistory, Link } from 'react-router-dom';
+import LoadingSpinner from "../Common/LoadingSpinner";
 
 function Home() {
-    const { token, logout } = useContext(UserContext);
+    const { token, logout, loadingUser } = useContext(UserContext);
     const history = useHistory();
+
+    if (loadingUser) return <LoadingSpinner waitingOn={'User Information'} />;
 
     return (
         <Container>

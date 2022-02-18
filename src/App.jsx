@@ -13,6 +13,7 @@ const App = function () {
   const [localStorageChecked, setLocalStorageChecked] = useState(false);
   const [token, setToken] = useLocalStorage('stored-token');
   const [currUser, setCurrUser] = useState(null);
+  const [loadingUser, setLoadingUser] = useState(false);
   const [favoriteIds, setFavoriteIds] = useState(new Set([]));
   const [bookmarkIds, setBookmarkIds] = useState(new Set([]));
 
@@ -52,6 +53,7 @@ const App = function () {
   }
 
   async function login(credentials) {
+    setLoadingUser(true)
     try {
       let user = await GetVocalToGovApi.loginUser(credentials);
       if (user) {
@@ -150,7 +152,9 @@ const App = function () {
         removeBookmark,
         login,
         signup,
-        logout, }}>
+        logout,
+        loadingUser,
+        setLoadingUser }}>
         <AppRoutes />
         <Footer />
       </UserContext.Provider>

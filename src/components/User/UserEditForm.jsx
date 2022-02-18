@@ -10,7 +10,7 @@ import {
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const UserEditForm = function () {
-    const { editUser, currUser } = useContext(UserContext);
+    const { editUser, currUser, setLoadingUser } = useContext(UserContext);
     const [formMessage, setFormMessage] = useState({type: 'primary', message: 'welcome!'});
     const [userFormData, setUserFormData] = useState();
 
@@ -46,6 +46,7 @@ const UserEditForm = function () {
             console.log(res)
             setFormMessage({type: 'danger', message: `${res.error}`});
         }
+        setLoadingUser(false);
     }
 
     function resetFormAndMsg() {
