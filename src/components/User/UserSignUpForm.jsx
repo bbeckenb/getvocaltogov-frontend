@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import LoadingSpinner from '../Common/LoadingSpinner';
 import { useForm } from "react-hook-form";
 import { useHistory } from 'react-router-dom';
 import UserContext from '../../context/UserContext';
@@ -10,7 +11,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const UserSignUpForm = function () {
-    const { signup } = useContext(UserContext);
+    const { signup, loadingUser, setLoadingUser } = useContext(UserContext);
     const [formMessage, setFormMessage] = useState({type: 'primary', message: 'welcome!'});   
     const history = useHistory(); 
     const {
@@ -20,7 +21,6 @@ const UserSignUpForm = function () {
     formState: { errors }
     } = useForm({resolver: yupResolver(registerSchema)});
     
-
     async function sendData(formData) {
         let res = await signup(formData);
         let success = await res.success
@@ -31,13 +31,16 @@ const UserSignUpForm = function () {
         } else {
             setFormMessage({type: 'danger', message: `${res.error}`});
         }
+        setLoadingUser(false);
     }
 
     function resetFormAndMsg() {
         setFormMessage({type: 'primary', message: 'welcome!'});
         reset()
       }
-  
+    
+    if (loadingUser) return <LoadingSpinner waitingOn={'User Information'} />;
+
     return (
         <Container style={{"marginTop": "50px", "marginBottom": "30px"}}>        
             <Row className="justify-content-lg-center">

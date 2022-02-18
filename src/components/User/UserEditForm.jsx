@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
+import LoadingSpinner from '../Common/LoadingSpinner';
 import UserContext from '../../context/UserContext'
 import Alert from '../Common/Alert';
 import registerSchema from '../../validationSchemas/registerSchema';
@@ -10,7 +11,7 @@ import {
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const UserEditForm = function () {
-    const { editUser, currUser, setLoadingUser } = useContext(UserContext);
+    const { editUser, currUser, loadingUser, setLoadingUser } = useContext(UserContext);
     const [formMessage, setFormMessage] = useState({type: 'primary', message: 'welcome!'});
     const [userFormData, setUserFormData] = useState();
 
@@ -53,6 +54,8 @@ const UserEditForm = function () {
         setFormMessage({type: 'primary', message: 'welcome!'});
         reset(userFormData);
     }
+
+    if (loadingUser) return <LoadingSpinner waitingOn={'User Information'} />;
 
     return (
         <Container>

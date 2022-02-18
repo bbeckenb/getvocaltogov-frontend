@@ -39,6 +39,7 @@ const App = function () {
   }, [token]);
 
   async function signup(userData) {
+    setLoadingUser(true);
     try {
       let user = await GetVocalToGovApi.registerUser(userData);
       if (user) {
