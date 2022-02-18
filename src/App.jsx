@@ -53,7 +53,7 @@ const App = function () {
   }
 
   async function login(credentials) {
-    setLoadingUser(true)
+    setLoadingUser(true);
     try {
       let user = await GetVocalToGovApi.loginUser(credentials);
       if (user) {
@@ -68,6 +68,7 @@ const App = function () {
   }
 
   async function editUser(userData) {
+    setLoadingUser(true);
     try {
         const editedUser = await GetVocalToGovApi.updateUser(currUser.username, userData);
         if (editedUser) {

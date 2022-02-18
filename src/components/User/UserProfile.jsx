@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import UserContext from "../../context/UserContext";
 import UserEditForm from "./UserEditForm";
+import LoadingSpinner from "../Common/LoadingSpinner";
 import UserDeletePortal from "./UserDeletePortal";
 import TemplateListShared from "../Template/TemplateListShared";
 import PostListShared from '../Post/PostListShared';
@@ -9,8 +11,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function UserProfile() {
+    const { loadingUser } = useContext(UserContext);
     const [templates, setTemplates] = useState(null);
     const [posts, setPosts] = useState(null);
+    
+    if (loadingUser) return <LoadingSpinner waitingOn={'User Information'} />;
 
     return (
         <Tabs defaultActiveKey="userOptions" id="uncontrolled-tab-example" className="mb-3">
