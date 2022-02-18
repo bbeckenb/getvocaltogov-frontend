@@ -6,9 +6,11 @@ import useLocalStorage from './customHooks/useLocalStorage';
 import GetVocalToGovApi from './GetVocalToGovApi';
 import UtilClass from './classes/UtilClass';
 import UserContext from './context/UserContext';
+import LoadingSpinner from './components/Common/LoadingSpinner';
 import './App.css';
 
 const App = function () {
+  const [localStorageChecked, setLocalStorageChecked] = useState(false);
   const [token, setToken] = useLocalStorage('stored-token');
   const [currUser, setCurrUser] = useState(null);
   const [favoriteIds, setFavoriteIds] = useState(new Set([]));
@@ -30,6 +32,7 @@ const App = function () {
           setCurrUser(null);
         }
       }
+      setLocalStorageChecked(true)
     }
     getCurrUserAPICall();
   }, [token]);
@@ -129,6 +132,7 @@ const App = function () {
     bookmarkIds.delete(postId);
     setBookmarkIds(new Set(bookmarkIds));
   }
+  if (!localStorageChecked) return <LoadingSpinner waitingOn={'page'} />;
 
   return (
     <div className="App">
