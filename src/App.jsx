@@ -136,7 +136,7 @@ const App = function () {
     bookmarkIds.delete(postId);
     setBookmarkIds(new Set(bookmarkIds));
   }
-  if (!localStorageChecked) return <LoadingSpinner waitingOn={'page'} />;
+  if (!localStorageChecked) return <LoadingSpinner waitingOn={'GetVocalToGov'} />;
 
   return (
     <div className="App">

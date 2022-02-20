@@ -8,7 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function LoadingSpinner({ waitingOn = '' }) {
   return (
-      <div className="LoadingSpinner">
+      <div className="LoadingSpinner text-info">
         Loading {waitingOn}...
         <Spinner animation="grow" variant="info" />
       </div>
